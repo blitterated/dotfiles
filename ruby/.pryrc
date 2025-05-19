@@ -1,2 +1,1 @@
-Pry.config.editor = "vim"
-Pry.config.editor = proc { |file, line| "vim +#{line} #{file}" }
+Pry.config.editor = proc { |file, line| "nvim +#{line} #{file}" }
