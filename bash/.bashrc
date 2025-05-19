@@ -77,12 +77,12 @@ function showColors {
 
 # psql prettifier
 ppsql() {
-  TEMP_LESS=$LESS
-  TEMP_PAGER=$PAGER
+  local TEMP_LESS=$LESS
+  local TEMP_PAGER=$PAGER
 
-  PSQL_YELLOW=$(printf "\e[1;33m")
-  PSQL_LIGHT_CYAN=$(printf "\e[1;36m")
-  PSQL_NOCOLOR=$(printf "\e[0m")
+  local PSQL_YELLOW=$(printf "\e[1;33m")
+  local PSQL_LIGHT_CYAN=$(printf "\e[1;36m")
+  local PSQL_NOCOLOR=$(printf "\e[0m")
 
   export LESS="-iMSx4 -FXR"
 
@@ -95,7 +95,6 @@ ppsql() {
 
   [[ -z "$TEMP_LESS" ]] && unset LESS || export LESS=$TEMP_LESS
   [[ -z "$TEMP_PAGER" ]] && unset PAGER || export LESS=$TEMP_PAGER
-  #unset LESS PAGER
 }
 
 
