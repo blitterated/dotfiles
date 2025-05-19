@@ -49,6 +49,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #fi
 
 
+####################
+#     Starship     #
+####################
+eval "$(starship init zsh)"
+
+
 ###################
 #   macOS Ruby    #
 ###################

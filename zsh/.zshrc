@@ -90,12 +90,6 @@ cman() {
 [[ -r ~/.zsh_local ]] && source ~/.zsh_local
 
 
-####################
-# Starship         #
-####################
-eval "$(starship init zsh)"
-
-
 ########################
 # useful prompt emojis #
 ########################
