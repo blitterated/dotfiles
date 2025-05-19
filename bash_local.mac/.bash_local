@@ -31,6 +31,12 @@ alias bb="open -a /Applications/BBEdit.app"
 alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
 
 
+####################
+#     Starship     #
+####################
+eval "$(starship init bash)"
+
+
 ###################
 #   macOS Ruby    #
 ###################
