@@ -1,0 +1,70 @@
+###################
+#    Homebrew     #
+###################
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+########################
+# Homebrew Completions #
+########################
+if type brew &> /dev/null; then
+
+  # stash any GLOBIGNORE settings.
+  globstash=$GLOBIGNORE
+  GLOBIGNORE="git-prompt.sh" # Using Starship instead
+
+  # Iterate over Homebrew installed completion scripts.
+  # `*` will respect GLOBINGORE exclusions.
+  for cf in "$(brew --prefix)/etc/bash_completion.d/"*; do
+    [ -r "${cf}" ] && source "${cf}"
+  done
+
+  # Bring back previous GLOBIGNORE settings.
+  GLOBIGNORE=$globstash
+fi
+
+
+#############
+#  Aliases  #
+#############
+alias bb="open -a /Applications/BBEdit.app"
+alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
+
+
+###################
+#   macOS Ruby    #
+###################
+key="  - USER INSTALLATION DIRECTORY: "
+value=$(gem env | grep "^$key")
+export GEM_HOME="${value#$key}"
+export PATH="$PATH:$GEM_HOME/bin"
+
+
+#############
+# Functions #
+#############
+# Open markdown files in Marked 2
+#     see http://jblevins.org/log/marked-2-command
+function mark {
+  md_file=$1
+  marked_exec="Marked 2"
+
+  if [ $md_file ]; then
+    open -a "${marked_exec}" $md_file;
+  else
+    open -a "${marked_exec}"
+  fi
+}
+
+# Open man pages in a GUI
+function gman () {
+  man -t $1 | open -a /System/Applications/Preview.app -f
+}
+
+
+########################
+# Plan 9 for Userspace #
+########################
+#export PLAN9=/opt/plan9
+#export PLAN9
+#export PATH=$PATH:$PLAN9/bin
