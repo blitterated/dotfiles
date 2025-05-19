@@ -10,7 +10,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if type brew &> /dev/null; then
 
   # stash any GLOBIGNORE settings.
-  globstash=$GLOBIGNORE
+  globstash="${GLOBIGNORE}"
   GLOBIGNORE="git-prompt.sh" # Using Starship instead
 
   # Iterate over Homebrew installed completion scripts.
@@ -20,7 +20,7 @@ if type brew &> /dev/null; then
   done
 
   # Bring back previous GLOBIGNORE settings.
-  GLOBIGNORE=$globstash
+  GLOBIGNORE="${globstash}"
 fi
 
 
