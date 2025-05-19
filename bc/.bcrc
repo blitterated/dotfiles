@@ -1,0 +1,4 @@
+# http://superuser.com/questions/84949/dividing-with-gnus-bc
+
+# set scale to 4 digits after the decimal
+scale = 4
