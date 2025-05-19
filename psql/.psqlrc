@@ -1,0 +1,44 @@
+-- pset   - set output format
+-- set    - set a variable (corollary is unset)
+-- setenv - set environment variables
+
+-- hide the version and "help" printout on startup
+\set QUIET on
+
+-- Report time for each query.
+\timing
+
+-- Set border around query results.
+\pset border 2
+
+-- Use unicode chars for drawing cells instead of "+" and "-"
+--\pset linestyle unicode
+
+-- Set pager to less
+--\setenv PAGER /usr/bin/less
+
+-- Turn pager off
+\set PAGER off
+
+-- prompt -> user@host:database with colors across several lines.
+\set PROMPT1 '\n%[%033[0;34m%]%n%[%033[1;35m%]@%[%033[0;34m%]%m%[%033[1;35m%]:%[%033[0;34m%]%/%[%033[1;31m%]\n%#%[%033[0;32m%] '
+\set PROMPT2 '%[%033[1;31m%]>%[%033[0;32m%] '
+
+
+-- show sql used by built in commands like \dp
+--\set ECHO_HIDDEN ON
+
+-- show null as NULL
+\pset null 'NULL'
+
+-------------
+-- aliases --
+-------------
+\set sp 'SHOW search_path;'
+\set clear '\\! clear;'
+\set ll '\\! ls -lrt;'
+
+
+-- hide the version and "help" printout on startup
+\unset QUIET
+
