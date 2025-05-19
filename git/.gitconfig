@@ -1,0 +1,8 @@
+[user]
+	email = pete@simpli.fi
+	name = Pete Young
+[diff]
+	tool = bc
+[difftool]
+	prompt = false
+	bc = trustExitCode
