@@ -64,6 +64,12 @@ export GEM_HOME="${value#$key}"
 export PATH="$PATH:$GEM_HOME/bin"
 
 
+####################
+#     OrbStack     #
+####################
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+
 ################################
 #  STM32 Programming Settings  #
 ################################
