@@ -19,3 +19,4 @@ vim.g.maplocalleader = "\\"
 vim.cmd([[
   nmap <Enter> :nohlsearch<Enter>/<BS>
 ]])
+vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
