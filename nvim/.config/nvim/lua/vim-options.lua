@@ -15,5 +15,8 @@ vim.cmd([[
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Turn on cursorline
+vim.cmd("set cursorline")
+
 -- Turn off search highlighting with Enter key
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")

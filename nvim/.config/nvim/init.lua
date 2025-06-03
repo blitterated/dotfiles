@@ -20,6 +20,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- Set line number colors
---vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
-vim.api.nvim_set_hl(0, 'LineNr',      { fg='#A1BEEF', bold=true })
---vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
+vim.api.nvim_set_hl(0, 'LineNr',       { fg='#A1BEEF', bold=true })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#171618', bg='#A1BEEF', bold=true })
