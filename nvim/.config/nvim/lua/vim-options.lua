@@ -16,7 +16,4 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Turn off search highlighting with Enter key
-vim.cmd([[
-  nmap <Enter> :nohlsearch<Enter>/<BS>
-]])
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
