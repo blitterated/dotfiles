@@ -27,7 +27,10 @@ fi
 #############
 #  Aliases  #
 #############
-alias bb="open -a /Applications/BBEdit.app"
+# BBEdit
+alias bb='open -a /Applications/BBEdit.app'
+
+# Beyond Compare
 alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
 
 

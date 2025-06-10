@@ -4,19 +4,10 @@
 alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 
-# BBEdit
-alias bb='open -a /Applications/BBEdit.app'
-
-# Beyond Compare
-alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
-
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
 alias t='eza --tree'
 alias tree='eza --tree --long'
-
-# tmux
-#alias ta='tmux attach -t'
 
 # git
 alias gg='git status -s'
@@ -41,7 +32,7 @@ export TERM=xterm-256color
 function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # pretty print $PATH
-function path () { echo "${PATH}" | tr : '\n'; }
+function path () { echo "${PATH}" | tr ':' '\n'; }
 
 # show all zsh completions
 function zsh-completions () {
