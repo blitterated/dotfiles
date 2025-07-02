@@ -23,10 +23,11 @@ function source_files {
   fi
 
   # Get a list of all files in the directory.
-  SOURCE_FILES=$(ls -q1A $SOURCE_DIR | sort)
+  #SOURCE_FILES=$(ls -q1A "${SOURCE_DIR}" | sort)
+  SOURCE_FILES=$(find "${SOURCE_DIR}" -type f | sort)
 
   # Check if the directory is empty or not
-  if [ -z "$SOURCE_FILES" ]; then
+  if [ -z "${SOURCE_FILES}" ]; then
     echo "'${SOURCE_DIR}' is empty"
     return 0
   fi
