@@ -3,11 +3,8 @@
 I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a binary link farm manager than a dotfile manager. The requirement for Perl isn't my cup of tea, either, There's too many good Rust utilities these days.
 
 
-## Table of Contents {#toc}
+## <a id="toc" />Table of Contents
 
-* [TODO](#todo)
-    * [Decomissioning Gnu Stow](#decommission-stow)
-    * [Other](#other)
 * [Commit and push local changes in the dotfiles repo](#commit-push-local-repo)
     * [Check on `git status`](#local-git-status)
     * [Check the dates on modified and untracked files](#check-file-dates)
@@ -38,42 +35,18 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
         * [Repo transformation script](#transform-repo)
         * [Dotfile repo's new chezmoi structure](#chezmoi-repo-structure)
 
+* [YOU ARE HERE](#current-progress-marker)
+
 * [Set up chezmoi](#set-up-chezmoi)
     * [Install chezmoi on MBP](#install-chezmoi)
     * [Move current dotfiles in `$HOME` to a backup folder](#backup-current-dotfiles)
-
-## TODO {#todo}
-
-### Decomissioning Gnu Stow {#decommission-stow}
-
-* Commit any local changes in the dotfiles repo and push to GitHub.
-* Replace dotfile links in home directory with actual dotfiles.
-    * Create `~/.dead_dots` and copy dotfile links into there.
-    * Copy dotfiles from `~/.dotfiles` into `~`.
-    * Move `~/.dotfiles` into `~/.dead_dots`.
-* Create a "chezmoi" branch as an orphan branch [(SO link)](https://stackoverflow.com/a/12543340).
-
-[⬆️](#toc)
+* [TODO](#todo)
+    * [Post Migration Follow Ups](#post-migration-followups)
 
 
-### Other {#other}
+## <a id="commit-push-local-repo" />Commit and push local changes in the dotfiles repo
 
-* Change the way `(ba|z)sh_local` files are stored and sourced.
-* Move branching code based on machine/OS type into `~/.*_local` files sans branching.
-* Load hombrew completions for `zsh` in `~/.zsh_local`.
-* `~/.zprofile` is empty?
-* Swap out `nvim` for `vim` as editor in `~/.pryrc`.
-* rc files for POSIX sh, ash, and dash.
-* Starship for `bash`.
-* A script for stowing mac or linux environments.
-* Have starship show which shell is running.
-
-[⬆️](#toc)
-
-
-## Commit and push local changes in the dotfiles repo {#commit-push-local-repo}
-
-### Check on `git status` {#local-git-status}
+### <a id="local-git-status" />Check on `git status`
 
 ```sh
 git status
@@ -103,7 +76,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [⬆️](#toc)
 
 
-### Check the dates on modified and untracked files {#check-file-dates}
+### <a id="check-file-dates" />Check the dates on modified and untracked files
 
 ```sh
 ls -l nvim/.config/nvim/init.lua
@@ -158,9 +131,9 @@ Here they are in order.
 [⬆️](#toc)
 
 
-## Iterate towards replacing links with dotfiles {#iterate-replacement}
+## <a id="iterate-replacement" />Iterate towards replacing links with dotfiles
 
-### Search for links to the dotfiles repo from the home directory {#search-for-dotfile-links}
+### <a id="search-for-dotfile-links" />Search for links to the dotfiles repo from the home directory
 
 It took a while with Gnu `find`, so I also tried timing it.
 
@@ -224,7 +197,7 @@ Here's the results in table form
 [⬆️](#toc)
 
 
-### Get dotfile links into into a bash array {#dotfile-array}
+### <a id="dotfile-array" />Get dotfile links into into a bash array
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -269,9 +242,9 @@ for link in "${dotlinks[@]}"; do echo "\"${link}\""; done
 
 [⬆️](#toc)
 
-### Transform source and target paths {#transform-paths}
+### <a id="transform-paths" />Transform source and target paths
 
-#### Look up paths to link targets {#look-up-link-paths}
+#### <a id="look-up-link-paths" />Look up paths to link targets
 
 ```sh
 for link in "${dotlinks[@]}"; do
@@ -302,7 +275,7 @@ done
 [⬆️](#toc)
 
 
-#### Generate full path to target {#gen-full-target-path}
+#### <a id="gen-full-target-path" />Generate full path to target
 
 Looks like the path returned by `readLink` returns the path relative to the target fromt the soft link file.
 Scrape off everything from the start of the target path up to and including `.dotfiles/`, and then stitch together a full path to the file.
@@ -336,7 +309,7 @@ done
 [⬆️](#toc)
 
 
-#### View full file path in Markdown table {#md-full-target-path}
+#### <a id="md-full-target-path" />View full file path in Markdown table
 
 Dump the above in a Markdown table.
 
@@ -371,7 +344,7 @@ done
 [⬆️](#toc)
 
 
-#### Separate link filename from path and use `$HOME` instead of `~` {#link-name-path-home}
+#### <a id="link-name-path-home" />Separate link filename from path and use `$HOME` instead of `~`
 
 Switch from using `~` to `${HOME}` for the link's full path.
 Also, separate the path from the filename.
@@ -410,7 +383,7 @@ done
 [⬆️](#toc)
 
 
-### Test copying target files and directories {#test-target-cp}
+### <a id="test-target-cp" />Test copying target files and directories
 
 Most of the dotfile links created by `stow` point at a file. However, Neovim's configuration files are pointed to with a directory link.
 
@@ -423,7 +396,7 @@ mkdir test_cp && cd $_
 [⬆️](#toc)
 
 
-#### Directory links {#test-target-cp-dir}
+#### <a id="test-target-cp-dir" />Directory links
 
 Test out a recursive copy to a test folder.
 
@@ -453,7 +426,7 @@ nvim
 [⬆️](#toc)
 
 
-#### File links {#test-target-cp-file}
+#### <a id="test-target-cp-file" />File links
 
 Can we use the same `cp -r` command as above to copy files? This would avoid needing a decision branch in `bash`.
 
@@ -484,7 +457,7 @@ nvim
 [⬆️](#toc)
 
 
-#### Double check generating `rm` and `cp` commands {#double-check-cp-rm}
+#### <a id="double-check-cp-rm" />Double check generating `rm` and `cp` commands
 
 ```sh
 echo "| Delete link | Copy dotfiles |"
@@ -525,9 +498,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## Replace the Links {#replace-links}
+## <a id="replace-links" />Replace the Links
 
-### Capture listing of current linked dotfiles {#capture-first-listing}
+### <a id="capture-first-listing" />Capture listing of current linked dotfiles
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -566,7 +539,7 @@ lrwxr-xr-x@    - blitterated 18 May 18:32 . -> ../.dotfiles/nvim/.config/nvim
 [⬆️](#toc)
 
 
-### Execute Replacement {#execute-replace}
+### <a id="execute-replace" />Execute Replacement
 ```sh
 cat << EOF > replace_stow_links.sh
 #!/bin/bash
@@ -607,7 +580,7 @@ chmod +x replace_stow_links.sh
 [⬆️](#toc)
 
 
-### Final check {#final-check}
+### <a id="final-check" />Final check
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -671,9 +644,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## Prepare dotfiles repo {#prep-repo}
+## <a id="prep-repo" />Prepare dotfiles repo
 
-### Tag latest commit {#tag-last-commit}
+### <a id="tag-last-commit" />Tag latest commit
 
 Tag last commit as "Final Gnu Stow Commit".
 
@@ -684,7 +657,7 @@ git tag -a gnu-stow-final -m "This is the last Gnu Stow commit before the switch
 [⬆️](#toc)
 
 
-### Push tag to origin. {#push-tag}
+### <a id="push-tag" />Push tag to origin.
 
 ```sh
 git push --tags
@@ -693,7 +666,7 @@ git push --tags
 [⬆️](#toc)
 
 
-### Move current dotfiles repo {#move-repo}
+### <a id="move-repo" />Move current dotfiles repo
 
 chezmoi expects the dotfiles repo to reside at `~/.local/share/chezmoi`. Move `~/.dofiles` to that location.
 
@@ -706,7 +679,7 @@ mv .dotfiles chezmoi
 [⬆️](#toc)
 
 
-### Create an orphan branch {#create-orphan-branch}
+### <a id="create-orphan-branch" />Create an orphan branch
 
 This branch will omit
 
@@ -717,7 +690,7 @@ Shit, this is gonna be a lot more work.
 [⬆️](#toc)
 
 
-### Create a branch for chezmoi {#create-chezmoi-branch}
+### <a id="create-chezmoi-branch" />Create a branch for chezmoi
 
 ```sh
 git checkout -b chezmoi
@@ -726,9 +699,9 @@ git checkout -b chezmoi
 [⬆️](#toc)
 
 
-### Transform dotfiles file hierarchy for chezmoi {#transform-file-hierarchy}
+### <a id="transform-file-hierarchy" />Transform dotfiles file hierarchy for chezmoi
 
-#### Dotfile repo's current Gnu Stow structure {#stow-repo-structure}
+#### <a id="stow-repo-structure" />Dotfile repo's current Gnu Stow structure
 
 ```sh
 tree -a -I .git
@@ -793,7 +766,7 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-#### Repo transformation script {#transform-script}
+#### <a id="transform-script" />Repo transformation script
 
 ```sh
 # .gitignore                    do nothing
@@ -848,7 +821,7 @@ rm -rf zsh_local.mac
 [⬆️](#toc)
 
 
-#### Dotfile repo's new chezmoi structure {#chezmoi-repo-structure}
+#### <a id="chezmoi-repo-structure" />Dotfile repo's new chezmoi structure
 
 ```sh
 tree -a -I .git
@@ -904,7 +877,18 @@ tree -a -I .git
 
 
 
-# Fart
+
+
+
+
+
+
+
+
+
+
+
+## <a id="current-progress-marker" />YOU ARE HERE
 
 
 
@@ -920,20 +904,9 @@ tree -a -I .git
 
 
 
+## <a id="set-up-chezmoi" />Set up chezmoi
 
-
-
-
-
-
-
-
-
-
-
-## Set up chezmoi {#set-up-chezmoi}
-
-### Install chezmoi on MBP {#install-chezmoi}
+### <a id="install-chezmoi" />Install chezmoi on MBP
 
 ```sh
 brew install chezmoi
@@ -942,7 +915,7 @@ brew install chezmoi
 [⬆️](#toc)
 
 
-### Move current dotfiles in `$HOME` to a backup folder {#backup-current-dotfiles}
+### <a id="backup-current-dotfiles" />Move current dotfiles in `$HOME` to a backup folder
 
 ```sh
 mkdir ~/.dead_dots
@@ -969,6 +942,24 @@ mv ~/.config/starship.toml ./.config
 
 cd -
 ```
+
+[⬆️](#toc)
+
+
+
+## <a id="todo" />TODO
+
+### <a id="post-migration-followups" />Post Migration Follow Ups
+
+* Change the way `(ba|z)sh_local` files are stored and sourced.
+* Move branching code based on machine/OS type into `~/.*_local` files sans branching.
+* Load hombrew completions for `zsh` in `~/.zsh_local`.
+* `~/.zprofile` is empty?
+* Swap out `nvim` for `vim` as editor in `~/.pryrc`.
+* rc files for POSIX sh, ash, and dash.
+* Starship for `bash`.
+* A script for stowing mac or linux environments.
+* Have starship show which shell is running.
 
 [⬆️](#toc)
 
