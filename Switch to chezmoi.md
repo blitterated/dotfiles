@@ -34,11 +34,12 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
         * [Dotfile repo's current Gnu Stow structure](#stow-repo-structure)
         * [Repo transformation script](#transform-repo)
         * [Dotfile repo's new chezmoi structure](#chezmoi-repo-structure)
+* [Set up chezmoi](#set-up-chezmoi)
+    * [Install chezmoi on MBP](#install-chezmoi)
 
 * [YOU ARE HERE](#current-progress-marker)
 
-* [Set up chezmoi](#set-up-chezmoi)
-    * [Install chezmoi on MBP](#install-chezmoi)
+    * [Configure chezmoi on MBP](#configure-chezmoi)
     * [Move current dotfiles in `$HOME` to a backup folder](#backup-current-dotfiles)
 * [TODO](#todo)
     * [Post Migration Follow Ups](#post-migration-followups)
@@ -873,37 +874,6 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## <a id="current-progress-marker" />YOU ARE HERE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## <a id="set-up-chezmoi" />Set up chezmoi
 
 ### <a id="install-chezmoi" />Install chezmoi on MBP
@@ -915,7 +885,38 @@ brew install chezmoi
 [⬆️](#toc)
 
 
-### <a id="backup-current-dotfiles" />Move current dotfiles in `$HOME` to a backup folder
+
+
+
+
+
+
+
+
+
+## YOU ARE HERE         <a id="current-progress-marker" />
+
+
+
+
+
+
+
+
+
+
+
+### Configure chezmoi on MBP        <a id="configure-chezmoi" />
+
+```sh
+foo foo foo
+```
+
+[⬆️](#toc)
+
+
+
+### Move current dotfiles in `$HOME` to a backup folder         <a id="backup-current-dotfiles" />
 
 ```sh
 mkdir ~/.dead_dots
@@ -947,9 +948,9 @@ cd -
 
 
 
-## <a id="todo" />TODO
+## TODO         <a id="todo" />
 
-### <a id="post-migration-followups" />Post Migration Follow Ups
+### Post Migration Follow Ups           <a id="post-migration-followups" />
 
 * Change the way `(ba|z)sh_local` files are stored and sourced.
 * Move branching code based on machine/OS type into `~/.*_local` files sans branching.
