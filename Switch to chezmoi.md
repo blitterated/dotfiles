@@ -35,14 +35,16 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
         * [Repo transformation script](#transform-repo)
         * [Dotfile repo's new chezmoi structure](#chezmoi-repo-structure)
 * [Set up chezmoi](#set-up-chezmoi)
+    * [Copy current dotfiles in `$HOME` to a backup folder](#backup-current-dotfiles)
+        * [Restore script, JIC](#dotfile-restore-script)
     * [Install chezmoi on MBP](#install-chezmoi)
 
 * [YOU ARE HERE](#current-progress-marker)
 
     * [Configure chezmoi on MBP](#configure-chezmoi)
-    * [Move current dotfiles in `$HOME` to a backup folder](#backup-current-dotfiles)
 * [TODO](#todo)
     * [Post Migration Follow Ups](#post-migration-followups)
+* [Resources](#resources)
 
 
 ## Commit and push local changes in the dotfiles repo          <a id="commit-push-local-repo" />
@@ -876,6 +878,60 @@ tree -a -I .git
 
 ## Set up chezmoi          <a id="set-up-chezmoi" />
 
+### Copy current dotfiles in `$HOME` to a backup folder         <a id="backup-current-dotfiles" />
+
+```sh
+mkdir ~/.dotbak
+cd ~/.dotbak
+mkdir ./.config
+
+cp ~/.bash_local .
+cp ~/.bash_profile .
+cp ~/.bashrc .
+cp ~/.bcrc .
+cp ~/.gemrc .
+cp ~/.gitconfig .
+cp ~/.gitignore_global .
+cp ~/.pryrc .
+cp ~/.psqlrc .
+cp ~/.tmux.conf .
+cp ~/.vimrc .
+cp ~/.zprofile .
+cp ~/.zsh_local .
+cp ~/.zshrc .
+cp -r ~/.config/nvim ./.config
+cp ~/.config/starship.toml ./.config
+
+cd -
+```
+
+#### Restore script, JIC                <a id="dotfile-restore-script" />
+
+```sh
+cd ~/.dotbak
+
+cp .bash_local ~
+cp .bash_profile ~
+cp .bashrc ~
+cp .bcrc ~
+cp .gemrc ~
+cp .gitconfig ~
+cp .gitignore_global ~
+cp .pryrc ~
+cp .psqlrc ~
+cp .tmux.conf ~
+cp .vimrc ~
+cp .zprofile ~
+cp .zsh_local ~
+cp .zshrc ~
+cp -r ~/.config/nvim ~/.config
+
+cd -
+```
+
+[⬆️](#toc)
+
+
 ### Install chezmoi on MBP          <a id="install-chezmoi" />
 
 ```sh
@@ -916,35 +972,8 @@ foo foo foo
 
 
 
-### Move current dotfiles in `$HOME` to a backup folder         <a id="backup-current-dotfiles" />
 
-```sh
-mkdir ~/.dead_dots
-cd ~/.dead_dots
-mkdir ./.config
 
-mv ~/.gitignore .
-mv ~/.bash_local .
-mv ~/.bash_profile .
-mv ~/.bashrc .
-mv ~/.bcrc .
-mv ~/.gemrc .
-mv ~/.gitconfig .
-mv ~/.gitignore_global .
-mv ~/.pryrc .
-mv ~/.psqlrc .
-mv ~/.tmux.conf .
-mv ~/.vimrc .
-mv ~/.zprofile .
-mv ~/.zsh_local .
-mv ~/.zshrc .
-mv ~/.config/nvim ./.config
-mv ~/.config/starship.toml ./.config
-
-cd -
-```
-
-[⬆️](#toc)
 
 
 
@@ -965,56 +994,28 @@ cd -
 [⬆️](#toc)
 
 
+## Resources         <a id="resources" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* chezmoi Documentation
+    * [Config file](https://www.chezmoi.io/reference/configuration-file/)
+        * [Config file settings, a.k.a. Variables](https://www.chezmoi.io/reference/configuration-file/variables/)
+    * [Reference](https://www.chezmoi.io/reference/)
+    * [Filename prefixes and suffixes, a.k.a. Attributes](https://www.chezmoi.io/reference/source-state-attributes/)
+    * [Script filename prefixes and suffixes, a.k.a. Hooks](https://www.chezmoi.io/reference/configuration-file/hooks/)
+    * [Symbolic links](https://www.chezmoi.io/reference/target-types/#symbolic-links)
+        * [Symlink mode](https://www.chezmoi.io/reference/target-types/#symlink-mode)
+    * [Commands](https://www.chezmoi.io/reference/commands/)
+* Video
+    * Chezmoi
+        * [Automating Development Environments with Ansible & Chezmoi](https://www.youtube.com/watch?v=P4nI1VhoN2Y)
+        * [Chris Titus Tech: Easily moving Linux installs](https://www.youtube.com/watch?v=x6063EuxfEA)
+        * [Singularity Club: The ultimate dotfiles setup](https://www.youtube.com/watch?v=-RkANM9FfTM)
+        * [chezmoi: Organize your dotfiles across multiple computers](https://www.youtube.com/watch?v=L_Y3s0PS_Cg)
+    * Gnu Stow
+        * [typecraft: NEVER lose dotfiles again with GNU Stow](https://www.youtube.com/watch?v=NoFiYOqnC4o)
+        * [Dreams of Autonomy: Stow has forever changed the way I manage my dotfiles](https://www.youtube.com/watch?v=y6XCebnB9gs)
+        * [Manage Your Dotfiles Like A Superhero](https://www.youtube.com/watch?v=FHuwzbpTTo0)
+        * [DevOps Toolbox: ~/.dotfiles 101: A Zero to Configuration Hero Blueprint](https://www.youtube.com/watch?v=WpQ5YiM7rD4)
+        * [System Crafters: Give Your Dotfiles a Home with GNU Stow](https://www.youtube.com/watch?v=CxAT1u8G7is)
+    * dotfiles
+        * [System Crafters: How to Create a Dotfiles Folder](https://www.youtube.com/watch?v=gibqkbdVbeY)
