@@ -3,7 +3,7 @@
 I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a binary link farm manager than a dotfile manager. The requirement for Perl isn't my cup of tea, either, There's too many good Rust utilities these days.
 
 
-## <a id="toc" />Table of Contents
+## Table of Contents          <a id="toc" />
 
 * [Commit and push local changes in the dotfiles repo](#commit-push-local-repo)
     * [Check on `git status`](#local-git-status)
@@ -45,9 +45,9 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
     * [Post Migration Follow Ups](#post-migration-followups)
 
 
-## <a id="commit-push-local-repo" />Commit and push local changes in the dotfiles repo
+## Commit and push local changes in the dotfiles repo          <a id="commit-push-local-repo" />
 
-### <a id="local-git-status" />Check on `git status`
+### Check on `git status`          <a id="local-git-status" />
 
 ```sh
 git status
@@ -77,7 +77,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [⬆️](#toc)
 
 
-### <a id="check-file-dates" />Check the dates on modified and untracked files
+### Check the dates on modified and untracked files          <a id="check-file-dates" />
 
 ```sh
 ls -l nvim/.config/nvim/init.lua
@@ -132,9 +132,9 @@ Here they are in order.
 [⬆️](#toc)
 
 
-## <a id="iterate-replacement" />Iterate towards replacing links with dotfiles
+## Iterate towards replacing links with dotfiles          <a id="iterate-replacement" />
 
-### <a id="search-for-dotfile-links" />Search for links to the dotfiles repo from the home directory
+### Search for links to the dotfiles repo from the home directory          <a id="search-for-dotfile-links" />
 
 It took a while with Gnu `find`, so I also tried timing it.
 
@@ -198,7 +198,7 @@ Here's the results in table form
 [⬆️](#toc)
 
 
-### <a id="dotfile-array" />Get dotfile links into into a bash array
+### Get dotfile links into into a bash array          <a id="dotfile-array" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -243,9 +243,9 @@ for link in "${dotlinks[@]}"; do echo "\"${link}\""; done
 
 [⬆️](#toc)
 
-### <a id="transform-paths" />Transform source and target paths
+### Transform source and target paths          <a id="transform-paths" />
 
-#### <a id="look-up-link-paths" />Look up paths to link targets
+#### Look up paths to link targets          <a id="look-up-link-paths" />
 
 ```sh
 for link in "${dotlinks[@]}"; do
@@ -276,7 +276,7 @@ done
 [⬆️](#toc)
 
 
-#### <a id="gen-full-target-path" />Generate full path to target
+#### Generate full path to target          <a id="gen-full-target-path" />
 
 Looks like the path returned by `readLink` returns the path relative to the target fromt the soft link file.
 Scrape off everything from the start of the target path up to and including `.dotfiles/`, and then stitch together a full path to the file.
@@ -310,7 +310,7 @@ done
 [⬆️](#toc)
 
 
-#### <a id="md-full-target-path" />View full file path in Markdown table
+#### View full file path in Markdown table          <a id="md-full-target-path" />
 
 Dump the above in a Markdown table.
 
@@ -345,7 +345,7 @@ done
 [⬆️](#toc)
 
 
-#### <a id="link-name-path-home" />Separate link filename from path and use `$HOME` instead of `~`
+#### Separate link filename from path and use `$HOME` instead of `~`          <a id="link-name-path-home" />
 
 Switch from using `~` to `${HOME}` for the link's full path.
 Also, separate the path from the filename.
@@ -384,7 +384,7 @@ done
 [⬆️](#toc)
 
 
-### <a id="test-target-cp" />Test copying target files and directories
+### Test copying target files and directories          <a id="test-target-cp" />
 
 Most of the dotfile links created by `stow` point at a file. However, Neovim's configuration files are pointed to with a directory link.
 
@@ -397,7 +397,7 @@ mkdir test_cp && cd $_
 [⬆️](#toc)
 
 
-#### <a id="test-target-cp-dir" />Directory links
+#### Directory links          <a id="test-target-cp-dir" />
 
 Test out a recursive copy to a test folder.
 
@@ -427,7 +427,7 @@ nvim
 [⬆️](#toc)
 
 
-#### <a id="test-target-cp-file" />File links
+#### File links          <a id="test-target-cp-file" />
 
 Can we use the same `cp -r` command as above to copy files? This would avoid needing a decision branch in `bash`.
 
@@ -458,7 +458,7 @@ nvim
 [⬆️](#toc)
 
 
-#### <a id="double-check-cp-rm" />Double check generating `rm` and `cp` commands
+#### Double check generating `rm` and `cp` commands          <a id="double-check-cp-rm" />
 
 ```sh
 echo "| Delete link | Copy dotfiles |"
@@ -499,9 +499,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## <a id="replace-links" />Replace the Links
+## Replace the Links          <a id="replace-links" />
 
-### <a id="capture-first-listing" />Capture listing of current linked dotfiles
+### Capture listing of current linked dotfiles          <a id="capture-first-listing" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -540,7 +540,7 @@ lrwxr-xr-x@    - blitterated 18 May 18:32 . -> ../.dotfiles/nvim/.config/nvim
 [⬆️](#toc)
 
 
-### <a id="execute-replace" />Execute Replacement
+### Execute Replacement          <a id="execute-replace" />
 ```sh
 cat << EOF > replace_stow_links.sh
 #!/bin/bash
@@ -581,7 +581,7 @@ chmod +x replace_stow_links.sh
 [⬆️](#toc)
 
 
-### <a id="final-check" />Final check
+### Final check          <a id="final-check" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -645,9 +645,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## <a id="prep-repo" />Prepare dotfiles repo
+## Prepare dotfiles repo          <a id="prep-repo" />
 
-### <a id="tag-last-commit" />Tag latest commit
+### Tag latest commit          <a id="tag-last-commit" />
 
 Tag last commit as "Final Gnu Stow Commit".
 
@@ -658,7 +658,7 @@ git tag -a gnu-stow-final -m "This is the last Gnu Stow commit before the switch
 [⬆️](#toc)
 
 
-### <a id="push-tag" />Push tag to origin.
+### Push tag to origin.          <a id="push-tag" />
 
 ```sh
 git push --tags
@@ -667,7 +667,7 @@ git push --tags
 [⬆️](#toc)
 
 
-### <a id="move-repo" />Move current dotfiles repo
+### Move current dotfiles repo          <a id="move-repo" />
 
 chezmoi expects the dotfiles repo to reside at `~/.local/share/chezmoi`. Move `~/.dofiles` to that location.
 
@@ -680,7 +680,7 @@ mv .dotfiles chezmoi
 [⬆️](#toc)
 
 
-### <a id="create-orphan-branch" />Create an orphan branch
+### Create an orphan branch          <a id="create-orphan-branch" />
 
 This branch will omit
 
@@ -691,7 +691,7 @@ Shit, this is gonna be a lot more work.
 [⬆️](#toc)
 
 
-### <a id="create-chezmoi-branch" />Create a branch for chezmoi
+### Create a branch for chezmoi          <a id="create-chezmoi-branch" />
 
 ```sh
 git checkout -b chezmoi
@@ -700,9 +700,9 @@ git checkout -b chezmoi
 [⬆️](#toc)
 
 
-### <a id="transform-file-hierarchy" />Transform dotfiles file hierarchy for chezmoi
+### Transform dotfiles file hierarchy for chezmoi          <a id="transform-file-hierarchy" />
 
-#### <a id="stow-repo-structure" />Dotfile repo's current Gnu Stow structure
+#### Dotfile repo's current Gnu Stow structure          <a id="stow-repo-structure" />
 
 ```sh
 tree -a -I .git
@@ -767,7 +767,7 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-#### <a id="transform-script" />Repo transformation script
+#### Repo transformation script          <a id="transform-script" />
 
 ```sh
 # .gitignore                    do nothing
@@ -822,7 +822,7 @@ rm -rf zsh_local.mac
 [⬆️](#toc)
 
 
-#### <a id="chezmoi-repo-structure" />Dotfile repo's new chezmoi structure
+#### Dotfile repo's new chezmoi structure          <a id="chezmoi-repo-structure" />
 
 ```sh
 tree -a -I .git
@@ -874,9 +874,9 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-## <a id="set-up-chezmoi" />Set up chezmoi
+## Set up chezmoi          <a id="set-up-chezmoi" />
 
-### <a id="install-chezmoi" />Install chezmoi on MBP
+### Install chezmoi on MBP          <a id="install-chezmoi" />
 
 ```sh
 brew install chezmoi
