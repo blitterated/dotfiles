@@ -37,7 +37,11 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
 * [Set up chezmoi](#set-up-chezmoi)
     * [Copy current dotfiles in `$HOME` to a backup folder](#backup-current-dotfiles)
         * [Restore script, JIC](#dotfile-restore-script)
+    * [List modified dates for dotfiles in `$HOME` dir](#list-mod-dates)
+        * [Create an array of dotfile names](#dotfile-name-array)
+        * [Get the listing](#get-the-listing)
     * [Install chezmoi on MBP](#install-chezmoi)
+
 
 * [YOU ARE HERE](#current-progress-marker)
 
@@ -925,8 +929,113 @@ cp .zprofile ~
 cp .zsh_local ~
 cp .zshrc ~
 cp -r ~/.config/nvim ~/.config
+cp .config/starship.toml ~/.config
 
 cd -
+```
+
+[⬆️](#toc)
+
+### List modified dates for dotfiles in `$HOME` dir          <a id="list-mod-dates" />
+
+Capture a listing of current dotfiles in `$HOME` for comparison after applying with chezmoi.
+
+I have `ls` is aliased to `eza`.
+
+The following `eza` options are used in the steps below:
+
+| switch | long option | description |
+| ------ | ----------- | ----------- |
+| `-1`   | `--oneline`            | display one entry per line |
+| `-a`   | `--all`                | show hidden and 'dot' files. Use this twice to also show the '.' and '..' directories |
+| `-l`   | `--long`               | display extended file metadata as a table |
+| `-R`   | `--recurse`            | recurse into directories |
+| `-I GLOBS` | `--ignore-glob GLOBS`  | glob patterns (pipe-separated) of files to ignore |
+| `-f`   | `--only-files`         | list only files |
+| `-m`   | `--modified`           | use the modified timestamp field |
+| &nbsp; | `--absolute`           | display entries with their absolute path (on, follow, off) |
+| &nbsp; | `--time-style`         | how to format timestamps (default, iso, long-iso, full-iso, relative, or a custom style '+<FORMAT>' like '+%Y-%m-%d %H:%M') |
+| &nbsp; | `--icons=WHEN`         | cisplay icons next to file names. WHEN = always, automatic (auto), never |
+
+[⬆️](#toc)
+
+
+#### Create an array of dotfile names          <a id="dotfile-name-array" />
+
+I'm just reusing the dotfile backup dir [created above](#backup-current-dotfiles) to create this array.
+
+```sh
+watch_dots=( $(ls -1afR --absolute=on --icons=never ~/.dotbak | grep -Ev "(^$|:)" | gsed -E "s|${HOME}/.dotbak/||") )
+echo $watch_dots[@]
+```
+
+```text
+.bash_local
+.bash_profile
+.bashrc
+.bcrc
+.gemrc
+.gitconfig
+.gitignore_global
+.pryrc
+.psqlrc
+.tmux.conf
+.vimrc
+.zprofile
+.zsh_local
+.zshrc
+.config/starship.toml
+.config/nvim/init.lua
+.config/nvim/lazy-lock.json
+.config/nvim/lua/linenumber-colors.lua
+.config/nvim/lua/vim-options.lua
+.config/nvim/lua/config/lazy.lua
+.config/nvim/lua/plugins/catppuccin.lua
+.config/nvim/lua/plugins/lsp-config.lua
+.config/nvim/lua/plugins/lualine.lua
+.config/nvim/lua/plugins/neotree.lua
+.config/nvim/lua/plugins/telescope.lua
+.config/nvim/lua/plugins/treesitter.lua
+```
+
+[⬆️](#toc)
+
+
+#### Get the listing          <a id="get-the-listing" />
+
+```sh
+watch_dots=( $(ls -1afR --absolute=on --icons=never $HOME/.dotbak | grep -Ev "(^$|:)" | gsed -E "s|${HOME}/.dotbak/||") )
+
+ls -1aflmR --absolute=on  --icons=never --time-style '+%Y-%m-%d %H:%M:%S' $watch_dots[@] | grep '^\.[r-]' | gsed -E "s/\.[rwx-]+?@\s+[0-9.k]+\s${USER}\s//"
+```
+
+```text
+2025-07-06 17:14:57 /Users/peteyoung/.bash_local
+2025-07-06 17:14:57 /Users/peteyoung/.bash_profile
+2025-07-06 17:14:57 /Users/peteyoung/.bashrc
+2025-07-06 17:14:57 /Users/peteyoung/.bcrc
+2025-07-06 17:14:57 /Users/peteyoung/.gemrc
+2025-07-06 17:14:57 /Users/peteyoung/.gitconfig
+2025-07-06 17:14:57 /Users/peteyoung/.gitignore_global
+2025-07-06 17:14:57 /Users/peteyoung/.pryrc
+2025-07-06 17:14:57 /Users/peteyoung/.psqlrc
+2025-07-06 17:14:57 /Users/peteyoung/.tmux.conf
+2025-07-06 17:14:57 /Users/peteyoung/.vimrc
+2025-07-06 17:14:57 /Users/peteyoung/.zprofile
+2025-07-06 17:14:57 /Users/peteyoung/.zsh_local
+2025-07-06 17:14:57 /Users/peteyoung/.zshrc
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/catppuccin.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/init.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lazy-lock.json
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/config/lazy.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/linenumber-colors.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/lsp-config.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/lualine.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/neotree.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/starship.toml
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/telescope.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/treesitter.lua
+2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/vim-options.lua
 ```
 
 [⬆️](#toc)
@@ -997,14 +1106,15 @@ foo foo foo
 ## Resources         <a id="resources" />
 
 * chezmoi Documentation
-    * [Config file](https://www.chezmoi.io/reference/configuration-file/)
-        * [Config file settings, a.k.a. Variables](https://www.chezmoi.io/reference/configuration-file/variables/)
+    * [User Guide](https://www.chezmoi.io/user-guide/command-overview/)
     * [Reference](https://www.chezmoi.io/reference/)
-    * [Filename prefixes and suffixes, a.k.a. Attributes](https://www.chezmoi.io/reference/source-state-attributes/)
-    * [Script filename prefixes and suffixes, a.k.a. Hooks](https://www.chezmoi.io/reference/configuration-file/hooks/)
-    * [Symbolic links](https://www.chezmoi.io/reference/target-types/#symbolic-links)
-        * [Symlink mode](https://www.chezmoi.io/reference/target-types/#symlink-mode)
-    * [Commands](https://www.chezmoi.io/reference/commands/)
+        * [Config file](https://www.chezmoi.io/reference/configuration-file/)
+            * [Config file settings, a.k.a. Variables](https://www.chezmoi.io/reference/configuration-file/variables/)
+        * [Filename prefixes and suffixes, a.k.a. Attributes](https://www.chezmoi.io/reference/source-state-attributes/)
+        * [Script filename prefixes and suffixes, a.k.a. Hooks](https://www.chezmoi.io/reference/configuration-file/hooks/)
+        * [Symbolic links](https://www.chezmoi.io/reference/target-types/#symbolic-links)
+            * [Symlink mode](https://www.chezmoi.io/reference/target-types/#symlink-mode)
+        * [Commands](https://www.chezmoi.io/reference/commands/)
 * Video
     * Chezmoi
         * [Automating Development Environments with Ansible & Chezmoi](https://www.youtube.com/watch?v=P4nI1VhoN2Y)
