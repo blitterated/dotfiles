@@ -1,0 +1,8 @@
+[edit]
+    command = "nvim"
+    # args = ["--somearg"] 
+    # hardlink = false        <-- hardlinks???
+
+[git]
+    autoCommit = false
+    autoPush = false
