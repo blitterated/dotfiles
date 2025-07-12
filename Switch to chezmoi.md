@@ -51,9 +51,9 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
 * [Resources](#resources)
 
 
-## Commit and push local changes in the dotfiles repo          <a id="commit-push-local-repo" />
+## Commit and push local changes in the dotfiles repo                           <a id="commit-push-local-repo" />
 
-### Check on `git status`          <a id="local-git-status" />
+### Check on `git status`                                                       <a id="local-git-status" />
 
 ```sh
 git status
@@ -83,7 +83,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [⬆️](#toc)
 
 
-### Check the dates on modified and untracked files          <a id="check-file-dates" />
+### Check the dates on modified and untracked files                             <a id="check-file-dates" />
 
 ```sh
 ls -l nvim/.config/nvim/init.lua
@@ -138,9 +138,9 @@ Here they are in order.
 [⬆️](#toc)
 
 
-## Iterate towards replacing links with dotfiles          <a id="iterate-replacement" />
+## Iterate towards replacing links with dotfiles                                <a id="iterate-replacement" />
 
-### Search for links to the dotfiles repo from the home directory          <a id="search-for-dotfile-links" />
+### Search for links to the dotfiles repo from the home directory               <a id="search-for-dotfile-links" />
 
 It took a while with Gnu `find`, so I also tried timing it.
 
@@ -204,7 +204,7 @@ Here's the results in table form
 [⬆️](#toc)
 
 
-### Get dotfile links into into a bash array          <a id="dotfile-array" />
+### Get dotfile links into into a bash array                                    <a id="dotfile-array" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -249,9 +249,9 @@ for link in "${dotlinks[@]}"; do echo "\"${link}\""; done
 
 [⬆️](#toc)
 
-### Transform source and target paths          <a id="transform-paths" />
+### Transform source and target paths                                           <a id="transform-paths" />
 
-#### Look up paths to link targets          <a id="look-up-link-paths" />
+#### Look up paths to link targets                                              <a id="look-up-link-paths" />
 
 ```sh
 for link in "${dotlinks[@]}"; do
@@ -282,7 +282,7 @@ done
 [⬆️](#toc)
 
 
-#### Generate full path to target          <a id="gen-full-target-path" />
+#### Generate full path to target                                               <a id="gen-full-target-path" />
 
 Looks like the path returned by `readLink` returns the path relative to the target fromt the soft link file.
 Scrape off everything from the start of the target path up to and including `.dotfiles/`, and then stitch together a full path to the file.
@@ -316,7 +316,7 @@ done
 [⬆️](#toc)
 
 
-#### View full file path in Markdown table          <a id="md-full-target-path" />
+#### View full file path in Markdown table                                      <a id="md-full-target-path" />
 
 Dump the above in a Markdown table.
 
@@ -351,7 +351,7 @@ done
 [⬆️](#toc)
 
 
-#### Separate link filename from path and use `$HOME` instead of `~`          <a id="link-name-path-home" />
+#### Separate link filename from path and use `$HOME` instead of `~`            <a id="link-name-path-home" />
 
 Switch from using `~` to `${HOME}` for the link's full path.
 Also, separate the path from the filename.
@@ -390,7 +390,7 @@ done
 [⬆️](#toc)
 
 
-### Test copying target files and directories          <a id="test-target-cp" />
+### Test copying target files and directories                                   <a id="test-target-cp" />
 
 Most of the dotfile links created by `stow` point at a file. However, Neovim's configuration files are pointed to with a directory link.
 
@@ -403,7 +403,7 @@ mkdir test_cp && cd $_
 [⬆️](#toc)
 
 
-#### Directory links          <a id="test-target-cp-dir" />
+#### Directory links                                                            <a id="test-target-cp-dir" />
 
 Test out a recursive copy to a test folder.
 
@@ -433,7 +433,7 @@ nvim
 [⬆️](#toc)
 
 
-#### File links          <a id="test-target-cp-file" />
+#### File links                                                                 <a id="test-target-cp-file" />
 
 Can we use the same `cp -r` command as above to copy files? This would avoid needing a decision branch in `bash`.
 
@@ -464,7 +464,7 @@ nvim
 [⬆️](#toc)
 
 
-#### Double check generating `rm` and `cp` commands          <a id="double-check-cp-rm" />
+#### Double check generating `rm` and `cp` commands                             <a id="double-check-cp-rm" />
 
 ```sh
 echo "| Delete link | Copy dotfiles |"
@@ -505,9 +505,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## Replace the Links          <a id="replace-links" />
+## Replace the Links                                                            <a id="replace-links" />
 
-### Capture listing of current linked dotfiles          <a id="capture-first-listing" />
+### Capture listing of current linked dotfiles                                  <a id="capture-first-listing" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -546,7 +546,7 @@ lrwxr-xr-x@    - blitterated 18 May 18:32 . -> ../.dotfiles/nvim/.config/nvim
 [⬆️](#toc)
 
 
-### Execute Replacement          <a id="execute-replace" />
+### Execute Replacement                                                         <a id="execute-replace" />
 ```sh
 cat << EOF > replace_stow_links.sh
 #!/bin/bash
@@ -587,7 +587,7 @@ chmod +x replace_stow_links.sh
 [⬆️](#toc)
 
 
-### Final check          <a id="final-check" />
+### Final check                                                                 <a id="final-check" />
 
 ```sh
 dotlinks=( '.bash_local' '.bash_profile' '.bashrc' '.bcrc' '.config/nvim' '.config/starship.toml'
@@ -651,9 +651,9 @@ Looks good!
 [⬆️](#toc)
 
 
-## Prepare dotfiles repo          <a id="prep-repo" />
+## Prepare dotfiles repo                                                        <a id="prep-repo" />
 
-### Tag latest commit          <a id="tag-last-commit" />
+### Tag latest commit                                                           <a id="tag-last-commit" />
 
 Tag last commit as "Final Gnu Stow Commit".
 
@@ -664,7 +664,7 @@ git tag -a gnu-stow-final -m "This is the last Gnu Stow commit before the switch
 [⬆️](#toc)
 
 
-### Push tag to origin.          <a id="push-tag" />
+### Push tag to origin.                                                         <a id="push-tag" />
 
 ```sh
 git push --tags
@@ -673,7 +673,7 @@ git push --tags
 [⬆️](#toc)
 
 
-### Move current dotfiles repo          <a id="move-repo" />
+### Move current dotfiles repo                                                  <a id="move-repo" />
 
 chezmoi expects the dotfiles repo to reside at `~/.local/share/chezmoi`. Move `~/.dofiles` to that location.
 
@@ -686,7 +686,7 @@ mv .dotfiles chezmoi
 [⬆️](#toc)
 
 
-### Create an orphan branch          <a id="create-orphan-branch" />
+### Create an orphan branch                                                     <a id="create-orphan-branch" />
 
 This branch will omit
 
@@ -697,7 +697,7 @@ Shit, this is gonna be a lot more work.
 [⬆️](#toc)
 
 
-### Create a branch for chezmoi          <a id="create-chezmoi-branch" />
+### Create a branch for chezmoi                                                 <a id="create-chezmoi-branch" />
 
 ```sh
 git checkout -b chezmoi
@@ -706,9 +706,9 @@ git checkout -b chezmoi
 [⬆️](#toc)
 
 
-### Transform dotfiles file hierarchy for chezmoi          <a id="transform-file-hierarchy" />
+### Transform dotfiles file hierarchy for chezmoi                               <a id="transform-file-hierarchy" />
 
-#### Dotfile repo's current Gnu Stow structure          <a id="stow-repo-structure" />
+#### Dotfile repo's current Gnu Stow structure                                  <a id="stow-repo-structure" />
 
 ```sh
 tree -a -I .git
@@ -773,7 +773,7 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-#### Repo transformation script          <a id="transform-script" />
+#### Repo transformation script                                                 <a id="transform-script" />
 
 ```sh
 # .gitignore                    do nothing
@@ -828,7 +828,7 @@ rm -rf zsh_local.mac
 [⬆️](#toc)
 
 
-#### Dotfile repo's new chezmoi structure          <a id="chezmoi-repo-structure" />
+#### Dotfile repo's new chezmoi structure                                       <a id="chezmoi-repo-structure" />
 
 ```sh
 tree -a -I .git
@@ -880,9 +880,9 @@ tree -a -I .git
 [⬆️](#toc)
 
 
-## Set up chezmoi          <a id="set-up-chezmoi" />
+## Set up chezmoi                                                               <a id="set-up-chezmoi" />
 
-### Copy current dotfiles in `$HOME` to a backup folder         <a id="backup-current-dotfiles" />
+### Copy current dotfiles in `$HOME` to a backup folder                         <a id="backup-current-dotfiles" />
 
 ```sh
 mkdir ~/.dotbak
@@ -909,7 +909,7 @@ cp ~/.config/starship.toml ./.config
 cd -
 ```
 
-#### Restore script, JIC                <a id="dotfile-restore-script" />
+#### Restore script, JIC                                                        <a id="dotfile-restore-script" />
 
 ```sh
 cd ~/.dotbak
@@ -936,7 +936,7 @@ cd -
 
 [⬆️](#toc)
 
-### List modified dates for dotfiles in `$HOME` dir          <a id="list-mod-dates" />
+### List modified dates for dotfiles in `$HOME` dir                             <a id="list-mod-dates" />
 
 Capture a listing of current dotfiles in `$HOME` for comparison after applying with chezmoi.
 
@@ -960,7 +960,7 @@ The following `eza` options are used in the steps below:
 [⬆️](#toc)
 
 
-#### Create an array of dotfile names          <a id="dotfile-name-array" />
+#### Create an array of dotfile names                                           <a id="dotfile-name-array" />
 
 I'm just reusing the dotfile backup dir [created above](#backup-current-dotfiles) to create this array.
 
@@ -1001,7 +1001,7 @@ echo $watch_dots[@]
 [⬆️](#toc)
 
 
-#### Get the listing          <a id="get-the-listing" />
+#### Get the listing                                                            <a id="get-the-listing" />
 
 ```sh
 watch_dots=( $(ls -1afR --absolute=on --icons=never $HOME/.dotbak | grep -Ev "(^$|:)" | gsed -E "s|${HOME}/.dotbak/||") )
@@ -1041,7 +1041,7 @@ ls -1aflmR --absolute=on  --icons=never --time-style '+%Y-%m-%d %H:%M:%S' $watch
 [⬆️](#toc)
 
 
-### Install chezmoi on MBP          <a id="install-chezmoi" />
+### Install chezmoi on MBP                                                      <a id="install-chezmoi" />
 
 ```sh
 brew install chezmoi
@@ -1059,7 +1059,7 @@ brew install chezmoi
 
 
 
-## YOU ARE HERE         <a id="current-progress-marker" />
+## YOU ARE HERE                                                                 <a id="current-progress-marker" />
 
 
 
@@ -1071,39 +1071,76 @@ brew install chezmoi
 
 
 
-### Configure chezmoi on MBP        <a id="configure-chezmoi" />
+### Configure chezmoi on MBP                                                    <a id="configure-chezmoi" />
+
+#### Ignore folders and files                                                   <a id="ignore-files-folder />
+
+The following files and directories need to be ignored for various reasons.
+
+* `__lib/source_files.sh` - intended to be used with `stow`
+* `Windows/**/*` - temporary while I work out the Mac setup first
+* `Switch to chezmoi.md` - the file you're reading right now
+
+We can use [`.chezmoiignore`](https://www.chezmoi.io/reference/special-files/chezmoiignore/) to do this.
 
 ```sh
-foo foo foo
+cat << EOF > .chezmoiignore
+README.md               # don't need this in $HOME
+Switch to chezmoi.md    # don't need this in $HOME
+Windows/                # ignore Windows folder
+Windows/**              # ignore the contents of Windows
+__lib/                  # ignore __lib folder
+__lib/**                # ignore the contents of __lib
+EOF
 ```
 
 [⬆️](#toc)
 
 
+#### Config file
 
+[Variables, a.k.a. configuration settings](https://www.chezmoi.io/reference/configuration-file/variables/)
 
+```toml
+[edit]
+    command = "nvim"
+    # args = ["--somearg"]
+    # hardlink = false        <-- hardlinks???
 
+[git]
+    autoCommit = false
+    autoPush = false
+```
 
-
-
-## TODO         <a id="todo" />
-
-### Post Migration Follow Ups           <a id="post-migration-followups" />
-
-* Change the way `(ba|z)sh_local` files are stored and sourced.
-* Move branching code based on machine/OS type into `~/.*_local` files sans branching.
-* Load hombrew completions for `zsh` in `~/.zsh_local`.
-* `~/.zprofile` is empty?
-* Swap out `nvim` for `vim` as editor in `~/.pryrc`.
-* rc files for POSIX sh, ash, and dash.
-* Starship for `bash`.
-* A script for stowing mac or linux environments.
-* Have starship show which shell is running.
 
 [⬆️](#toc)
 
 
-## Resources         <a id="resources" />
+
+
+
+
+
+
+## TODO                                                                         <a id="todo" />
+
+### Post Migration Follow Ups                                                   <a id="post-migration-followups" />
+
+* Change the way `(ba|z)sh_local` files are stored and sourced.
+* Load hombrew completions for `zsh` in `~/.zsh_local`.
+* `~/.zprofile` is empty?
+* Swap out `nvim` for `vim` as editor in `~/.pryrc`.
+* rc files for POSIX sh, ash, and dash? (fat chance)
+* Starship for `bash`.
+* Add `.config/homebrew`
+* Add `.config/karabiner`
+* Add `.hammerspoon`
+* Add `.config/ghostty`
+
+[⬆️](#toc)
+
+
+## Resources                                                                     <a id="resources" />
 
 * chezmoi Documentation
     * [User Guide](https://www.chezmoi.io/user-guide/command-overview/)
