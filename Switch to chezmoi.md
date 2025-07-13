@@ -41,15 +41,24 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
         * [Create an array of dotfile names](#dotfile-name-array)
         * [Get the listing](#get-the-listing)
     * [Install chezmoi on MBP](#install-chezmoi)
-
+    * [Configure chezmoi on MBP](#configure-chezmoi)
+        * [Ignore folders and files](#ignore-files-folder")
+        * [Config file](#onfig-file)
+        * [Make `.bashrc` a template file and weave in the mac settings](#make-bashrc-template)
+        * [INTERLUDE: Reinitialize chezmoi using source repo URL](#reinit-chezmoi)
+        * [Edit `.bashrc` template to bring in Mac settings](#edit-bashrc-template)
+        * [Move `dot_bash_local` to `bash_local/bash_darwin`](#move-bash-local-file)
 
 * [YOU ARE HERE](#current-progress-marker)
 
-    * [Configure chezmoi on MBP](#configure-chezmoi)
 * [chezmoi Gotchas](#gotchas)
     * [Converting a dotfile to a template](#gotchas-template-conversion)
+    * [Make file paths passed to chezmoi commands relative to the source repo](#gotchas-cmd-file-path-params)
+    * [Vim file type detection](#gotchas-cmd-file-path-params)
 * [TODO](#todo)
     * [Post Migration Follow Ups](#post-migration-followups)
+* [Appendix](#appendix")
+    * [Source repo file system tree before and after results](#repo-before-after")
 * [Resources](#resources)
 
 
@@ -1052,30 +1061,9 @@ brew install chezmoi
 [⬆️](#toc)
 
 
-
-
-
-
-
-
-
-
-
-## YOU ARE HERE                                                                 <a id="current-progress-marker" />
-
-
-
-
-
-
-
-
-
-
-
 ### Configure chezmoi on MBP                                                    <a id="configure-chezmoi" />
 
-#### Ignore folders and files                                                   <a id="ignore-files-folder />
+#### Ignore folders and files                                                   <a id="ignore-files-folder" />
 
 The following files and directories need to be ignored for various reasons.
 
@@ -1099,7 +1087,7 @@ EOF
 [⬆️](#toc)
 
 
-#### Config file
+#### Config file                                                               <a id="config-file" />
 
 [Variables, a.k.a. configuration settings](https://www.chezmoi.io/reference/configuration-file/variables/)
 
@@ -1112,17 +1100,152 @@ EOF
     autoPush = false
 ```
 
-__TODO:__
-
-* Make `bashrc` a template file and weave in the mac settings.
-* Put mac settings in a folder ignored by chezmoi
-* Apply
+[⬆️](#toc)
 
 
+#### Make `.bashrc` a template file and weave in the mac settings                <a id="make-bashrc-template" />
+
+Convert to template.
+
+```sh
+git mv dot_bashrc dot_bashrc.tmpl
+```
+
+Open the file to edit it.
+
+```sh
+chezmoi edit .bashrc
+```
+
+```text
+chezmoi: .bashrc: not managed
+```
+
+Uh oh. Time to commit everything and try initializing chezmoi again using a URL.
 
 [⬆️](#toc)
 
 
+#### INTERLUDE: Reinitialize chezmoi using source repo URL                      <a id="reinit-chezmoi" />
+
+Backup the current source repo.
+
+```sh
+mv $HOME/.local/share/chezmoi $HOME/.local/share/chezmoi.oops
+```
+
+Initialize chezmoi with the upstream source repo URL.
+
+```sh
+chezmoi -v init --branch chezmoi ghblit:blitterated/dotfiles.git
+```
+
+```text
+Cloning into '/Users/blitterated/.local/share/chezmoi'...
+remote: Enumerating objects: 245, done.
+remote: Counting objects: 100% (245/245), done.
+remote: Compressing objects: 100% (124/124), done.
+remote: Total 245 (delta 91), reused 225 (delta 71), pack-reused 0 (from 0)
+Receiving objects: 100% (245/245), 44.57 KiB | 1.11 MiB/s, done.
+Resolving deltas: 100% (91/91), done.
+```
+
+`tree` showed that `$HOME/.local/share/chezmoi` and `$HOME/.local/share/chezmoi.oops` were the same except for `.DS_Store` in the latter.
+
+See [the Appendix entry](#repo-before-after") for details.
+
+Try to edit `.bashrc` again.
+
+```sh
+chezmoi edit .bashrc
+```
+
+```text
+chezmoi: .bashrc: not managed
+```
+
+AAAAANNNNNNNDDDDDD... I'm an idiot. It works if you're in `$HOME` or specify `$HOME` in the command.
+
+```sh
+chezmoi edit ~/.bashrc
+```
+
+Unnecessary rework. Yay. Make sure you specify the path to the target file and not just its name, e.g. `~/.bashrc` and not just `.bashrc`.
+
+[⬆️](#toc)
+
+
+
+
+
+
+## YOU ARE HERE                                                                 <a id="current-progress-marker" />
+
+
+
+
+#### Edit `.bashrc` template to bring in Mac settings                           <a id="edit-bashrc-template" />
+
+Open the file to edit it.
+
+```sh
+chezmoi edit ~/.bashrc
+```
+
+I think chezmoi's mapping from `.bashrc` to `dot_bashrc` breaks filetype detection.
+Force it with this:
+
+```text
+:setf bash
+```
+
+Replace any code loading `.bash_local` with the following template code:
+
+```text
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   include bash_local/bash_darwin -}}
+{{- end -}}
+```
+
+[⬆️](#toc)
+
+
+#### Move `dot_bash_local` to `bash_local/bash_darwin`                          <a id="move-bash-local-file" />
+
+I plan to use `bash_local` as the folder for bash local machine configs.
+The current `.bash_local` file is specific to a Macbook Pro.
+
+```sh
+chezmoi cd
+mkdir bash_local
+ git mv dot_bash_local bash_local/bash_darwin
+```
+
+[⬆️](#toc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+__TODO:__
+* √ Move dot_bash_local to bash_local/bash_darwin
+* √ Make .bashrc a template
+* Detect os and include bash_darwin if .chezmoi.os is "darwin" in dot_bash_rc
+* Run the template
+* chezmoi apply --dry_run --verbose
 
 
 
@@ -1170,6 +1293,69 @@ Changes to be committed:
 [⬆️](#toc)
 
 
+### Make file paths passed to chezmoi commands relative to the source repo      <a id ="gotchas-cmd-file-path-params">
+
+Simply specifying the file name to edit only works if you're currently in `$HOME`. Otherwise, make sure you specify `$HOME` or `~` in the file path parameter.
+
+This only works in `$HOME`:
+
+```sh
+chezmoi edit .bashrc
+```
+
+Otherwise you'll get this error:
+
+```text
+chezmoi: .bashrc: not managed
+```
+
+This will work from any directory:
+
+```sh
+chezmoi edit ~/.bashrc
+```
+
+[See what happened here](#reinit-chezmoi).
+
+
+[⬆️](#toc)
+
+### Vim file type detection                                                    <a id ="gotchas-cmd-file-path-params">
+
+The way chezmoi renames files in the source repo can break Vim's file type detection.
+For example, Vim will detect `.bashrc` as a Bash file, but it fails with `dot_bashrc`.
+
+It happens with the edit command `chezmoi edit ~/.bashrc` if you've made the source file a template with the `.tmpl` extension.
+Here's what I got from `:ls` in Vim while editing `.bashrc`:
+
+```txt
+/private/var/folders/s9/84x1rz2j02g5pth66xsm7vv80000gp/T/chezmoi-edit663884950/.bashrc.tmpl
+```
+
+The quick fix is to run the following in Vim:
+
+```text
+:setf bash
+```
+
+[⬆️](#toc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## TODO                                                                         <a id="todo" />
 
 ### Post Migration Follow Ups                                                   <a id="post-migration-followups" />
@@ -1184,6 +1370,120 @@ Changes to be committed:
 * Add `.config/karabiner`
 * Add `.hammerspoon`
 * Add `.config/ghostty`
+
+[⬆️](#toc)
+
+
+## Appendix                                                                     <a id="appendix" />
+
+### Source repo file system tree before and after results <a id="todo" />       <a id="repo-before-after" />
+
+Before reinit:
+
+```sh
+tree -a -I .git
+```
+
+```text
+drwxr-xr-x@    - peteyoung 12 Jul 23:29 .
+.rw-r--r--@  539 peteyoung 12 Jul 14:01 ├── .chezmoiignore
+.rw-r--r--@  10k peteyoung  8 Jul 10:42 ├── .DS_Store
+.rw-r--r--@   19 peteyoung 18 May 22:07 ├── .gitignore
+drwxr-xr-x@    - peteyoung  2 Jul 14:02 ├── __lib
+.rw-r--r--@ 1.1k peteyoung  2 Jul 14:02 │   └── source_files.sh
+.rw-r--r--@  154 peteyoung 12 Jul 01:08 ├── chezmoi.toml
+.rw-r--r--@ 1.6k peteyoung  9 Jun 18:22 ├── dot_bash_local
+.rw-r--r--@   76 peteyoung 18 May 22:07 ├── dot_bash_profile
+.rw-r--r--@ 2.6k peteyoung 12 Jul 23:28 ├── dot_bashrc.tmpl
+.rw-r--r--@  114 peteyoung 18 May 03:05 ├── dot_bcrc
+drwxr-xr-x@    - peteyoung  7 Jul 22:32 ├── dot_config
+drwxr-xr-x@    - peteyoung  6 Jun 00:01 │   ├── nvim
+.rw-r--r--@  665 peteyoung  6 Jun 00:01 │   │   ├── init.lua
+.rw-r--r--@ 1.2k peteyoung  7 Jun 15:27 │   │   ├── lazy-lock.json
+drwxr-xr-x@    - peteyoung  5 Jun 23:59 │   │   └── lua
+drwxr-xr-x@    - peteyoung  5 Jun 23:59 │   │       ├── config
+.rw-r--r--@ 1.3k peteyoung  3 Jun 16:52 │   │       │   └── lazy.lua
+.rw-r--r--@  162 peteyoung  5 Jun 23:48 │   │       ├── linenumber-colors.lua
+drwxr-xr-x@    - peteyoung  2 Jul 01:19 │   │       ├── plugins
+.rw-r--r--@  155 peteyoung 20 Apr 18:15 │   │       │   ├── catppuccin.lua
+.rw-r--r--@  605 peteyoung  7 Jun 15:27 │   │       │   ├── lsp-config.lua
+.rw-r--r--@  162 peteyoung  5 Jun 23:03 │   │       │   ├── lualine.lua
+.rw-r--r--@  413 peteyoung  4 Jun 13:42 │   │       │   ├── neotree.lua
+.rw-r--r--@  303 peteyoung 20 Apr 22:02 │   │       │   ├── telescope.lua
+.rw-r--r--@  591 peteyoung 20 Apr 21:53 │   │       │   └── treesitter.lua
+.rw-r--r--@  540 peteyoung  3 Jun 17:40 │   │       └── vim-options.lua
+.rw-r--r--@ 3.8k peteyoung 20 May 23:40 │   └── starship.toml
+.rw-r--r--@   51 peteyoung 13 Feb  2024 ├── dot_gemrc
+.rw-r--r--@  115 peteyoung 25 Mar  2024 ├── dot_gitconfig
+.rw-r--r--@   24 peteyoung 18 May 03:05 ├── dot_gitignore_global
+.rw-r--r--@   66 peteyoung 18 May 22:49 ├── dot_pryrc
+.rw-r--r--@  987 peteyoung 18 May 03:05 ├── dot_psqlrc
+.rw-r--r--@ 1.8k peteyoung 18 May 03:05 ├── dot_tmux.conf
+.rw-r--r--@ 2.5k peteyoung 18 May 03:05 ├── dot_vimrc
+.rw-r--r--@    0 peteyoung 30 May 15:33 ├── dot_zprofile
+.rw-r--r--@ 2.1k peteyoung  9 Jun 18:27 ├── dot_zsh_local
+.rw-r--r--@ 2.2k peteyoung  2 Jul 01:34 ├── dot_zshrc
+.rw-r--r--@  102 peteyoung 18 May 22:07 ├── README.md
+.rw-r--r--@  42k peteyoung 12 Jul 23:31 ├── 'Switch to chezmoi.md'
+drwxr-xr-x@    - peteyoung 30 May 15:34 └── Windows
+.rw-r--r--@ 1.4k peteyoung 30 May 15:34     ├── link_powershell_configs.ps1
+drwxr-xr-x@    - peteyoung 30 May 15:34     └── PowerShell
+.rw-r--r--@ 5.8k peteyoung 30 May 15:34         └── Microsoft.PowerShell_profile.ps1
+```
+
+After reinit:
+
+```sh
+tree -a -I .git
+```
+
+```text
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 .
+.rw-r--r--@  539 peteyoung 13 Jul 00:00 ├── .chezmoiignore
+.rw-r--r--@   19 peteyoung 13 Jul 00:00 ├── .gitignore
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 ├── __lib
+.rw-r--r--@ 1.1k peteyoung 13 Jul 00:00 │   └── source_files.sh
+.rw-r--r--@  154 peteyoung 13 Jul 00:00 ├── chezmoi.toml
+.rw-r--r--@ 1.6k peteyoung 13 Jul 00:00 ├── dot_bash_local
+.rw-r--r--@   76 peteyoung 13 Jul 00:00 ├── dot_bash_profile
+.rw-r--r--@ 2.6k peteyoung 13 Jul 00:00 ├── dot_bashrc.tmpl
+.rw-r--r--@  114 peteyoung 13 Jul 00:00 ├── dot_bcrc
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 ├── dot_config
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   ├── nvim
+.rw-r--r--@  665 peteyoung 13 Jul 00:00 │   │   ├── init.lua
+.rw-r--r--@ 1.2k peteyoung 13 Jul 00:00 │   │   ├── lazy-lock.json
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │   └── lua
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │       ├── config
+.rw-r--r--@ 1.3k peteyoung 13 Jul 00:00 │   │       │   └── lazy.lua
+.rw-r--r--@  162 peteyoung 13 Jul 00:00 │   │       ├── linenumber-colors.lua
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │       ├── plugins
+.rw-r--r--@  155 peteyoung 13 Jul 00:00 │   │       │   ├── catppuccin.lua
+.rw-r--r--@  605 peteyoung 13 Jul 00:00 │   │       │   ├── lsp-config.lua
+.rw-r--r--@  162 peteyoung 13 Jul 00:00 │   │       │   ├── lualine.lua
+.rw-r--r--@  413 peteyoung 13 Jul 00:00 │   │       │   ├── neotree.lua
+.rw-r--r--@  303 peteyoung 13 Jul 00:00 │   │       │   ├── telescope.lua
+.rw-r--r--@  591 peteyoung 13 Jul 00:00 │   │       │   └── treesitter.lua
+.rw-r--r--@  540 peteyoung 13 Jul 00:00 │   │       └── vim-options.lua
+.rw-r--r--@ 3.8k peteyoung 13 Jul 00:00 │   └── starship.toml
+.rw-r--r--@   51 peteyoung 13 Jul 00:00 ├── dot_gemrc
+.rw-r--r--@  115 peteyoung 13 Jul 00:00 ├── dot_gitconfig
+.rw-r--r--@   24 peteyoung 13 Jul 00:00 ├── dot_gitignore_global
+.rw-r--r--@   66 peteyoung 13 Jul 00:00 ├── dot_pryrc
+.rw-r--r--@  987 peteyoung 13 Jul 00:00 ├── dot_psqlrc
+.rw-r--r--@ 1.8k peteyoung 13 Jul 00:00 ├── dot_tmux.conf
+.rw-r--r--@ 2.5k peteyoung 13 Jul 00:00 ├── dot_vimrc
+.rw-r--r--@    0 peteyoung 13 Jul 00:00 ├── dot_zprofile
+.rw-r--r--@ 2.1k peteyoung 13 Jul 00:00 ├── dot_zsh_local
+.rw-r--r--@ 2.2k peteyoung 13 Jul 00:00 ├── dot_zshrc
+.rw-r--r--@  102 peteyoung 13 Jul 00:00 ├── README.md
+.rw-r--r--@  42k peteyoung 13 Jul 00:00 ├── 'Switch to chezmoi.md'
+drwxr-xr-x@    - peteyoung 13 Jul 00:00 └── Windows
+.rw-r--r--@ 1.4k peteyoung 13 Jul 00:00     ├── link_powershell_configs.ps1
+drwxr-xr-x@    - peteyoung 13 Jul 00:00     └── PowerShell
+.rw-r--r--@ 5.8k peteyoung 13 Jul 00:00         └── Microsoft.PowerShell_profile.ps1
+```
+
+They're the same except for `.DS_Store`.
 
 [⬆️](#toc)
 
