@@ -1412,7 +1412,9 @@ The quick fix is to run the following in Vim:
 
 ### Don't use comments in `.chezmoiignore`                                     <a id ="no-comments-in-ignore">
 
-__TODO__
+...or chezmoi.toml
+
+
 
 [⬆️](#toc)
 
