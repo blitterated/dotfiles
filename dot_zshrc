@@ -3,6 +3,7 @@
 ####################
 alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
+alias cz='chezmoi --verbose '
 
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
@@ -17,7 +18,6 @@ alias gdt='git difftool'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
-
 
 ####################
 # Exports          #

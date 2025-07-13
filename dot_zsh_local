@@ -66,6 +66,13 @@ eval "$(starship init zsh)"
 
 
 ###################
+#     Python      #
+###################
+# uv tools executable path
+export PATH="$PATH:${HOME}/.local/bin"
+
+
+###################
 #   macOS Ruby    #
 ###################
 key="  - USER INSTALLATION DIRECTORY: "
