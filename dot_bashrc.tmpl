@@ -101,7 +101,9 @@ ppsql() {
 ####################
 #  Local Settings  #
 ####################
-[[ -r ~/.bash_local ]] && . ~/.bash_local
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   include "bash_local/bash_darwin" -}}
+{{- end -}}
 
 
 ###############
