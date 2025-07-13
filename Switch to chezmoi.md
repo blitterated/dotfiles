@@ -48,6 +48,8 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
         * [INTERLUDE: Reinitialize chezmoi using source repo URL](#reinit-chezmoi)
         * [Edit `.bashrc` template to bring in Mac settings](#edit-bashrc-template)
         * [Move `dot_bash_local` to `bash_local/bash_darwin`](#move-bash-local-file)
+        * [Test the `.bashrc` template](#test-bashrc-template)
+        * [Apply a verbose dry run](#apply-dry-run)
 
 * [YOU ARE HERE](#current-progress-marker)
 
@@ -1224,6 +1226,76 @@ mkdir bash_local
 [⬆️](#toc)
 
 
+#### Test the `.bashrc` template                                                <a id="test-bashrc-template" />
+
+```sh
+chezmoi execute-template < dot_bashrc.tmpl
+```
+
+```text
+chezmoi: template: stdin:105: bad character U+002F '/'
+```
+
+Blerg. Line 105 is this line from the template code added above:
+
+```text
+{{-   include bash_local/bash_darwin -}}
+```
+
+Turns out it just needed quotes around the file path and it works.
+
+```text
+{{-   include "bash_local/bash_darwin" -}}
+```
+
+[⬆️](#toc)
+
+
+#### Apply a verbose dry run                                                    <a id="apply-dry-run" />
+
+```sh
+chezmoi apply --dry-run --verbose
+```
+
+```text
+
+```
+
+Crap, the `.chezmoiignore` file isn't being respected by `chezmoi apply`.
+
+Delete the unwanted crap.
+
+```sh
+rm README.md
+rm Switch\ to\ chezmoi.md
+rm -rf Windows/
+rm -rf __lib
+```
+
+I removed all the comments and empty lines, and it seems to work now.
+Here's the contents:
+
+```text
+README.md
+Switch to chezmoi.md
+Windows/
+Windows/**
+__lib/
+__lib/**
+```
+
+_BUT_, it looks like the `bash_local` folder and its files need to be ignored.
+
+Update `.chezmoiignore` with the following:
+
+```text
+bash_local/
+bash_local/**
+```
+
+Bob's your uncle!
+
+[⬆️](#toc)
 
 
 
@@ -1240,12 +1312,9 @@ mkdir bash_local
 
 
 
-__TODO:__
-* √ Move dot_bash_local to bash_local/bash_darwin
-* √ Make .bashrc a template
-* Detect os and include bash_darwin if .chezmoi.os is "darwin" in dot_bash_rc
-* Run the template
-* chezmoi apply --dry_run --verbose
+
+
+
 
 
 
@@ -1341,6 +1410,11 @@ The quick fix is to run the following in Vim:
 [⬆️](#toc)
 
 
+### Don't use comments in `.chezmoiignore`                                     <a id ="no-comments-in-ignore">
+
+__TODO__
+
+[⬆️](#toc)
 
 
 
