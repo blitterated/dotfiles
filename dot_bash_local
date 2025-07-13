@@ -1,14 +1,17 @@
 ###################
 #    Homebrew     #
 ###################
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-
-########################
-# Homebrew Completions #
-########################
 if type brew &> /dev/null; then
 
+  #################
+  # Homebrew Init #
+  #################
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+  ########################
+  # Homebrew Completions #
+  ########################
   # stash any GLOBIGNORE settings.
   globstash="${GLOBIGNORE}"
   GLOBIGNORE="git-prompt.sh" # Using Starship instead
@@ -21,6 +24,9 @@ if type brew &> /dev/null; then
 
   # Bring back previous GLOBIGNORE settings.
   GLOBIGNORE="${globstash}"
+
+else
+  echo "Homebrew not installed."
 fi
 
 
@@ -69,11 +75,3 @@ function mark {
 function gman () {
   man -t $1 | open -a /System/Applications/Preview.app -f
 }
-
-
-########################
-# Plan 9 for Userspace #
-########################
-#export PLAN9=/opt/plan9
-#export PLAN9
-#export PATH=$PATH:$PLAN9/bin
