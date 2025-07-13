@@ -46,6 +46,8 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
 * [YOU ARE HERE](#current-progress-marker)
 
     * [Configure chezmoi on MBP](#configure-chezmoi)
+* [chezmoi Gotchas](#gotchas)
+    * [Converting a dotfile to a template](#gotchas-template-conversion)
 * [TODO](#todo)
     * [Post Migration Follow Ups](#post-migration-followups)
 * [Resources](#resources)
@@ -1104,13 +1106,18 @@ EOF
 ```toml
 [edit]
     command = "nvim"
-    # args = ["--somearg"]
-    # hardlink = false        <-- hardlinks???
 
 [git]
     autoCommit = false
     autoPush = false
 ```
+
+__TODO:__
+
+* Make `bashrc` a template file and weave in the mac settings.
+* Put mac settings in a folder ignored by chezmoi
+* Apply
+
 
 
 [⬆️](#toc)
@@ -1120,6 +1127,47 @@ EOF
 
 
 
+## chezmoi Gotchas                                                              <a id="gotchas" />
+
+### Converting a dotfile to a template                                          <a id="gotchas-template-conversion" />
+
+Using `chezmoi chattr +template ~/.foobar` breaks the history of the original file by deleting it and adding the templated version as a new file to Git.
+Here's what the `git status` looks like:
+
+```text
+git status
+```
+
+```text
+On branch chezmoi
+Your branch is up to date with 'origin/chezmoi'.
+
+Changes not staged for commit:
+  ...
+        deleted:    dot_bashrc
+
+Untracked files:
+  ...
+        dot_bashrc.tmpl
+```
+
+To preserve the file's history, use `git mv` instead.
+
+```sh
+git mv dot_bashrc dot_bashrc.tmpl
+git status
+```
+
+```text
+On branch chezmoi
+Your branch is up to date with 'origin/chezmoi'.
+
+Changes to be committed:
+  ...
+        renamed:    dot_bashrc -> dot_bashrc.tmpl
+```
+
+[⬆️](#toc)
 
 
 ## TODO                                                                         <a id="todo" />
