@@ -1,13 +1,8 @@
-# https://www.chezmoi.io/reference/special-files/chezmoiignore/
-
-# Ignore repo files meant for humans.
-README.md               # don't need this in $HOME
-Switch to chezmoi.md    # don't need this in $HOME
-
-# Ignoring until Mac setup is complete.
-Windows/                # ignore Windows folder
-Windows/**              # ignore the contents of Windows
-
-# This directory was intended to support `stow`. Ignoring for now. Will delete later.
-__lib/                  # ignore __lib folder
-__lib/**                # ignore the contents of __lib
+README.md
+Switch to chezmoi.md
+__lib/
+__lib/**
+bash_local/
+bash_local/**
+Windows/
+Windows/**
