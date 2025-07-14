@@ -2,7 +2,7 @@ README.md
 Switch to chezmoi.md
 __lib/
 __lib/**
-bash_local/
-bash_local/**
+shell_local/
+shell_local/**
 Windows/
 Windows/**
