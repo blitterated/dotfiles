@@ -44,12 +44,12 @@ I'm currently using Gnu Stow as a dotfile manager. It's good, but it's more of a
     * [Configure chezmoi on MBP](#configure-chezmoi)
         * [Ignore folders and files](#ignore-files-folder")
         * [Config file](#onfig-file)
-        * [Make `.bashrc` a template file and weave in the mac settings](#make-bashrc-template)
-        * [INTERLUDE: Reinitialize chezmoi using source repo URL](#reinit-chezmoi)
-        * [Edit `.bashrc` template to bring in Mac settings](#edit-bashrc-template)
-        * [Move `dot_bash_local` to `bash_local/bash_darwin`](#move-bash-local-file)
-        * [Test the `.bashrc` template](#test-bashrc-template)
-        * [Apply a verbose dry run](#apply-dry-run)
+            * [Make `.bashrc` a template file and weave in the mac settings](#make-bashrc-template)
+            * [INTERLUDE: Reinitialize chezmoi using source repo URL](#reinit-chezmoi)
+            * [Edit `.bashrc` template to bring in Mac settings](#bashrc-import-locals)
+            * [Move `dot_bash_local` to `bash_local/bash_darwin`](#move-bash-local-file)
+            * [Test the `.bashrc` template](#test-bashrc-template)
+            * [Apply a verbose dry run](#apply-dry-run)
 
 * [YOU ARE HERE](#current-progress-marker)
 
@@ -1104,8 +1104,9 @@ EOF
 
 [⬆️](#toc)
 
+#### Edit and templatize `.bashrc`                                              <a id="reinit-chezmoi" />
 
-#### Make `.bashrc` a template file and weave in the mac settings                <a id="make-bashrc-template" />
+#### Make `.bashrc` a template file and weave in the mac settings               <a id="make-bashrc-template" />
 
 Convert to template.
 
@@ -1186,7 +1187,7 @@ Unnecessary rework. Yay. Make sure you specify the path to the target file and n
 
 
 
-#### Edit `.bashrc` template to bring in Mac settings                           <a id="edit-bashrc-template" />
+#### Edit `.bashrc` template to bring in Mac settings                           <a id="bashrc-import-locals" />
 
 Open the file to edit it.
 
@@ -1442,10 +1443,10 @@ The quick fix is to run the following in Vim:
 * Swap out `nvim` for `vim` as editor in `~/.pryrc`.
 * rc files for POSIX sh, ash, and dash? (fat chance)
 * Starship for `bash`.
-* Add `.config/homebrew`
-* Add `.config/karabiner`
-* Add `.hammerspoon`
-* Add `.config/ghostty`
+* Add `~/.config/homebrew`
+* Add `~/.config/karabiner/karabiner.json`
+* Add `~/.hammerspoon`
+* Add `~/.config/ghostty`
 
 [⬆️](#toc)
 
