@@ -20,6 +20,7 @@ return {
         "lua_ls",
         "marksman",
         "pylsp",
+        "ruby_lsp",
         "sqls",
         "vimls"
       }
@@ -33,4 +34,3 @@ return {
     }
   }
 }
-
