@@ -1023,32 +1023,32 @@ ls -1aflmR --absolute=on  --icons=never --time-style '+%Y-%m-%d %H:%M:%S' $watch
 ```
 
 ```text
-2025-07-06 17:14:57 /Users/peteyoung/.bash_local
-2025-07-06 17:14:57 /Users/peteyoung/.bash_profile
-2025-07-06 17:14:57 /Users/peteyoung/.bashrc
-2025-07-06 17:14:57 /Users/peteyoung/.bcrc
-2025-07-06 17:14:57 /Users/peteyoung/.gemrc
-2025-07-06 17:14:57 /Users/peteyoung/.gitconfig
-2025-07-06 17:14:57 /Users/peteyoung/.gitignore_global
-2025-07-06 17:14:57 /Users/peteyoung/.pryrc
-2025-07-06 17:14:57 /Users/peteyoung/.psqlrc
-2025-07-06 17:14:57 /Users/peteyoung/.tmux.conf
-2025-07-06 17:14:57 /Users/peteyoung/.vimrc
-2025-07-06 17:14:57 /Users/peteyoung/.zprofile
-2025-07-06 17:14:57 /Users/peteyoung/.zsh_local
-2025-07-06 17:14:57 /Users/peteyoung/.zshrc
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/catppuccin.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/init.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lazy-lock.json
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/config/lazy.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/linenumber-colors.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/lsp-config.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/lualine.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/neotree.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/starship.toml
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/telescope.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/plugins/treesitter.lua
-2025-07-06 17:14:57 /Users/peteyoung/.config/nvim/lua/vim-options.lua
+2025-07-06 17:14:57 /Users/blitterated/.bash_local
+2025-07-06 17:14:57 /Users/blitterated/.bash_profile
+2025-07-06 17:14:57 /Users/blitterated/.bashrc
+2025-07-06 17:14:57 /Users/blitterated/.bcrc
+2025-07-06 17:14:57 /Users/blitterated/.gemrc
+2025-07-06 17:14:57 /Users/blitterated/.gitconfig
+2025-07-06 17:14:57 /Users/blitterated/.gitignore_global
+2025-07-06 17:14:57 /Users/blitterated/.pryrc
+2025-07-06 17:14:57 /Users/blitterated/.psqlrc
+2025-07-06 17:14:57 /Users/blitterated/.tmux.conf
+2025-07-06 17:14:57 /Users/blitterated/.vimrc
+2025-07-06 17:14:57 /Users/blitterated/.zprofile
+2025-07-06 17:14:57 /Users/blitterated/.zsh_local
+2025-07-06 17:14:57 /Users/blitterated/.zshrc
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/catppuccin.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/init.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lazy-lock.json
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/config/lazy.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/linenumber-colors.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/lsp-config.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/lualine.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/neotree.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/starship.toml
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/telescope.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/plugins/treesitter.lua
+2025-07-06 17:14:57 /Users/blitterated/.config/nvim/lua/vim-options.lua
 ```
 
 [⬆️](#toc)
@@ -1453,6 +1453,18 @@ The quick fix is to run the following in Vim:
 
 ## Appendix                                                                     <a id="appendix" />
 
+### Set up local repo for the wiki
+
+```sh
+chezmoi cd
+cd ..
+git clone git@ghblit:blitterated/dotfiles.wiki.git chezmoi_wiki
+cd chezmoi_wiki
+git config user.name "blitterated"
+git config user.email "blitterated@protonmail.com"
+```
+
+
 ### Source repo file system tree before and after results <a id="todo" />       <a id="repo-before-after" />
 
 Before reinit:
@@ -1462,50 +1474,50 @@ tree -a -I .git
 ```
 
 ```text
-drwxr-xr-x@    - peteyoung 12 Jul 23:29 .
-.rw-r--r--@  539 peteyoung 12 Jul 14:01 ├── .chezmoiignore
-.rw-r--r--@  10k peteyoung  8 Jul 10:42 ├── .DS_Store
-.rw-r--r--@   19 peteyoung 18 May 22:07 ├── .gitignore
-drwxr-xr-x@    - peteyoung  2 Jul 14:02 ├── __lib
-.rw-r--r--@ 1.1k peteyoung  2 Jul 14:02 │   └── source_files.sh
-.rw-r--r--@  154 peteyoung 12 Jul 01:08 ├── chezmoi.toml
-.rw-r--r--@ 1.6k peteyoung  9 Jun 18:22 ├── dot_bash_local
-.rw-r--r--@   76 peteyoung 18 May 22:07 ├── dot_bash_profile
-.rw-r--r--@ 2.6k peteyoung 12 Jul 23:28 ├── dot_bashrc.tmpl
-.rw-r--r--@  114 peteyoung 18 May 03:05 ├── dot_bcrc
-drwxr-xr-x@    - peteyoung  7 Jul 22:32 ├── dot_config
-drwxr-xr-x@    - peteyoung  6 Jun 00:01 │   ├── nvim
-.rw-r--r--@  665 peteyoung  6 Jun 00:01 │   │   ├── init.lua
-.rw-r--r--@ 1.2k peteyoung  7 Jun 15:27 │   │   ├── lazy-lock.json
-drwxr-xr-x@    - peteyoung  5 Jun 23:59 │   │   └── lua
-drwxr-xr-x@    - peteyoung  5 Jun 23:59 │   │       ├── config
-.rw-r--r--@ 1.3k peteyoung  3 Jun 16:52 │   │       │   └── lazy.lua
-.rw-r--r--@  162 peteyoung  5 Jun 23:48 │   │       ├── linenumber-colors.lua
-drwxr-xr-x@    - peteyoung  2 Jul 01:19 │   │       ├── plugins
-.rw-r--r--@  155 peteyoung 20 Apr 18:15 │   │       │   ├── catppuccin.lua
-.rw-r--r--@  605 peteyoung  7 Jun 15:27 │   │       │   ├── lsp-config.lua
-.rw-r--r--@  162 peteyoung  5 Jun 23:03 │   │       │   ├── lualine.lua
-.rw-r--r--@  413 peteyoung  4 Jun 13:42 │   │       │   ├── neotree.lua
-.rw-r--r--@  303 peteyoung 20 Apr 22:02 │   │       │   ├── telescope.lua
-.rw-r--r--@  591 peteyoung 20 Apr 21:53 │   │       │   └── treesitter.lua
-.rw-r--r--@  540 peteyoung  3 Jun 17:40 │   │       └── vim-options.lua
-.rw-r--r--@ 3.8k peteyoung 20 May 23:40 │   └── starship.toml
-.rw-r--r--@   51 peteyoung 13 Feb  2024 ├── dot_gemrc
-.rw-r--r--@  115 peteyoung 25 Mar  2024 ├── dot_gitconfig
-.rw-r--r--@   24 peteyoung 18 May 03:05 ├── dot_gitignore_global
-.rw-r--r--@   66 peteyoung 18 May 22:49 ├── dot_pryrc
-.rw-r--r--@  987 peteyoung 18 May 03:05 ├── dot_psqlrc
-.rw-r--r--@ 1.8k peteyoung 18 May 03:05 ├── dot_tmux.conf
-.rw-r--r--@ 2.5k peteyoung 18 May 03:05 ├── dot_vimrc
-.rw-r--r--@    0 peteyoung 30 May 15:33 ├── dot_zprofile
-.rw-r--r--@ 2.1k peteyoung  9 Jun 18:27 ├── dot_zsh_local
-.rw-r--r--@ 2.2k peteyoung  2 Jul 01:34 ├── dot_zshrc
-.rw-r--r--@  102 peteyoung 18 May 22:07 ├── README.md
-.rw-r--r--@  42k peteyoung 12 Jul 23:31 ├── 'Switch to chezmoi.md'
-drwxr-xr-x@    - peteyoung 30 May 15:34 └── Windows
-.rw-r--r--@ 1.4k peteyoung 30 May 15:34     ├── link_powershell_configs.ps1
-drwxr-xr-x@    - peteyoung 30 May 15:34     └── PowerShell
-.rw-r--r--@ 5.8k peteyoung 30 May 15:34         └── Microsoft.PowerShell_profile.ps1
+drwxr-xr-x@    - blitterated 12 Jul 23:29 .
+.rw-r--r--@  539 blitterated 12 Jul 14:01 ├── .chezmoiignore
+.rw-r--r--@  10k blitterated  8 Jul 10:42 ├── .DS_Store
+.rw-r--r--@   19 blitterated 18 May 22:07 ├── .gitignore
+drwxr-xr-x@    - blitterated  2 Jul 14:02 ├── __lib
+.rw-r--r--@ 1.1k blitterated  2 Jul 14:02 │   └── source_files.sh
+.rw-r--r--@  154 blitterated 12 Jul 01:08 ├── chezmoi.toml
+.rw-r--r--@ 1.6k blitterated  9 Jun 18:22 ├── dot_bash_local
+.rw-r--r--@   76 blitterated 18 May 22:07 ├── dot_bash_profile
+.rw-r--r--@ 2.6k blitterated 12 Jul 23:28 ├── dot_bashrc.tmpl
+.rw-r--r--@  114 blitterated 18 May 03:05 ├── dot_bcrc
+drwxr-xr-x@    - blitterated  7 Jul 22:32 ├── dot_config
+drwxr-xr-x@    - blitterated  6 Jun 00:01 │   ├── nvim
+.rw-r--r--@  665 blitterated  6 Jun 00:01 │   │   ├── init.lua
+.rw-r--r--@ 1.2k blitterated  7 Jun 15:27 │   │   ├── lazy-lock.json
+drwxr-xr-x@    - blitterated  5 Jun 23:59 │   │   └── lua
+drwxr-xr-x@    - blitterated  5 Jun 23:59 │   │       ├── config
+.rw-r--r--@ 1.3k blitterated  3 Jun 16:52 │   │       │   └── lazy.lua
+.rw-r--r--@  162 blitterated  5 Jun 23:48 │   │       ├── linenumber-colors.lua
+drwxr-xr-x@    - blitterated  2 Jul 01:19 │   │       ├── plugins
+.rw-r--r--@  155 blitterated 20 Apr 18:15 │   │       │   ├── catppuccin.lua
+.rw-r--r--@  605 blitterated  7 Jun 15:27 │   │       │   ├── lsp-config.lua
+.rw-r--r--@  162 blitterated  5 Jun 23:03 │   │       │   ├── lualine.lua
+.rw-r--r--@  413 blitterated  4 Jun 13:42 │   │       │   ├── neotree.lua
+.rw-r--r--@  303 blitterated 20 Apr 22:02 │   │       │   ├── telescope.lua
+.rw-r--r--@  591 blitterated 20 Apr 21:53 │   │       │   └── treesitter.lua
+.rw-r--r--@  540 blitterated  3 Jun 17:40 │   │       └── vim-options.lua
+.rw-r--r--@ 3.8k blitterated 20 May 23:40 │   └── starship.toml
+.rw-r--r--@   51 blitterated 13 Feb  2024 ├── dot_gemrc
+.rw-r--r--@  115 blitterated 25 Mar  2024 ├── dot_gitconfig
+.rw-r--r--@   24 blitterated 18 May 03:05 ├── dot_gitignore_global
+.rw-r--r--@   66 blitterated 18 May 22:49 ├── dot_pryrc
+.rw-r--r--@  987 blitterated 18 May 03:05 ├── dot_psqlrc
+.rw-r--r--@ 1.8k blitterated 18 May 03:05 ├── dot_tmux.conf
+.rw-r--r--@ 2.5k blitterated 18 May 03:05 ├── dot_vimrc
+.rw-r--r--@    0 blitterated 30 May 15:33 ├── dot_zprofile
+.rw-r--r--@ 2.1k blitterated  9 Jun 18:27 ├── dot_zsh_local
+.rw-r--r--@ 2.2k blitterated  2 Jul 01:34 ├── dot_zshrc
+.rw-r--r--@  102 blitterated 18 May 22:07 ├── README.md
+.rw-r--r--@  42k blitterated 12 Jul 23:31 ├── 'Switch to chezmoi.md'
+drwxr-xr-x@    - blitterated 30 May 15:34 └── Windows
+.rw-r--r--@ 1.4k blitterated 30 May 15:34     ├── link_powershell_configs.ps1
+drwxr-xr-x@    - blitterated 30 May 15:34     └── PowerShell
+.rw-r--r--@ 5.8k blitterated 30 May 15:34         └── Microsoft.PowerShell_profile.ps1
 ```
 
 After reinit:
@@ -1515,49 +1527,49 @@ tree -a -I .git
 ```
 
 ```text
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 .
-.rw-r--r--@  539 peteyoung 13 Jul 00:00 ├── .chezmoiignore
-.rw-r--r--@   19 peteyoung 13 Jul 00:00 ├── .gitignore
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 ├── __lib
-.rw-r--r--@ 1.1k peteyoung 13 Jul 00:00 │   └── source_files.sh
-.rw-r--r--@  154 peteyoung 13 Jul 00:00 ├── chezmoi.toml
-.rw-r--r--@ 1.6k peteyoung 13 Jul 00:00 ├── dot_bash_local
-.rw-r--r--@   76 peteyoung 13 Jul 00:00 ├── dot_bash_profile
-.rw-r--r--@ 2.6k peteyoung 13 Jul 00:00 ├── dot_bashrc.tmpl
-.rw-r--r--@  114 peteyoung 13 Jul 00:00 ├── dot_bcrc
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 ├── dot_config
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   ├── nvim
-.rw-r--r--@  665 peteyoung 13 Jul 00:00 │   │   ├── init.lua
-.rw-r--r--@ 1.2k peteyoung 13 Jul 00:00 │   │   ├── lazy-lock.json
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │   └── lua
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │       ├── config
-.rw-r--r--@ 1.3k peteyoung 13 Jul 00:00 │   │       │   └── lazy.lua
-.rw-r--r--@  162 peteyoung 13 Jul 00:00 │   │       ├── linenumber-colors.lua
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 │   │       ├── plugins
-.rw-r--r--@  155 peteyoung 13 Jul 00:00 │   │       │   ├── catppuccin.lua
-.rw-r--r--@  605 peteyoung 13 Jul 00:00 │   │       │   ├── lsp-config.lua
-.rw-r--r--@  162 peteyoung 13 Jul 00:00 │   │       │   ├── lualine.lua
-.rw-r--r--@  413 peteyoung 13 Jul 00:00 │   │       │   ├── neotree.lua
-.rw-r--r--@  303 peteyoung 13 Jul 00:00 │   │       │   ├── telescope.lua
-.rw-r--r--@  591 peteyoung 13 Jul 00:00 │   │       │   └── treesitter.lua
-.rw-r--r--@  540 peteyoung 13 Jul 00:00 │   │       └── vim-options.lua
-.rw-r--r--@ 3.8k peteyoung 13 Jul 00:00 │   └── starship.toml
-.rw-r--r--@   51 peteyoung 13 Jul 00:00 ├── dot_gemrc
-.rw-r--r--@  115 peteyoung 13 Jul 00:00 ├── dot_gitconfig
-.rw-r--r--@   24 peteyoung 13 Jul 00:00 ├── dot_gitignore_global
-.rw-r--r--@   66 peteyoung 13 Jul 00:00 ├── dot_pryrc
-.rw-r--r--@  987 peteyoung 13 Jul 00:00 ├── dot_psqlrc
-.rw-r--r--@ 1.8k peteyoung 13 Jul 00:00 ├── dot_tmux.conf
-.rw-r--r--@ 2.5k peteyoung 13 Jul 00:00 ├── dot_vimrc
-.rw-r--r--@    0 peteyoung 13 Jul 00:00 ├── dot_zprofile
-.rw-r--r--@ 2.1k peteyoung 13 Jul 00:00 ├── dot_zsh_local
-.rw-r--r--@ 2.2k peteyoung 13 Jul 00:00 ├── dot_zshrc
-.rw-r--r--@  102 peteyoung 13 Jul 00:00 ├── README.md
-.rw-r--r--@  42k peteyoung 13 Jul 00:00 ├── 'Switch to chezmoi.md'
-drwxr-xr-x@    - peteyoung 13 Jul 00:00 └── Windows
-.rw-r--r--@ 1.4k peteyoung 13 Jul 00:00     ├── link_powershell_configs.ps1
-drwxr-xr-x@    - peteyoung 13 Jul 00:00     └── PowerShell
-.rw-r--r--@ 5.8k peteyoung 13 Jul 00:00         └── Microsoft.PowerShell_profile.ps1
+drwxr-xr-x@    - blitterated 13 Jul 00:00 .
+.rw-r--r--@  539 blitterated 13 Jul 00:00 ├── .chezmoiignore
+.rw-r--r--@   19 blitterated 13 Jul 00:00 ├── .gitignore
+drwxr-xr-x@    - blitterated 13 Jul 00:00 ├── __lib
+.rw-r--r--@ 1.1k blitterated 13 Jul 00:00 │   └── source_files.sh
+.rw-r--r--@  154 blitterated 13 Jul 00:00 ├── chezmoi.toml
+.rw-r--r--@ 1.6k blitterated 13 Jul 00:00 ├── dot_bash_local
+.rw-r--r--@   76 blitterated 13 Jul 00:00 ├── dot_bash_profile
+.rw-r--r--@ 2.6k blitterated 13 Jul 00:00 ├── dot_bashrc.tmpl
+.rw-r--r--@  114 blitterated 13 Jul 00:00 ├── dot_bcrc
+drwxr-xr-x@    - blitterated 13 Jul 00:00 ├── dot_config
+drwxr-xr-x@    - blitterated 13 Jul 00:00 │   ├── nvim
+.rw-r--r--@  665 blitterated 13 Jul 00:00 │   │   ├── init.lua
+.rw-r--r--@ 1.2k blitterated 13 Jul 00:00 │   │   ├── lazy-lock.json
+drwxr-xr-x@    - blitterated 13 Jul 00:00 │   │   └── lua
+drwxr-xr-x@    - blitterated 13 Jul 00:00 │   │       ├── config
+.rw-r--r--@ 1.3k blitterated 13 Jul 00:00 │   │       │   └── lazy.lua
+.rw-r--r--@  162 blitterated 13 Jul 00:00 │   │       ├── linenumber-colors.lua
+drwxr-xr-x@    - blitterated 13 Jul 00:00 │   │       ├── plugins
+.rw-r--r--@  155 blitterated 13 Jul 00:00 │   │       │   ├── catppuccin.lua
+.rw-r--r--@  605 blitterated 13 Jul 00:00 │   │       │   ├── lsp-config.lua
+.rw-r--r--@  162 blitterated 13 Jul 00:00 │   │       │   ├── lualine.lua
+.rw-r--r--@  413 blitterated 13 Jul 00:00 │   │       │   ├── neotree.lua
+.rw-r--r--@  303 blitterated 13 Jul 00:00 │   │       │   ├── telescope.lua
+.rw-r--r--@  591 blitterated 13 Jul 00:00 │   │       │   └── treesitter.lua
+.rw-r--r--@  540 blitterated 13 Jul 00:00 │   │       └── vim-options.lua
+.rw-r--r--@ 3.8k blitterated 13 Jul 00:00 │   └── starship.toml
+.rw-r--r--@   51 blitterated 13 Jul 00:00 ├── dot_gemrc
+.rw-r--r--@  115 blitterated 13 Jul 00:00 ├── dot_gitconfig
+.rw-r--r--@   24 blitterated 13 Jul 00:00 ├── dot_gitignore_global
+.rw-r--r--@   66 blitterated 13 Jul 00:00 ├── dot_pryrc
+.rw-r--r--@  987 blitterated 13 Jul 00:00 ├── dot_psqlrc
+.rw-r--r--@ 1.8k blitterated 13 Jul 00:00 ├── dot_tmux.conf
+.rw-r--r--@ 2.5k blitterated 13 Jul 00:00 ├── dot_vimrc
+.rw-r--r--@    0 blitterated 13 Jul 00:00 ├── dot_zprofile
+.rw-r--r--@ 2.1k blitterated 13 Jul 00:00 ├── dot_zsh_local
+.rw-r--r--@ 2.2k blitterated 13 Jul 00:00 ├── dot_zshrc
+.rw-r--r--@  102 blitterated 13 Jul 00:00 ├── README.md
+.rw-r--r--@  42k blitterated 13 Jul 00:00 ├── 'Switch to chezmoi.md'
+drwxr-xr-x@    - blitterated 13 Jul 00:00 └── Windows
+.rw-r--r--@ 1.4k blitterated 13 Jul 00:00     ├── link_powershell_configs.ps1
+drwxr-xr-x@    - blitterated 13 Jul 00:00     └── PowerShell
+.rw-r--r--@ 5.8k blitterated 13 Jul 00:00         └── Microsoft.PowerShell_profile.ps1
 ```
 
 They're the same except for `.DS_Store`.
