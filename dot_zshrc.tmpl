@@ -28,6 +28,17 @@ export TERM=xterm-256color
 ####################
 # Functions        #
 ####################
+# make path additions idempotent to sourcing rc files
+pathmunge () {
+  if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
+    if [ "$2" = "prepend" ] ; then
+      PATH="$1:$PATH"
+    else
+      PATH="$PATH:$1"
+    fi
+  fi
+}
+
 # mkdir and cd into it
 function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
