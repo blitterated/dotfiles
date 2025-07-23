@@ -50,7 +50,7 @@ eval "$(starship init bash)"
 #     Python      #
 ###################
 # uv tools executable path
-export PATH="$PATH:${HOME}/.local/bin"
+pathmunge "${HOME}/.local/bin"
 
 
 ###################
@@ -59,7 +59,7 @@ export PATH="$PATH:${HOME}/.local/bin"
 key="  - USER INSTALLATION DIRECTORY: "
 value=$(gem env | grep "^$key")
 export GEM_HOME="${value#$key}"
-export PATH="$PATH:$GEM_HOME/bin"
+pathmunge "$GEM_HOME/bin"
 
 
 #############

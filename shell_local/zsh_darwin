@@ -69,7 +69,7 @@ eval "$(starship init zsh)"
 #     Python      #
 ###################
 # uv tools executable path
-export PATH="$PATH:${HOME}/.local/bin"
+pathmunge "${HOME}/.local/bin"
 
 
 ###################
@@ -78,17 +78,19 @@ export PATH="$PATH:${HOME}/.local/bin"
 key="  - USER INSTALLATION DIRECTORY: "
 value=$(gem env | grep "^$key")
 export GEM_HOME="${value#$key}"
-export PATH="$PATH:$GEM_HOME/bin"
+pathmunge "$GEM_HOME/bin"
 
 
 ####################
 #     OrbStack     #
 ####################
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+# OrbStack's init script is not idempotent in regards to $PATH
+if ! echo "$PATH" | grep -Eq "orbstack" ; then
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
 
 
 ################################
 #  STM32 Programming Settings  #
 ################################
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
-
