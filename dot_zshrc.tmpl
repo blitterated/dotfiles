@@ -1,51 +1,15 @@
-####################
-# Aliases          #
-####################
-alias src='cd $HOME/src'
-alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
-alias cz='chezmoi --verbose '
+########################################
+# Common bash + zsh config             #
+########################################
 
-# eza: the ls and exa replacement
-alias ls='eza --icons -a --group-directories-first'
-alias t='eza --tree'
-alias tree='eza --tree --long'
-
-# git
-alias gg='git status -s'
-alias gdiff='git diff --no-ext-diff'
-alias gwdiff='git diff --no-ext-diff --word-diff=color'
-alias gdt='git difftool'
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-
-####################
-# Exports          #
-####################
-export TERM=xterm-256color
+{{ include "shell_common/bash_zsh_common.sh" }}
 
 
-####################
-# Functions        #
-####################
-# make path additions idempotent to sourcing rc files
-pathmunge () {
-  if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
-    if [ "$2" = "prepend" ] ; then
-      PATH="$1:$PATH"
-    else
-      PATH="$PATH:$1"
-    fi
-  fi
-}
+# ▄ ▄▖▄▖▄▖▖ ▖  ▄▖▄▖▖▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
+# ▙▘▙▖▌ ▐ ▛▖▌  ▗▘▚ ▙▌  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
+# ▙▘▙▖▙▌▟▖▌▝▌  ▙▖▄▌▌▌  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
 
-# mkdir and cd into it
-function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-
-# pretty print $PATH
-function path () { echo "${PATH}" | tr ':' '\n'; }
-
-# show all zsh completions
+# Show all zsh completions
 function zsh-completions () {
   for command completion in ${(kv)_comps:#-*(-|-,*)}
   do
@@ -53,65 +17,22 @@ function zsh-completions () {
   done | sort
 }
 
-# function to display all color combos
-function showColors {
- for STYLE in 0 1 2 3 4 5 6 7; do
-   for FG in 30 31 32 33 34 35 36 37; do
-     for BG in 40 41 42 43 44 45 46 47; do
-       CTRL="\033[${STYLE};${FG};${BG}m"
-       echo -en "${CTRL}"
-       echo -n "${STYLE};${FG};${BG}"
-       echo -en "\033[0m"
-     done
-     echo
-   done
-   echo
- done
-}
+# ▄▖▖ ▖▄   ▄▖▄▖▖▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
+# ▙▖▛▖▌▌▌  ▗▘▚ ▙▌  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
+# ▙▖▌▝▌▙▘  ▙▖▄▌▌▌  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
 
 
-# convenience function for generating rc file
-# section headers using figlet
-fighead () {
-  local header_text="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
+########################################
+# Machine local templates              #
+########################################
 
-  echo -e "BEGIN ${header_text}\nEND ${header_text}" | \
-  figlet -w 200 -f miniwi | \
-  while read -r ln; do echo "# ${ln}"; done
-}
-
-
-###################
-# color man pages #
-###################
-cman() {
-    env \
-	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-	LESS_TERMCAP_md=$(printf "\e[1;31m") \
-	LESS_TERMCAP_me=$(printf "\e[0m") \
-	LESS_TERMCAP_se=$(printf "\e[0m") \
-	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-	LESS_TERMCAP_ue=$(printf "\e[0m") \
-	LESS_TERMCAP_us=$(printf "\e[1;32m") \
-	man "$@"
-}
-
-
-##########################
-# load available secrets #
-##########################
-[[ -r ~/.secrets ]] && source ~/.secrets
-
-
-#####################
-# chezmoi templates #
-#####################
 {{ if eq .chezmoi.os "darwin" }}
 {{   include "shell_local/zsh_darwin" }}
 {{ end }}
 
 
-###############
-# export PATH #
-###############
+########################################
+# Export PATH                          #
+########################################
+
 export PATH
