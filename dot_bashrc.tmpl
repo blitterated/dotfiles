@@ -110,20 +110,29 @@ ppsql() {
 }
 
 
-# ▄ ▄▖▄▖▄▖▖ ▖  ▖  ▖▄▖▄▖▖▖▄▖▖ ▖▄▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
-# ▙▘▙▖▌ ▐ ▛▖▌  ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
-# ▙▘▙▖▙▌▟▖▌▝▌  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
-#
-#
+# convenience function for generating rc file
+# section headers using figlet
+fighead () {
+  local header_text="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
 
-{{- if eq .chezmoi.os "darwin" -}}
-{{-   include "shell_local/bash_darwin" -}}
-{{- end -}}
+  echo -e "BEGIN ${header_text}\nEND ${header_text}" | \
+  figlet -w 200 -f miniwi | \
+  while read -r ln; do echo "# ${ln}"; done
+}
 
-# ▄▖▖ ▖▄   ▖  ▖▄▖▄▖▖▖▄▖▖ ▖▄▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
-# ▙▖▛▖▌▌▌  ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
-# ▙▖▌▝▌▙▘  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
 
+#####################
+# chezmoi templates #
+#####################
+{{ if eq .chezmoi.os "darwin" }}
+{{   include "shell_local/bash_darwin" }}
+{{ end }}
+
+
+##########################
+# load available secrets #
+##########################
+[[ -r ~/.secrets ]] && source ~/.secrets
 
 
 ###############
