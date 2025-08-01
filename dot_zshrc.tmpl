@@ -70,6 +70,17 @@ function showColors {
 }
 
 
+# convenience function for generating rc file
+# section headers using figlet
+fighead () {
+  local header_text="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
+
+  echo -e "BEGIN ${header_text}\nEND ${header_text}" | \
+  figlet -w 200 -f miniwi | \
+  while read -r ln; do echo "# ${ln}"; done
+}
+
+
 ###################
 # color man pages #
 ###################
@@ -85,19 +96,19 @@ cman() {
 	man "$@"
 }
 
-# ▄ ▄▖▄▖▄▖▖ ▖  ▖  ▖▄▖▄▖▖▖▄▖▖ ▖▄▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
-# ▙▘▙▖▌ ▐ ▛▖▌  ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
-# ▙▘▙▖▙▌▟▖▌▝▌  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
-#
-#
 
-{{- if eq .chezmoi.os "darwin" -}}
-{{-   include "shell_local/zsh_darwin" -}}
-{{- end -}}
+##########################
+# load available secrets #
+##########################
+[[ -r ~/.secrets ]] && source ~/.secrets
 
-# ▄▖▖ ▖▄   ▖  ▖▄▖▄▖▖▖▄▖▖ ▖▄▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
-# ▙▖▛▖▌▌▌  ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▚ ▙▌▙▖▌ ▐ ▙▖▐ ▌   ▌ ▌▌▛▖▌▙▖▐ ▌
-# ▙▖▌▝▌▙▘  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▄▌▌ ▙▖▙▖▟▖▌ ▟▖▙▖  ▙▖▙▌▌▝▌▌ ▟▖▙▌
+
+#####################
+# chezmoi templates #
+#####################
+{{ if eq .chezmoi.os "darwin" }}
+{{   include "shell_local/zsh_darwin" }}
+{{ end }}
 
 
 ###############
