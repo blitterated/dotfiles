@@ -2,24 +2,18 @@
 # ▙▘▙▖▌ ▐ ▛▖▌  ▛▖▞▌▌▌▌ ▌▌▚   ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▌ ▌▌▌ ▌▌▌   ▙▘▌▌▚ ▙▌▙▘▌
 # ▙▘▙▖▙▌▟▖▌▝▌  ▌▝ ▌▛▌▙▖▙▌▄▌  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▙▖▙▌▙▖▛▌▙▖  ▙▘▛▌▄▌▌▌▌▌▙▖
 
-# Insert common template here
+########################################
+# Common darwin bash + zsh config      #
+########################################
+
+{{ include "shell_local/bash_zsh_common_darwin.sh" }}
+
 
 ########################################
-#  Homebrew                            #
+#  Homebrew Completions                #
 ########################################
 
 if type brew &> /dev/null; then
-
-  ######################################
-  #  Homebrew Init                     #
-  ######################################
-
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-
-
-  ######################################
-  #  Homebrew Completions              #
-  ######################################
 
   # stash any GLOBIGNORE settings.
   globstash="${GLOBIGNORE}"
