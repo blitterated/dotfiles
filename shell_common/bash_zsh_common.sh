@@ -23,8 +23,8 @@ alias cz='chezmoi --verbose '
 
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
-alias t='eza --tree'
-alias tree='eza --tree --long'
+alias t='eza --tree --ignore-glob ".git"'
+alias tree='eza --tree --long --ignore-glob ".git"'
 
 
 # git
