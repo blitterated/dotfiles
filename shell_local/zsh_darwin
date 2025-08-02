@@ -5,6 +5,7 @@
 ####################
 # Aliases          #
 ####################
+
 # BBEdit
 alias bb='open -a /Applications/BBEdit.app'
 
@@ -15,6 +16,7 @@ alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -
 ###################
 #    Functions    #
 ###################
+
 # GUI man page reader on macOS
 function gman () {
   man -t $1 | open -a /System/Applications/Preview.app -f
@@ -36,6 +38,7 @@ function mark {
 ###################
 #    Homebrew     #
 ###################
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
@@ -66,12 +69,14 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ####################
 #     Starship     #
 ####################
+
 eval "$(starship init zsh)"
 
 
 ###################
 #     Python      #
 ###################
+
 # uv tools executable path
 pathmunge "${HOME}/.local/bin"
 
@@ -79,6 +84,7 @@ pathmunge "${HOME}/.local/bin"
 ###################
 #   macOS Ruby    #
 ###################
+
 key="  - USER INSTALLATION DIRECTORY: "
 value=$(gem env | grep "^$key")
 export GEM_HOME="${value#$key}"
@@ -88,6 +94,7 @@ pathmunge "$GEM_HOME/bin"
 ####################
 #     OrbStack     #
 ####################
+
 # OrbStack's init script is not idempotent in regards to $PATH
 if ! echo "$PATH" | grep -Eq "orbstack" ; then
   source ~/.orbstack/shell/init.zsh 2>/dev/null || :
@@ -97,6 +104,7 @@ fi
 ################################
 #  STM32 Programming Settings  #
 ################################
+
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
 
 # ▄▖▖ ▖▄   ▖  ▖▄▖▄▖▄▖▄▖  ▖  ▖▄▖▄▖▖▖▄▖▖ ▖▄▖  ▖ ▄▖▄▖▄▖▖   ▄▖▄▖▖▖▄▖▄▖
