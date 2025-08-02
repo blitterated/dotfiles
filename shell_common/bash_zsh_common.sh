@@ -13,7 +13,7 @@ export BROWSER="brave"
 
 
 ########################################
-# Aliases                              #
+#  Aliases                             #
 ########################################
 
 alias src='cd $HOME/src'
@@ -38,7 +38,7 @@ alias gc='git commit'
 
 
 ########################################
-# Functions                            #
+#  Functions                           #
 ########################################
 
 # Make path additions idempotent to sourcing rc files
@@ -113,7 +113,7 @@ fighead () {
 
 
 ########################################
-# bc                                   #
+#  bc                                  #
 ########################################
 
 # http://superuser.com/questions/84949/dividing-with-gnus-bc
@@ -121,7 +121,7 @@ export BC_ENV_ARGS="-q $HOME/.bcrc"
 
 
 ########################################
-# Colorize man pages                   #
+#  Colorize man pages                  #
 ########################################
 
 cman() {
@@ -148,7 +148,7 @@ cman() {
 
 
 ########################################
-# Load available secrets               #
+#  Load available secrets              #
 ########################################
 
 [[ -r ~/.secrets ]] && source ~/.secrets

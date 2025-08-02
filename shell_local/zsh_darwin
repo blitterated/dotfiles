@@ -2,9 +2,10 @@
 # ▙▘▙▖▌ ▐ ▛▖▌  ▛▖▞▌▌▌▌ ▌▌▚   ▛▖▞▌▌▌▌ ▙▌▐ ▛▖▌▙▖  ▌ ▌▌▌ ▌▌▌   ▗▘▚ ▙▌▙▘▌
 # ▙▘▙▖▙▌▟▖▌▝▌  ▌▝ ▌▛▌▙▖▙▌▄▌  ▌▝ ▌▛▌▙▖▌▌▟▖▌▝▌▙▖  ▙▖▙▌▙▖▛▌▙▖  ▙▖▄▌▌▌▌▌▙▖
 
-####################
-# Aliases          #
-####################
+
+########################################
+#  Aliases                             #
+########################################
 
 # BBEdit
 alias bb='open -a /Applications/BBEdit.app'
@@ -13,17 +14,17 @@ alias bb='open -a /Applications/BBEdit.app'
 alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
 
 
-###################
-#    Functions    #
-###################
+########################################
+#  Functions                           #
+########################################
 
-# GUI man page reader on macOS
+# Open man pages in a GUI
 function gman () {
   man -t $1 | open -a /System/Applications/Preview.app -f
 }
 
-# Open a Markdown file in Marked 2.
-# http://jblevins.org/log/marked-2-command
+# Open markdown files in Marked 2
+#     see http://jblevins.org/log/marked-2-command
 function mark {
   md_file=$1
   marked_exec="Marked 2"
@@ -35,22 +36,26 @@ function mark {
 }
 
 
-###################
-#    Homebrew     #
-###################
+########################################
+#  Homebrew                            #
+########################################
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if type brew &> /dev/null; then
+
+  ######################################
+  #  Homebrew Init                     #
+  ######################################
+
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
-########################
-# Homebrew Completions #
-########################
+  ######################################
+  #  Homebrew Completions              #
+  ######################################
 
 # TODO: Below is the script for loading completions into bash.
 #       This needs to be done the zsh way.
 
-#if type brew &> /dev/null; then
-#
 #  # stash any GLOBIGNORE settings.
 #  globstash=$GLOBIGNORE
 #  GLOBIGNORE="git-prompt.sh" # Using Starship instead
@@ -63,27 +68,30 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #
 #  # Bring back previous GLOBIGNORE settings.
 #  GLOBIGNORE=$globstash
-#fi
+
+else
+  echo "Homebrew not installed."
+fi
 
 
-####################
-#     Starship     #
-####################
+########################################
+#  Starship                            #
+########################################
 
 eval "$(starship init zsh)"
 
 
-###################
-#     Python      #
-###################
+########################################
+#  Python                              #
+########################################
 
 # uv tools executable path
 pathmunge "${HOME}/.local/bin"
 
 
-###################
-#   macOS Ruby    #
-###################
+########################################
+#  macOS Ruby                          #
+########################################
 
 key="  - USER INSTALLATION DIRECTORY: "
 value=$(gem env | grep "^$key")
@@ -91,9 +99,9 @@ export GEM_HOME="${value#$key}"
 pathmunge "$GEM_HOME/bin"
 
 
-####################
-#     OrbStack     #
-####################
+########################################
+#  OrbStack                            #
+########################################
 
 # OrbStack's init script is not idempotent in regards to $PATH
 if ! echo "$PATH" | grep -Eq "orbstack" ; then
@@ -101,9 +109,9 @@ if ! echo "$PATH" | grep -Eq "orbstack" ; then
 fi
 
 
-################################
-#  STM32 Programming Settings  #
-################################
+########################################
+#  STM32 Programming Settings          #
+########################################
 
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
 
