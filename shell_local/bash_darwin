@@ -5,17 +5,20 @@
 ###################
 #    Homebrew     #
 ###################
+
 if type brew &> /dev/null; then
 
   #################
   # Homebrew Init #
   #################
+
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
   ########################
   # Homebrew Completions #
   ########################
+
   # stash any GLOBIGNORE settings.
   globstash="${GLOBIGNORE}"
   GLOBIGNORE="git-prompt.sh" # Using Starship instead
@@ -37,6 +40,7 @@ fi
 #############
 #  Aliases  #
 #############
+
 # BBEdit
 alias bb='open -a /Applications/BBEdit.app'
 
@@ -47,12 +51,14 @@ alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -
 ####################
 #     Starship     #
 ####################
+
 eval "$(starship init bash)"
 
 
 ###################
 #     Python      #
 ###################
+
 # uv tools executable path
 pathmunge "${HOME}/.local/bin"
 
@@ -60,6 +66,7 @@ pathmunge "${HOME}/.local/bin"
 ###################
 #   macOS Ruby    #
 ###################
+
 key="  - USER INSTALLATION DIRECTORY: "
 value=$(gem env | grep "^$key")
 export GEM_HOME="${value#$key}"
@@ -69,6 +76,7 @@ pathmunge "$GEM_HOME/bin"
 #############
 # Functions #
 #############
+
 # Open markdown files in Marked 2
 #     see http://jblevins.org/log/marked-2-command
 function mark {
