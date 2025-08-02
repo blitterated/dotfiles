@@ -1,3 +1,8 @@
+#   ▄ ▄▖▄▖▖▖▄▖▄▖
+#   ▙▘▌▌▚ ▙▌▙▘▌
+# ▗ ▙▘▛▌▄▌▌▌▌▌▙▖
+
+
 ########################################
 # Common bash + zsh config             #
 ########################################
@@ -10,7 +15,7 @@
 ########################################
 
 {{ if eq .chezmoi.os "darwin" }}
-{{   include "shell_local/zsh_darwin" }}
+{{   includeTemplate "./shell_local/bash_darwin.sh.tmpl" }}
 {{ end }}
 
 
