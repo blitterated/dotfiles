@@ -2,6 +2,14 @@
 # ▙▘▙▖▌ ▐ ▛▖▌  ▙▘▌▌▚ ▙▌  ▟▖  ▗▘▚ ▙▌  ▌ ▌▌▛▖▞▌▛▖▞▌▌▌▛▖▌
 # ▙▘▙▖▙▌▟▖▌▝▌  ▙▘▛▌▄▌▌▌  ▝   ▙▖▄▌▌▌  ▙▖▙▌▌▝ ▌▌▝ ▌▙▌▌▝▌
 
+
+########################################
+#  STDERR echo                         #
+########################################
+
+errcho() { >&2 printf "%s\n" "$*"; }
+
+
 ########################################
 #  Variables                           #
 ########################################
@@ -22,24 +30,39 @@ alias cz='chezmoi --verbose '
 
 
 # eza: the ls and exa replacement
-alias ls='eza --icons -a --group-directories-first'
-alias t='eza --tree --all --ignore-glob ".git"'
-alias tree='eza --tree --all --long --ignore-glob ".git"'
+if type eza &> /dev/null; then
+  alias ls='eza --icons -a --group-directories-first'
+  alias t='eza --tree --all --ignore-glob ".git"'
+  alias tree='eza --tree --all --long --ignore-glob ".git"'
+else
+  errcho "git not found. Skipping creating aliases."
+fi
 
 
 # git
-alias gg='git status -s'
-alias gdiff='git diff --no-ext-diff'
-alias gwdiff='git diff --no-ext-diff --word-diff=color'
-alias gdt='git difftool'
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
+if type eza &> /dev/null; then
+  alias gg='git status -s'
+  alias gdiff='git diff --no-ext-diff'
+  alias gwdiff='git diff --no-ext-diff --word-diff=color'
+  alias gdt='git difftool'
+  alias gs='git status'
+  alias ga='git add'
+  alias gc='git commit'
+else
+  errcho "git not found. Skipping creating aliases."
+fi
 
 
 ########################################
 #  Functions                           #
 ########################################
+
+# mkdir and cd into it
+function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+
+# Pretty print $PATH
+function path () { echo "${PATH}" | tr ':' '\n'; }
 
 # Make path additions idempotent to sourcing rc files
 pathmunge () {
@@ -51,14 +74,6 @@ pathmunge () {
     fi
   fi
 }
-
-
-# mkdir and cd into it
-function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-
-
-# Pretty print $PATH
-function path () { echo "${PATH}" | tr ':' '\n'; }
 
 
 # Display all color combos
