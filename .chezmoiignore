@@ -4,7 +4,7 @@ __lib/
 __lib/**
 shell_common/
 shell_common/**
-shell_local/
-shell_local/**
+machine_local/
+machine_local/**
 Windows/
 Windows/**
