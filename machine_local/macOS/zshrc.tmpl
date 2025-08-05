@@ -13,27 +13,22 @@
 #  Homebrew Completions                #
 ########################################
 
-#if type brew &> /dev/null; then
+# You may also need to force rebuild `zcompdump`:
 #
-## TODO: Below is the script for loading completions into bash.
-##       This needs to be done the zsh way.
+#    rm -f ~/.zcompdump; compinit
 #
-#  # stash any GLOBIGNORE settings.
-#  globstash=$GLOBIGNORE
-#  GLOBIGNORE="git-prompt.sh" # Using Starship instead
+# Run the following if you get "zsh compinit: insecure directories" warnings:
 #
-#  # Iterate over Homebrew installed completion scripts.
-#  # `*` will respect GLOBINGORE exclusions.
-#  for cf in "$(brew --prefix)/etc/bash_completion.d/"*; do
-#    [ -r "${cf}" ] && source "${cf}"
-#  done
-#
-#  # Bring back previous GLOBIGNORE settings.
-#  GLOBIGNORE=$globstash
-#
-#else
-#  errcho "Homebrew not installed. Skipping zsh completions."
-#fi
+#    chmod go-w "$HOMEBREW_PREFIX/share"
+#    chmod -R go-w "$HOMEBREW_PREFIX/share/zsh"
+
+if type brew &> /dev/null; then
+ FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+ autoload -Uz compinit
+ compinit
+else
+  errcho "Homebrew not installed. Skipping zsh completions."
+fi
 
 
 ########################################
