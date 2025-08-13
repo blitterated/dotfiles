@@ -17,11 +17,6 @@ alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -
 #  Functions                           #
 ########################################
 
-# Open man pages in a GUI
-function gman () {
-  man -t $1 | open -a /System/Applications/Preview.app -f
-}
-
 # Open markdown files in Marked 2
 #     see http://jblevins.org/log/marked-2-command
 function mark {
