@@ -3,17 +3,18 @@ $ps_cfgname       = "Microsoft.PowerShell_profile.ps1"
 
 # Powershell 5 $PROFILE.CurrentUserCurrentHost config directory and full file path
 $ps5_cfgdir       = "C:\Users\peteyoung\Documents\WindowsPowerShell"
-$ps5_cfgpath          = "${ps5_cfgdir}\${ps_cfgname}"
+$ps5_cfgpath      = "${ps5_cfgdir}\${ps_cfgname}"
 
 # Powershell 7.5 $PROFILE.CurrentUserCurrentHost config directory and full file path
 $ps7_cfgdir       = "C:\Users\peteyoung\Documents\PowerShell"
-$ps7_cfgpath          = "${ps7_cfgdir}\${ps_cfgname}"
+$ps7_cfgpath      = "${ps7_cfgdir}\${ps_cfgname}"
 
 # dotfile repo directory path
 $dotFileDirPath   = "${HOME}\.dotfiles"
 
 # dotfile repo Windows directory path
 $dotFileWinPath   = "${dotFileDirPath}\Windows"
+
 
 # Powershell 5 & 7.5 config file in dotfile repo
 $ps_shared_config = "${dotFileWinPath}\PowerShell\${ps_cfgname}"
@@ -26,15 +27,8 @@ function Remove-Config {
   }
 }
 
-function Clean-ConfigFiles {
-  param ( $configFiles )
-
-  foreach ($cf in $configFiles) {
-    Remove-Config "${cf}"
-  }
-}
-
-Clean-ConfigFiles "${ps5_cfgpath}", "${ps7_cfgpath}"
+Remove-Config "${ps5_cfgpath}"
+Remove-Config "${ps7_cfgpath}"
 
 # TODO: Pull from dotfile repo
 # Create symbolic links to the dotfile repo for PS 5 & 7.5
