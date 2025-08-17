@@ -109,13 +109,15 @@ ppsql() {
 }
 
 
-# convenience function for generating rc file
-# section headers using figlet
+# Convenience function for generating rc file
+# section headers and footers using figlet.
 fighead () {
   local header_text="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
 
   echo -e "BEGIN ${header_text}\nEND ${header_text}" | \
   figlet -w 200 -f miniwi | \
+
+  # Turn each line of header/footer into a shell comment line
   while read -r ln; do echo "# ${ln}"; done
 }
 
