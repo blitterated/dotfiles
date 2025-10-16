@@ -7,7 +7,7 @@
 # Common bash + zsh config             #
 ########################################
 
-{{ include "shell_common/bash_zsh_common.sh" }}
+{{ includeTemplate "shell_common/bash_zsh_common.sh" }}
 
 
 ########################################
@@ -15,7 +15,7 @@
 ########################################
 
 {{ if eq .chezmoi.os "darwin" }}
-{{   includeTemplate "./machine_local/macOS/bashrc.tmpl" }}
+{{   includeTemplate "machine_local/macOS/bashrc.tmpl" }}
 {{ end }}
 
 
