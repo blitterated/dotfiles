@@ -7,7 +7,7 @@
 # Common bash + zsh config             #
 ########################################
 
-{{ include "shell_common/bash_zsh_common.sh" }}
+{{ includeTemplate "shell_common/bash_zsh_common.sh" }}
 
 
 # ▄ ▄▖▄▖▄▖▖ ▖  ▄▖▄▖▖▖  ▄▖▄▖▄▖▄▖▄▖▄▖▄▖▄▖  ▄▖▄▖▖ ▖▄▖▄▖▄▖
@@ -32,7 +32,7 @@ function zsh-completions () {
 ########################################
 
 {{ if eq .chezmoi.os "darwin" }}
-{{   includeTemplate "./machine_local/macOS/zshrc.tmpl" }}
+{{   includeTemplate "machine_local/macOS/zshrc.tmpl" }}
 {{ end }}
 
 
