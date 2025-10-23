@@ -26,7 +26,11 @@ export BROWSER="brave"
 
 alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
-alias cz='chezmoi --verbose '
+
+
+# chezmoi
+alias cz='chezmoi --verbose'
+alias czcd=cd "$(chezmoi source-path)"
 
 
 # eza: the ls and exa replacement
