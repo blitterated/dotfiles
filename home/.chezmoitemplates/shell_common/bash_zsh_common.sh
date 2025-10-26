@@ -30,7 +30,7 @@ alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 
 # chezmoi
 alias cz='chezmoi --verbose'
-alias czcd=cd "$(chezmoi source-path)"
+alias czcd='cd $(chezmoi source-path)'
 
 
 # eza: the ls and exa replacement
