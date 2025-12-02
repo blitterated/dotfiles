@@ -30,7 +30,14 @@ alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 
 # chezmoi
 alias cz='chezmoi --verbose'
-alias czcd='cd $(chezmoi source-path)'
+# The czcd alias avoids the subshell that `chezmoi cd` creates.
+# The `..` is because I use a `` file. This allows me to use a sub
+# folder of my chezmoi git repo as the source directory instead of the
+# root. However, chezmoi also uses that information for many of its
+# commands, e.g. `cd` and `source-path`. Using either one for
+# directory navigation drops me a folder deep into the chezmoi source
+# directory.
+alias czcd='cd $(chezmoi source-path)/..'
 
 
 # eza: the ls and exa replacement
