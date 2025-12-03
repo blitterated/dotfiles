@@ -38,6 +38,8 @@ alias cz='chezmoi --verbose'
 # directory navigation drops me a folder deep into the chezmoi source
 # directory.
 alias czcd='cd $(chezmoi source-path)/..'
+# I also keep my chezmoi github wiki repo next to my chezmoi repo.
+alias czcdw='cd $(chezmoi source-path)/../../chezmoi_wiki'
 
 
 # eza: the ls and exa replacement
