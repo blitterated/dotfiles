@@ -1,8 +1,8 @@
 [user]
-	email = pete@simpli.fi
-	name = Pete Young
+        email = pete@simpli.fi
+        name = Pete Young
 [diff]
-	tool = bc
+        tool = bc
 [difftool]
-	prompt = false
-	bc = trustExitCode
+        prompt = false
+        bc = trustExitCode
