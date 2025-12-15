@@ -6,3 +6,5 @@
 [difftool]
         prompt = false
         bc = trustExitCode
+[init]
+        defaultBranch = main
