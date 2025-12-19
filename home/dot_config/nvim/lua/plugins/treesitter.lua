@@ -17,7 +17,6 @@ return {
         "markdown",
         "markdown_inline",
         "python",
-        "ruby",
         "sql",
         "supercollider",
         "tmux",
