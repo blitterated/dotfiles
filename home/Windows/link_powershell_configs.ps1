@@ -15,9 +15,11 @@ $dotFileDirPath   = "${HOME}\.dotfiles"
 # dotfile repo Windows directory path
 $dotFileWinPath   = "${dotFileDirPath}\Windows"
 
-
 # Powershell 5 & 7.5 config file in dotfile repo
 $ps_shared_config = "${dotFileWinPath}\PowerShell\${ps_cfgname}"
+
+# Windows Terminal config filename
+$winterm_config = "${HOME}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 function Remove-Config {
   param ( $configFileName )
@@ -27,8 +29,15 @@ function Remove-Config {
   }
 }
 
-Remove-Config "${ps5_cfgpath}"
-Remove-Config "${ps7_cfgpath}"
+function Clean-ConfigFiles {
+  param ( $configFiles )
+
+  foreach ($cf in $configFiles) {
+    Remove-Config "${cf}"
+  }
+}
+
+Clean-ConfigFiles "${ps5_cfgpath}", "${ps7_cfgpath}"
 
 # TODO: Pull from dotfile repo
 # Create symbolic links to the dotfile repo for PS 5 & 7.5
