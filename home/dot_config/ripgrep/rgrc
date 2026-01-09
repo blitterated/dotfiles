@@ -1,0 +1,32 @@
+# Be sure to set the environment variable to point to this config.
+#     export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rgrc
+#
+# See the config file doc section:
+#     https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+
+# Limit long lines to terminal
+--max-columns=150
+
+# Show a preview
+--max-columns-preview
+
+# Add 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+# Same as --ignore-case unless pattern has capital letters
+--smart-case
+
+# Search hidden files & directories
+--hidden
+
+# Directory Exclusions
+--glob=!**/.git/*
+--glob=!**/node_modules/*
+--glob=!**/Dropbox/*
+--glob=!**/dist/*
+--glob=!**/build/*
+--glob=!**/target/*
+
+# File Exclusions
+--glob=!*.min.js
