@@ -28,7 +28,41 @@ function zsh-completions () {
 
 
 ########################################
-# Zoxide                               #
+# fzf                                  #
+########################################
+
+#source <(fzf --zsh)
+eval "$(fzf --zsh)"
+
+# Preview file contents using bat.
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# CTRL-Y to copy the command into clipboard using pbcopy.
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Print tree structure in the preview window.
+# Preview command's flags:
+#    -T, --tree                  Recurse into directories as a tree.
+#    -a, --all                   Show hidden and “dot” files.
+#    -L, --level=DEPTH           Limit the depth of recursion.
+#    --color=always              Always output terminal color.
+#    -I, --ignore-glob=GLOBS     Glob patterns, pipe-separated, of files to ignore.
+#    --git-ignore                Do not list files that are ignored by Git.
+#    --group-directories-first   List directories before other files.
+
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'eza -T -a -L3 --color=always -I \".DS_Store|._*\" --git-ignore --group-directories-first {}'"
+
+
+########################################
+# zoxide                               #
 ########################################
 
 export _ZO_ECHO='1'
