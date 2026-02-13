@@ -35,6 +35,33 @@ function mark {
   fi
 }
 
+function watchsize() {
+
+  target="$1"
+
+  # Notes on heredocs:
+  #   * The '-' after "<<" removes leading tabs from the heredoc, but only tabs.
+  #   * Quoting the delimiter, 'AWKDOC', prevents shell substitution.
+
+  # The awk_script lines are tab indented.
+  # Do not remove the tabs!!!
+  # That will break the heredoc!
+	awk_script=$(cat <<-'AWKDOC'
+		{
+			filesize = $1
+			filename = $2
+			sizefmtd = sprintf("%'\''d MB", filesize)
+			print sizefmtd, filename
+		}
+		AWKDOC
+	)
+
+  # macOS du is weird.
+  # macOS block size is 512K which doubles file sizes.
+  # The '-k' sets it to 1024 bytes.
+  watch -n 1 "du -k \"${target}\" | gawk '{ ${awk_script} }'"
+}
+
 
 ########################################
 #  Homebrew Init                       #
