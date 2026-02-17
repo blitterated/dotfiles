@@ -6,6 +6,9 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
 
+config.initial_cols = 120
+config.initial_rows = 32
+
 --config.window_decorations = "RESIZE"
 config.window_decorations = "TITLE | RESIZE"
 
