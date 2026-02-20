@@ -214,8 +214,8 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
+success_symbol = '[󰣈](bold fg:color_green)' # Material Design Icons, Axe, F08C8
+error_symbol = '[](bold fg:color_red)' # Font Awesome, Hand Middle Finger, EF83
 
 [shell]
 disabled = false
@@ -391,8 +391,6 @@ color_yellow = '#d79921'
 #fun_glyph = '󰆣 ' # Material Design Icons, Crosshairs, F01A3
 #fun_glyph = '󰆤 ' # Material Design Icons, Crosshairs Gps, F01A4
 #fun_glyph = '󰬯 ' # Material Design Icons, Crystal Ball, F02BF
-#fun_glyph = '󰈑 ' # Material Design Icons, Fast Forward, F0211
-#fun_glyph = '󰛒 ' # Material Design Icons, Fast Forward Outline, F06D2
 #fun_glyph = '󰊠 ' # Material Design Icons, Ghost, F02A0
 #fun_glyph = '󱙝 ' # Material Design Icons, Ghost Outline, F165D
 #fun_glyph = '󰊱 ' # Material Design Icons, Google Circles Communities, F02B1 # Nicholas Roerich Peace Symbol
