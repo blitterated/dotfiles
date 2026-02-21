@@ -1,17 +1,18 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_orange)\
+[](color_bg2)\
 $os\
 $shell\
 $username\
-[](bg:color_yellow fg:color_orange)\
+[](bg:color_bg1 fg:color_bg2)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[](fg:color_bg1 bg:color_bg3)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
+[](bg:color_bg3)\
 $fill\
+[](bg:color_bg3)\
 $c\
 $rust\
 $golang\
@@ -21,39 +22,77 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:color_bg4 bg:color_bg5)\
 $docker_context\
 $conda\
-[](fg:color_bg3 bg:color_bg1)\
+[](fg:color_bg5 bg:color_bg6)\
 $jobs\
 $cmd_duration\
 $time\
-[ ](fg:color_bg1)\
+[ ](fg:color_bg6)\
 $line_break\
 $character"""
 
-palette = 'gruvbox_dark'
+#format = """
+#[](color_bg2)\
+#$os\
+#$shell\
+#$username\
+#[](bg:color_bg1 fg:color_bg2)\
+#$directory\
+#[](fg:color_bg1 bg:color_bg3)\
+#$git_branch\
+#$git_status\
+#[](fg:color_bg3 bg:color_bg4)\
+#$fill\
+#$c\
+#$rust\
+#$golang\
+#$nodejs\
+#$php\
+#$java\
+#$kotlin\
+#$haskell\
+#$python\
+#[](fg:color_bg4 bg:color_bg5)\
+#$docker_context\
+#$conda\
+#[](fg:color_bg5 bg:color_bg6)\
+#$jobs\
+#$cmd_duration\
+#$time\
+#[ ](fg:color_bg6)\
+#$line_break\
+#$character"""
 
+palette = 'gruvbox_dark'
 
 continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
 
 
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[󰣈](bold fg:color_bg3)' # Material Design Icons, Axe, F08C8
+error_symbol = '[](bold fg:color_fg3)' # Font Awesome, Hand Middle Finger, EF83
 
 [fill]
 symbol = ' '
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_bg2 fg:color_fg1"
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
+style_user = "bg:color_bg2 fg:color_fg1"
+style_root = "bg:color_bg2 fg:color_fg1"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_fg1 bg:color_bg1"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -68,18 +107,18 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_bg3"
+format = '[[ $symbol $branch ](fg:color_fg1 bg:color_bg3)]($style)'
 
 [git_status]
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_bg3"
+format = '[[($all_status$ahead_behind )](fg:color_fg1 bg:color_bg3)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+style = "bg:color_bg6"
+format = '[[  $time ](fg:color_fg1 bg:color_bg6)]($style)'
 
 [jobs]
 symbol = ' '
@@ -92,21 +131,13 @@ min_time = 500
 style = 'fg:gray'
 format = '[$duration]($style)'
 
-[line_break]
-disabled = false
-
-[character]
-disabled = false
-success_symbol = '[󰣈](bold fg:color_green)' # Material Design Icons, Axe, F08C8
-error_symbol = '[](bold fg:color_red)' # Font Awesome, Hand Middle Finger, EF83
-
 [shell]
 disabled = false
 bash_indicator = '󱆃'
 zsh_indicator = '⚡'
 powershell_indicator = ''
 unknown_indicator = '⁇'
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_bg2 fg:color_fg1"
 format = '[ $indicator]($style)'
 
 
@@ -136,66 +167,78 @@ Pop = ""
 
 [c]
 symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [conda]
-style = "bg:color_bg3"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "bg:color_bg5"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "bg:color_bg5"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg5)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [java]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [kotlin]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [lua]
 symbol = ' '
-style = "bg:color_blue"
+style = "bg:color_bg4"
 
 [nodejs]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [php]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [python]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 [ruby]
-style = "bg:color_blue"
+style = "bg:color_bg4"
 symbol = ' '
 
 [rust]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_bg4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
+
+[palettes.gruvbox_dark]
+color_bg1 = '#d79921'        # yellow
+color_bg2 = '#d65d0e'        # orange
+color_bg3 = '#689d6a'        # aqua
+color_bg4 = '#458588'        # blue
+color_bg5 = '#665c54'        # dark_yellow
+color_bg6 = '#3c3836'        # dark_red
+color_fg1 = '#fbf1c7'        # yellow
+color_fg2 = '#98971a'        # green
+color_fg3 = '#cc241d'       # red
+color_fg4 = '#b16286'        # purple
 
 [palettes.nord]
 black = '#2E3440'
@@ -222,141 +265,3 @@ cyan='#56b6c2'
 blue='#56b6c2'
 purple='#c678dd'
 dark_blue='#61afef'
-
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-
-
-
-
-
-#continuation_prompt = ' ' # Codicons, Add, EA60
-#continuation_prompt = ' ' # Codicons, Debug Continue, EACF
-#continuation_prompt = ' ' # Codicons, Debug Continue Small, EBE0
-#continuation_prompt = ' ' # Codicons, Arrow Circle Right, EBFA
-#continuation_prompt = ' ' # Codicons, Export, EBAC
-#continuation_prompt = ' ' # Codicons, Indent, EBF9
-#continuation_prompt = ' ' # Codicons, Run All, EB9E
-#continuation_prompt = ' ' # Codicons, Triangle Right, EB70
-#continuation_prompt = ' ' # Custom, Chuck, E6B6
-#continuation_prompt = ' ' # Custom, Play Arrow, E602
-#continuation_prompt = ' ' # Font Awesome, Angle Double Right, F101
-#continuation_prompt = ' ' # Font Awesome, Angles Right, F101
-#continuation_prompt = ' ' # Font Awesome, Arrow Circle O Right, F18E
-#continuation_prompt = ' ' # Font Awesome, Arrow Circle Right, F0A9
-#continuation_prompt = ' ' # Font Awesome, Arrow Right, F061
-#continuation_prompt = ' ' # Font Awesome, Arrow Right From Bracket, F08B
-#continuation_prompt = ' ' # Font Awesome, Arrow Right Long, F178
-#continuation_prompt = ' ' # Font Awesome, Caret Right, F0DA
-#continuation_prompt = ' ' # Font Awesome, Circle Arrow Right, F0A9
-#continuation_prompt = ' ' # Font Awesome, Chevron Circle Right, F138
-#continuation_prompt = ' ' # Font Awesome, Circle Chevron Right, F138
-#continuation_prompt = ' ' # Font Awesome, Circle Play, F144
-#continuation_prompt = ' ' # Font Awesome, Ellipsis, F141
-#continuation_prompt = ' ' # Font Awesome, Ellipsis H, F141
-#continuation_prompt = ' ' # Font Awesome, Forward, F04E
-#continuation_prompt = ' ' # Font Awesome, Greater Than, EDFB
-#continuation_prompt = ' ' # Font Awesome, Greater Than Equal, EDFC
-#continuation_prompt = ' ' # Font Awesome, Hand O Right, F0A4
-#continuation_prompt = ' ' # Font Awesome, Hand Point Right, F0A4
-#continuation_prompt = ' ' # Font Awesome, Right From Bracket, F2F5
-#continuation_prompt = ' ' # Font Awesome, Sign Out, F08B
-#continuation_prompt = ' ' # Font Awesome Extension, Bigger, E285
-#continuation_prompt = ' ' # Font Awesome Extension, Equal Bigger, E27A
-#continuation_prompt = '󰞘 ' # Material Design Icons, Arrow Expand Right, F0798
-#continuation_prompt = '󰁔 ' # Material Design Icons, Arrow Right, F0054
-#continuation_prompt = '󰜴 ' # Material Design Icons, Arrow Right Bold, F0734
-#continuation_prompt = '󰜵 ' # Material Design Icons, Arrow Right Bold Box, F0735
-#continuation_prompt = '󰜶 ' # Material Design Icons, Arrow Right Bold Box Outline, F0736
-#continuation_prompt = '󰁖 ' # Material Design Icons, Arrow Right Bold Circle, F0056
-#continuation_prompt = '󰁗 ' # Material Design Icons, Arrow Right Bold Circle Outline, F0057
-#continuation_prompt = '󰧂 ' # Material Design Icons, Arrow Right Bold Outline, F09C2
-#continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
-#continuation_prompt = '󱞪 ' # Material Design Icons, Arrow Right Bottom Bold, F17AA
-#continuation_prompt = '󰛂 ' # Material Design Icons, Arrow Right Box, F06C2
-#continuation_prompt = '󰳟 ' # Material Design Icons, Arrow Right Circle, F0CDF
-#continuation_prompt = '󰳠 ' # Material Design Icons, Arrow Right Circle Outline, F0CE0
-#continuation_prompt = '󰁙 ' # Material Design Icons, Arrow Right Drop Circle, F0059
-#continuation_prompt = '󰁚 ' # Material Design Icons, Arrow Right Drop Circle Outline, F005A
-#continuation_prompt = '󰁕 ' # Material Design Icons, Arrow Right Thick, F0055
-#continuation_prompt = '󱦰 ' # Material Design Icons, Arrow Right Thin, F19B0
-#continuation_prompt = '󱖘 ' # Material Design Icons, Arrow Right Thin Circle Outline, F1598
-#continuation_prompt = '󱞵 ' # Material Design Icons, Arrow U Right Bottom, F17B5
-#continuation_prompt = '󱞶 ' # Material Design Icons, Arrow U Right Bottom, F17B6
-#continuation_prompt = '󰄾 ' # Material Design Icons, Chevron Double Right, F013E
-#continuation_prompt = '󰅂 ' # Material Design Icons, Chevron Right, F0142
-#continuation_prompt = '󰧚 ' # Material Design Icons, Chevron Right Box, F09DA
-#continuation_prompt = '󰧛 ' # Material Design Icons, Chevron Right Box Outline, F09DB
-#continuation_prompt = '󰬪 ' # Material Design Icons, Chevron Right Circle, F0B2A
-#continuation_prompt = '󰬫 ' # Material Design Icons, Chevron Right Circle Outline, F0B2B
-#continuation_prompt = '󰶻 ' # Material Design Icons, Chevron Triple Right, F0DBB
-#continuation_prompt = '󰊍 ' # Material Design Icons, Forward, F028D
-#continuation_prompt = '󰵵 ' # Material Design Icons, Forwardburger, F0D75
-#continuation_prompt = '󰣡 ' # Material Design Icons, Gate And, F08E1
-#continuation_prompt = '󰥭 ' # Material Design Icons, Greater Than, F096D
-#continuation_prompt = '󰋇 ' # Material Design Icons, Hand Pointing Right, F02C7
-#continuation_prompt = '󰿅 ' # Material Design Icons, Location Exit, F0FC5
-#continuation_prompt = '󰍃 ' # Material Design Icons, Logout, F0342
-#continuation_prompt = '󰗽 ' # Material Design Icons, Logout Variant, F05FD
-#continuation_prompt = '󰽝 ' # Material Design Icons, Middleware, F0F5D
-#continuation_prompt = '󰽞 ' # Material Design Icons, Middleware Outline, F0F5E
-#continuation_prompt = '󰮺 ' # Material Design Icons, Pan Right, F0BBA
-#continuation_prompt = '󰐊 ' # Material Design Icons, Play, F040A
-#continuation_prompt = '󱉺 ' # Material Design Icons, Play Box, F127A
-#continuation_prompt = '󰐋 ' # Material Design Icons, Play Box Outline, F040B
-#continuation_prompt = '󰐌 ' # Material Design Icons, Play Circle, F040C
-#continuation_prompt = '󰐍 ' # Material Design Icons, Play Circle Outline, F040D
-#continuation_prompt = '󰼛 ' # Material Design Icons, Play Outline, F0F1B
-#continuation_prompt = '󰚺 ' # Material Design Icons, Plex, F06BA
-#continuation_prompt = '󰐕 ' # Material Design Icons, Plus, F0415
-#continuation_prompt = '󰐖 ' # Material Design Icons, Plus Box, F0416
-#continuation_prompt = '󰜄 ' # Material Design Icons, Plus Box Outline, F0704
-#continuation_prompt = '󰐗 ' # Material Design Icons, Plus Circle, F0417
-#continuation_prompt = '󰐙 ' # Material Design Icons, Plus Circle Outline, F0419
-#continuation_prompt = '󰜅 ' # Material Design Icons, Plus Outline, F0705
-#continuation_prompt = '󱇬 ' # Material Design Icons, Plus Thick, F11EC
-#continuation_prompt = '󰳀 ' # Material Design Icons, Radius, F0CC0
-#continuation_prompt = '󰳁 ' # Material Design Icons, Radius Outline, F0CC1
-#continuation_prompt = '󰑃 ' # Material Design Icons, Ray Start Arrow, F0443
-#continuation_prompt = '󰑎 ' # Material Design Icons, Redo, F044E
-#continuation_prompt = '󱜧 ' # Material Design Icons, Script Text Play, F1727
-#continuation_prompt = '󱜨 ' # Material Design Icons, Script Text Play Outline, F1728
-#continuation_prompt = '󰒊 ' # Material Design Icons, Send, F048A
-#continuation_prompt = '󰷸 ' # Material Design Icons, Send Circle, F0DF8
-#continuation_prompt = '󰷹 ' # Material Design Icons, Send Circle, F0DF9
-#continuation_prompt = '󱅥 ' # Material Design Icons, Send Outline, F1165
-#continuation_prompt = '󱓡 ' # Material Design Icons, Set Split, F14E1
-#continuation_prompt = '󰒞 ' # Material Design Icons, Shuffle Disabled, F049E
-#continuation_prompt = '󰘍 ' # Material Design Icons, Subdirectory Arrow Right, F060D
-#continuation_prompt = '󰔰 ' # Material Design Icons, Transfer Right, F0530
-#continuation_prompt = '󰔴 ' # Material Design Icons, Trending Neutral, F0534
-#continuation_prompt = '󰔾 ' # Material Design Icons, Truck Delivery, F053E
-#continuation_prompt = '󱊛 ' # Material Design Icons, Truck Delivery Outline, F129B
-#continuation_prompt = '󱡚 ' # Material Design Icons, Waves Arrow Right, F185A
-#continuation_prompt = '󰯟 ' # Material Design Icons, Wrap Disabled, F0BDF
-#continuation_prompt = ' ' # Octicons, Arrow Right, F432
-#continuation_prompt = ' ' # Octicons, Chevron Right, F460
-#continuation_prompt = ' ' # Octicons, Diff Renamed, F45A
-#continuation_prompt = ' ' # Octicons, Iterations, F4EA
-#continuation_prompt = ' ' # Octicons, Package Dependents, F4F9
-#continuation_prompt = ' ' # Octicons, Paper Airplane, F4FA
-#continuation_prompt = ' ' # Octicons, Play, F500
-#continuation_prompt = ' ' # Octicons, Plus, F44D
-#continuation_prompt = ' ' # Octicons, Plus Circle, F501
-#continuation_prompt = ' ' # Octicons, Sign Out, F426
-#continuation_prompt = ' ' # Weather Icons, Direction Right, E349
-#continuation_prompt = ' ' # Weather Icons, Wind West, E354
-
-
-
-
-
