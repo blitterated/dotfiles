@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_bg2)\
+[](color_bg2)\
 $os\
 $shell\
 $username\
@@ -29,7 +29,7 @@ $conda\
 $jobs\
 $cmd_duration\
 $time\
-[ ](fg:color_bg6)\
+[ ](fg:color_bg6)\
 $line_break\
 $character"""
 
@@ -69,7 +69,6 @@ palette = 'gruvbox_dark'
 
 continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
 
-
 [line_break]
 disabled = false
 
@@ -80,6 +79,7 @@ error_symbol = '[](bold fg:color_fg3)' # Font Awesome, Hand Middle Finger, EF
 
 [fill]
 symbol = ' '
+
 
 [os]
 disabled = false
@@ -114,22 +114,23 @@ format = '[[ $symbol $branch ](fg:color_fg1 bg:color_bg3)]($style)'
 style = "bg:color_bg3"
 format = '[[($all_status$ahead_behind )](fg:color_fg1 bg:color_bg3)]($style)'
 
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_bg6"
-format = '[[  $time ](fg:color_fg1 bg:color_bg6)]($style)'
-
 [jobs]
 symbol = ' '
-style = 'red'
 number_threshold = 1
+style = 'fg:color_fg3 bg:color_bg6'
 format = '[$symbol]($style)'
 
 [cmd_duration]
 min_time = 500
-style = 'fg:gray'
+style = 'fg:color_fg1 bg:color_bg6'
 format = '[$duration]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:color_fg1 bg:color_bg6"
+format = '[  $time ]($style)'
+
 
 [shell]
 disabled = false
@@ -139,7 +140,6 @@ powershell_indicator = ''
 unknown_indicator = '⁇'
 style = "bg:color_bg2 fg:color_fg1"
 format = '[ $indicator]($style)'
-
 
 [os.symbols]
 Windows = "󰍲"
@@ -237,7 +237,7 @@ color_bg5 = '#665c54'        # dark_yellow
 color_bg6 = '#3c3836'        # dark_red
 color_fg1 = '#fbf1c7'        # yellow
 color_fg2 = '#98971a'        # green
-color_fg3 = '#cc241d'       # red
+color_fg3 = '#cc241d'        # red
 color_fg4 = '#b16286'        # purple
 
 [palettes.nord]
