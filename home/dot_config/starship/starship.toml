@@ -1,18 +1,18 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_bg2)\
+[](color_bg1)\
 $os\
 $shell\
 $username\
-[](bg:color_bg1 fg:color_bg2)\
+[](bg:color_bg2 fg:color_bg1)\
 $directory\
-[](fg:color_bg1 bg:color_bg3)\
+[](fg:color_bg2 bg:color_bg3)\
 $git_branch\
 $git_status\
-[](bg:color_bg3)\
+[](fg:black bg:color_bg3)\
 $fill\
-[](bg:color_bg3)\
+[](fg:black bg:color_bg3)\
 $c\
 $rust\
 $golang\
@@ -34,13 +34,13 @@ $line_break\
 $character"""
 
 #format = """
-#[](color_bg2)\
+#[](color_bg1)\
 #$os\
 #$shell\
 #$username\
-#[](bg:color_bg1 fg:color_bg2)\
+#[](bg:color_bg2 fg:color_bg1)\
 #$directory\
-#[](fg:color_bg1 bg:color_bg3)\
+#[](fg:color_bg2 bg:color_bg3)\
 #$git_branch\
 #$git_status\
 #[](fg:color_bg3 bg:color_bg4)\
@@ -83,16 +83,16 @@ symbol = ' '
 
 [os]
 disabled = false
-style = "bg:color_bg2 fg:color_fg1"
+style = "bg:color_bg1 fg:color_fg1"
 
 [username]
 show_always = true
-style_user = "bg:color_bg2 fg:color_fg1"
-style_root = "bg:color_bg2 fg:color_fg1"
+style_user = "bg:color_bg1 fg:color_fg1"
+style_root = "bg:color_bg1 fg:color_fg1"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_fg1 bg:color_bg1"
+style = "fg:color_fg1 bg:color_bg2"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -138,7 +138,7 @@ bash_indicator = '󱆃'
 zsh_indicator = '⚡'
 powershell_indicator = ''
 unknown_indicator = '⁇'
-style = "bg:color_bg2 fg:color_fg1"
+style = "bg:color_bg1 fg:color_fg1"
 format = '[ $indicator]($style)'
 
 [os.symbols]
@@ -229,8 +229,8 @@ format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 
 [palettes.gruvbox_dark]
-color_bg1 = '#d79921'        # yellow
-color_bg2 = '#d65d0e'        # orange
+color_bg1 = '#d65d0e'        # orange
+color_bg2 = '#d79921'        # yellow
 color_bg3 = '#689d6a'        # aqua
 color_bg4 = '#458588'        # blue
 color_bg5 = '#665c54'        # dark_yellow
