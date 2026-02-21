@@ -33,38 +33,6 @@ $time\
 $line_break\
 $character"""
 
-#format = """
-#[](color_bg1)\
-#$os\
-#$shell\
-#$username\
-#[](bg:color_bg2 fg:color_bg1)\
-#$directory\
-#[](fg:color_bg2 bg:color_bg3)\
-#$git_branch\
-#$git_status\
-#[](fg:color_bg3 bg:color_bg4)\
-#$fill\
-#$c\
-#$rust\
-#$golang\
-#$nodejs\
-#$php\
-#$java\
-#$kotlin\
-#$haskell\
-#$python\
-#[](fg:color_bg4 bg:color_bg5)\
-#$docker_context\
-#$conda\
-#[](fg:color_bg5 bg:color_bg6)\
-#$jobs\
-#$cmd_duration\
-#$time\
-#[ ](fg:color_bg6)\
-#$line_break\
-#$character"""
-
 palette = 'gruvbox_dark'
 
 continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
