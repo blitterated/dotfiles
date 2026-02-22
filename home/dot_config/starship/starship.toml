@@ -114,8 +114,8 @@ format = '[  $time ]($style)'
 
 [shell]
 disabled = false
-bash_indicator = '󱆃'
-zsh_indicator = '⚡'
+bash_indicator = '󰬉'
+zsh_indicator = '󰰷'
 powershell_indicator = ''
 unknown_indicator = '⁇'
 style = "bg:color_bg1 fg:color_fg1"
