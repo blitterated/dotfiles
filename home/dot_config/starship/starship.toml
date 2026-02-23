@@ -34,7 +34,7 @@ $conda\
 $jobs\
 $cmd_duration\
 $time\
-[ 󰻃 ](bg:color_bg6 fg:color_fg1)\
+[ 󰻃 ](bg:color_bg6 fg:color_bg0)\
 [ ](fg:color_bg6)\
 $line_break\
 $character"""
@@ -104,13 +104,13 @@ format = '[$symbol]($style)'
 
 [cmd_duration]
 min_time = 500
-style = 'fg:color_fg1 bg:color_bg6'
+style = "fg:color_bg0 bg:color_bg6"
 format = '[$duration]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "fg:color_fg1 bg:color_bg6"
+style = "fg:color_bg0 bg:color_bg6"
 format = '[  $time ]($style)'
 
 
