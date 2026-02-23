@@ -39,9 +39,7 @@ $time\
 $line_break\
 $character"""
 
-#palette = 'gruvbox_dark'
 palette = 'nord'
-#palette = 'onedark'
 
 continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
 
@@ -50,12 +48,6 @@ disabled = false
 
 [character]
 disabled = false
-#success_symbol = '[󰣈](bold fg:color_bg3)' # Material Design Icons, Axe, F08C8
-#success_symbol = '[󰒊](bold fg:color_bg3)' # Material Design Icons, Send, F048A
-#success_symbol = '[󰧂](bold fg:color_bg3)' # Material Design Icons, Arrow Right Bold Outline, F09C2
-#success_symbol = '[󰜴](bold fg:color_bg3)' # Material Design Icons, Arrow Right Outline, F0734
-#success_symbol = '[](bold fg:color_bg3)' # Font Awesome, Crown, EDEB
-#success_symbol = '[](bold fg:color_bg3)' # Font Awesome, Splotch:, EE83
 success_symbol = '[](bold fg:color_bg3)' # Font Awesome, Toilet Paper, EF11
 error_symbol = '[](bold fg:color_fg3)' # Font Awesome, Hand Middle Finger, EF83
 
