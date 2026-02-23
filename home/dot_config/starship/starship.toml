@@ -39,7 +39,9 @@ $time\
 $line_break\
 $character"""
 
-palette = 'gruvbox_dark'
+#palette = 'gruvbox_dark'
+palette = 'nord'
+#palette = 'onedark'
 
 continuation_prompt = '󱞩 ' # Material Design Icons, Arrow Right Bottom, F17A9
 
@@ -208,40 +210,45 @@ style = "bg:color_bg4"
 format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_bg4)]($style)'
 
 
-[palettes.gruvbox_dark]
-color_bg1 = '#d65d0e'        # orange
-color_bg2 = '#d79921'        # yellow
-color_bg3 = '#689d6a'        # aqua
-color_bg4 = '#458588'        # blue
-color_bg5 = '#665c54'        # dark_yellow
-color_bg6 = '#3c3836'        # dark_red
-color_fg1 = '#fbf1c7'        # yellow
-color_fg2 = '#98971a'        # green
-color_fg3 = '#cc241d'        # red
-color_fg4 = '#b16286'        # purple
+[palettes]
 
-[palettes.nord]
-black = '#2E3440'
-gray = '#434C5E'
-white='#D8DEE9'
-red = '#BF616A'
-orange = '#D08770'
-yellow = '#EBCB8B'
-green = '#A3BE8C'
-teal = '#88C0D0'
-blue = '#81A1C1'
-purple = '#B48EAD'
-dark_blue = '#5E81AC'
+  [palettes.gruvbox_dark]
+  color_bg1 = '#d65d0e' # orange
+  color_bg2 = '#d79921' # yellow
+  color_bg3 = '#689d6a' # aqua
+  color_bg4 = '#458588' # blue
+  color_bg5 = '#665c54' # dark_yellow
+  color_bg6 = '#3c3836' # dark_red
+  color_fg1 = '#fbf1c7' # yellow
+  color_fg2 = '#98971a' # green
+  color_fg3 = '#cc241d' # red
+  color_fg4 = '#b16286' # purple
 
-[palettes.onedark]
-black='#2c323c'
-gray='#828997'
-white ='#abb2bf'
-red='#e06c75'
-orange='#be5046'
-yellow='#e5c07b'
-green='#98c379'
-cyan='#56b6c2'
-blue='#56b6c2'
-purple='#c678dd'
-dark_blue='#61afef'
+  [palettes.nord]
+  color_bg0 = '#2E3440' # black
+  color_bg1 = '#B48EAD' # purple
+  color_bg2 = '#5E81AC' # dark_blue
+  color_bg3 = '#81A1C1' # blue
+  color_bg4 = '#88C0D0' # teal
+  color_bg5 = '#434C5E' # gray
+  color_bg6 = '#D8DEE9' # white
+  color_fg1 = '#ffffff' # white
+  color_fg2 = '#BF616A' # red
+  color_fg3 = '#D08770' # orange
+  color_fg5 = '#EBCB8B' # yellow
+  color_fg4 = '#A3BE8C' # green
+
+  [palettes.onedark]
+  color_bg0 = '#2c323c' # black
+  color_bg1 = '#c678dd' # purple
+  color_bg2 = '#61afef' # dark_blue
+  color_bg3 = '#56b6c2' # blue
+  color_bg4 = '#56b6c2' # cyan
+  color_bg5 = '#828997' # gray
+  color_bg6 = '#98c379' # green
+  #color_fg1 = '#f8fafd' # white
+  color_fg1 = '#ffffff' # white
+  color_fg2 = '#abb2bf' # light gray
+  color_fg3 = '#e06c75' # red
+  color_fg4 = '#be5046' # orange
+  color_fg5 = '#e5c07b' # yellow
