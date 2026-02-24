@@ -15,36 +15,34 @@ config.window_decorations = "TITLE | RESIZE"
 -- BlinkingBar, BlinkingBlock, BlinkingUnderline, SteadyBar, SteadyBlock, SteadyUnderline
 config.default_cursor_style = 'BlinkingBlock'
 
-config.font = wezterm.font "Hack Nerd Font"                 -- good!
---config.font = wezterm.font "CaskaydiaMono Nerd Font"        -- good!
---config.font = wezterm.font "FiraCode Nerd Font Mono"        -- good!
+
+--config.font = wezterm.font "Hack Nerd Font"
+--config.font = wezterm.font "CaskaydiaMono Nerd Font"
+--config.font = wezterm.font "FiraCode Nerd Font Mono"
 --config.font = wezterm.font "FiraCode Nerd Font"
---config.font = wezterm.font "SauceCodePro Nerd Font"         -- good!
---config.font = wezterm.font "Hasklug Nerd Font"              -- good!
+--config.font = wezterm.font "SauceCodePro Nerd Font"
+config.font = wezterm.font "Hasklug Nerd Font"
 --config.font = wezterm.font "DroidSansM Nerd Font"
---config.font = wezterm.font "NotoSansM Nerd Font"            -- good
-
---config.font = wezterm.font "MesloLGM Nerd Font"             -- good, but weird line spacing
---config.font = wezterm.font "CodeNewRoman Nerd Font"         -- good, but small
-
---config.font = wezterm.font "Inconsolata Nerd Font"          -- too small
---config.font = wezterm.font "InconsolataGo Nerd Font"        -- too small
---config.font = wezterm.font "Inconsolata LGC Nerd Font"      -- weird line spacing
---config.font = wezterm.font "Iosevka Nerd Font"              -- too skinny and tall
---config.font = wezterm.font "IosevkaTerm Nerd Font"          -- too skinny
---config.font = wezterm.font "IosevkaTermSlab Nerd Font"      -- too skinny
---config.font = wezterm.font "OpenDyslexic Nerd Font"         -- spaced too far apart
---config.font = wezterm.font "NotoSans Nerd Font"             -- spaced too far apart
-
-
+--config.font = wezterm.font "NotoSansM Nerd Font"
+--config.font = wezterm.font "CodeNewRoman Nerd Font"
+--config.font = wezterm.font "Inconsolata Nerd Font"
+--config.font = wezterm.font "InconsolataGo Nerd Font"
+--config.font = wezterm.font "Inconsolata LGC Nerd Font"
+--config.font = wezterm.font "Iosevka Nerd Font"
+--config.font = wezterm.font "IosevkaTerm Nerd Font"
+--config.font = wezterm.font "IosevkaTermSlab Nerd Font"
 --config.font = wezterm.font "MesloLGL Nerd Font"
+--config.font = wezterm.font "MesloLGM Nerd Font"
+--config.font = wezterm.font "MesloLGS Nerd Font"
 --config.font = wezterm.font "MesloLGLDZ Nerd Font"
 --config.font = wezterm.font "MesloLGMDZ Nerd Font"
---config.font = wezterm.font "MesloLGS Nerd Font"
 --config.font = wezterm.font "MesloLGSDZ Nerd Font"
+--config.font = wezterm.font "NotoSans Nerd Font"
 --config.font = wezterm.font "NotoSerif Nerd Font"
+--config.font = wezterm.font "OpenDyslexic Nerd Font"
 --config.font = wezterm.font "OpenDyslexicAlt Nerd Font"
 --config.font = wezterm.font "OpenDyslexicM Nerd Font"
+
 
 
 -- Color Scheme
