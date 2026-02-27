@@ -9,6 +9,9 @@ vim.cmd([[
   set shiftwidth=2
 ]])
 
+-- Show whitespace
+vim.cmd("set list listchars=tab:\\ \\ ,trail:·")
+
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct
 -- This is also a good place to setup other settings (vim.opt)
