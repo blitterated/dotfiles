@@ -1,3 +1,7 @@
+-- Leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- Show line numbers by default
 vim.cmd("set number")
 
@@ -12,14 +16,12 @@ vim.cmd([[
 -- Show whitespace
 vim.cmd("set list listchars=tab:\\ \\ ,trail:·")
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Turn on cursorline
 vim.cmd("set cursorline")
+
+-- Set cursorline number colors in left gutter
+vim.api.nvim_set_hl(0, 'LineNr',       { fg='#A1BEEF', bold=true })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#DEEAFF', bold=true })
 
 -- Turn off search highlighting with Enter key
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
