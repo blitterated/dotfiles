@@ -6,6 +6,9 @@ vim.g.maplocalleader = "\\"
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Disable line wrapping
+vim.o.wrap = false
+
 -- Configure Tabs
 vim.cmd([[
   set expandtab
