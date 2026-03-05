@@ -35,3 +35,6 @@ vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 -- Prevent gutter from shifting buffer to right with LSP errors and warnings.
 vim.o.signcolumn = "yes"
+
+-- Set borders for all floating windows, e.g. hover (Ctrl-w d by default).
+vim.o.winborder = 'rounded'
