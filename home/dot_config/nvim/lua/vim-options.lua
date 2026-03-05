@@ -29,3 +29,6 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#DEEAFF', bold=true })
 
 -- Turn off search highlighting with Enter key
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
+
+-- Format code using LSP
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
