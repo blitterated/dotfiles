@@ -2,8 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Show line numbers by default
-vim.cmd("set number")
+-- Show line numbers
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- Configure Tabs
 vim.cmd([[
