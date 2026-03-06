@@ -1,0 +1,28 @@
+# This is `bat`s configuration file. Each line either contains a comment or
+# a command-line option that you want to pass to `bat` by default. You can
+# run `bat --help` to get a list of all possible configuration options.
+
+# Highlighting theme
+# List available themes: `bat --list-themes`
+--theme="Nord"
+
+# Syntax mappings
+--map-syntax "*.ino:C++"
+--map-syntax ".ignore:Git Ignore"
+
+# Style
+#
+# default:         enables recommended style components (default).
+# full:            enables all available components.
+# auto:            same as 'default', unless the output is piped.
+# plain:           disables all available components.
+# changes:         show Git modification markers.
+# header:          alias for 'header-filename'.
+# header-filename: show filenames before the content.
+# header-filesize: show file sizes before the content.
+# grid:            vertical/horizontal lines to separate side bar
+#                  and the header from the content.
+# rule:            horizontal lines to delimit files.
+# numbers:         show line numbers in the side bar.
+# snip:            draw separation lines between distinct line ranges.
+--style="header-filename,header-filesize,grid,numbers"
