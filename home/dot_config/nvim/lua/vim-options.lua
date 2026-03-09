@@ -23,12 +23,6 @@ vim.cmd("set list listchars=tab:\\ \\ ,trail:·")
 -- Turn on cursorline
 vim.cmd("set cursorline")
 
--- Set  number colors in left gutter
-vim.api.nvim_set_hl(0, 'LineNrAbove',  { fg='#A1BEEF', bold=true })
-vim.api.nvim_set_hl(0, 'LineNr',       { fg='#A1BEEF', bold=true })
-vim.api.nvim_set_hl(0, 'LineNrBelow',  { fg='#A1BEEF', bold=true })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#DEEAFF', bold=true })
-
 -- Turn off search highlighting with Enter key
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
 

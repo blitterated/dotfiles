@@ -6,4 +6,4 @@ require("vim-options")
 require("config.lazy")
 
 -- Set colors for line numbers in left gutter.
-require("linenumber-colors")
+require("post-theme-linenumber-colors")
