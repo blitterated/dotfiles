@@ -44,9 +44,9 @@ alias czcdw='cd $(chezmoi source-path)/../../chezmoi_wiki'
 
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
-alias t='eza --tree --all --ignore-glob ".git"'
-alias tree='eza --tree --all --long --ignore-glob ".git"'
-alias treeb='tree --color=always | bat'
+alias t='eza --tree --all --ignore-glob ".git|.venv"'
+alias tree='eza --tree --all --long --ignore-glob ".git|.venv"'
+alias tb='eza --tree --all --color=always --ignore-glob ".git|.venv"'
 
 
 # git
