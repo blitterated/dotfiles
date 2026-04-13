@@ -1,9 +1,16 @@
-return {
-  "catppuccin/nvim",
-  lazy = false,
-  name = "catppuccin",
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme "catppuccin"
-  end
-}
+vim.pack.add({
+  {
+    src = "https://github.com/catppuccin/nvim",
+    name = "Catppuccin"
+  }
+})
+
+-- Color Schemes
+-- --------------------
+-- catppuccin-nvim
+-- catppuccin-latte
+-- catppuccin-frappe
+-- catppuccin-macchiato
+-- catppuccin-mocha
+
+vim.cmd.colorscheme("catppuccin-macchiato")
