@@ -1,10 +1,14 @@
-return {
-  "nvim-lualine/lualine.nvim",
-  config = function()
-    require("lualine").setup({
-      options = {
-        theme = "everforest"
-      }
-    })
-  end
-}
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-lualine/lualine.nvim",
+    name = "lualine.nvim"
+  },
+  -- dependencies
+  "https://github.com/nvim-tree/nvim-web-devicons"
+})
+
+require("lualine").setup({
+  options = {
+    theme = "everforest"
+  }
+})
