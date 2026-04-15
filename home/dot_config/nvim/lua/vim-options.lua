@@ -9,20 +9,20 @@ vim.o.relativenumber = true
 -- Disable line wrapping
 vim.o.wrap = false
 
--- Configure Tabs
-vim.cmd([[
-  set expandtab
-  set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
-]])
+-- Configure Indentation
+vim.o.autoindent  = true -- Copy indent from current line
+vim.o.expandtab   = true -- Use spaces instead of tabs
+vim.o.smartindent = true -- Smart auto-indenting
+vim.o.softtabstop = 2    -- Soft tab stop
+vim.o.shiftwidth  = 2    -- Indent width
+vim.o.tabstop     = 2    -- Tab width
 
 -- Show whitespace
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- Turn on cursorline
-vim.cmd("set cursorline")
+-- Turn on cursorline to highlight current line
+vim.o.cursorline = true
 
 -- Prevent gutter from shifting buffer to right with LSP errors and warnings.
 vim.o.signcolumn = "yes"
