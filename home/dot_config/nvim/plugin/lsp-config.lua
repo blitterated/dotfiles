@@ -19,3 +19,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+-- Diagnostics
+vim.diagnostic.config({
+  --virtual_lines = true -- Show all virtual lines
+  virtual_lines = { current_line = true }, -- Only show virtual line for current cursor line
+})
