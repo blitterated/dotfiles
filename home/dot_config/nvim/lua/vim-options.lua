@@ -29,6 +29,9 @@ vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
 -- Format code using LSP
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
+-- Toggle relative and absolute line numbers
+vim.keymap.set('n', '<leader>rn', ":setlocal relativenumber!<Enter>/<BS>")
+
 -- Prevent gutter from shifting buffer to right with LSP errors and warnings.
 vim.o.signcolumn = "yes"
 
