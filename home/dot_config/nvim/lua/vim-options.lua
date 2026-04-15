@@ -33,6 +33,10 @@ vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 -- Toggle relative and absolute line numbers
 vim.keymap.set('n', '<leader>rn', ":setlocal relativenumber!<Enter>/<BS>")
 
+-- Toggle visible whitespace characters
+--vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Toggle whitespace' })
+--vim.keymap.set('n', '<leader>ws', 'lua vim.opt.list = not vim.opt.list[1]', { desc = 'Toggle whitespace' })
+
 -- Prevent gutter from shifting buffer to right with LSP errors and warnings.
 vim.o.signcolumn = "yes"
 
