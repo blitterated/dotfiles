@@ -24,6 +24,15 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Turn on cursorline
 vim.cmd("set cursorline")
 
+-- Prevent gutter from shifting buffer to right with LSP errors and warnings.
+vim.o.signcolumn = "yes"
+
+-- Set borders for all floating windows, e.g. hover (Ctrl-w d by default).
+vim.o.winborder = 'rounded'
+
+
+-- Key Mappings
+-- -----------------------------------------------------------------------------
 -- Turn off search highlighting with Enter key
 vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
 
@@ -37,8 +46,3 @@ vim.keymap.set('n', '<leader>rn', ":setlocal relativenumber!<Enter>/<BS>")
 --vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Toggle whitespace' })
 --vim.keymap.set('n', '<leader>ws', 'lua vim.opt.list = not vim.opt.list[1]', { desc = 'Toggle whitespace' })
 
--- Prevent gutter from shifting buffer to right with LSP errors and warnings.
-vim.o.signcolumn = "yes"
-
--- Set borders for all floating windows, e.g. hover (Ctrl-w d by default).
-vim.o.winborder = 'rounded'
