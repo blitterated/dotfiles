@@ -90,6 +90,7 @@ return {
   settings = {
     Lua = {
       codeLens = { enable = true },
+      diagnostics = { globals = {'vim'} }, -- Removes "Undefined global 'vim'" warnings
       hint = { enable = true, semicolon = 'Disable' },
       runtime = { version = 'LuaJIT' },
     },
