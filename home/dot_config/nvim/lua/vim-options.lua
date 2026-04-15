@@ -18,7 +18,8 @@ vim.cmd([[
 ]])
 
 -- Show whitespace
-vim.cmd("set list listchars=tab:\\ \\ ,trail:·")
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Turn on cursorline
 vim.cmd("set cursorline")
