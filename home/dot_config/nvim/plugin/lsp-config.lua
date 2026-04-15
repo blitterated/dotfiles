@@ -5,6 +5,7 @@ vim.lsp.enable({ "lua_ls" })
 
 
 -- Enable autocompletion if the LSP supports it
+-- See: https://github.com/mplusp/minimal-nvim-0.11-lsp-setup/blob/main/lua/config/lsp.lua
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -21,6 +22,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Diagnostics, display virtual lines for lines with Warnings or Errors
+-- See: https://github.com/mplusp/minimal-nvim-0.11-lsp-setup/blob/main/lua/config/lsp.lua
 vim.diagnostic.config({
   --virtual_lines = true -- Show all virtual lines
   virtual_lines = { current_line = true }, -- Only show virtual line for current cursor line
