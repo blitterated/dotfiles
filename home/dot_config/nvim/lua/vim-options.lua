@@ -46,3 +46,8 @@ vim.keymap.set('n', '<leader>rn', ":setlocal relativenumber!<Enter>/<BS>")
 --vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Toggle whitespace' })
 --vim.keymap.set('n', '<leader>ws', 'lua vim.opt.list = not vim.opt.list[1]', { desc = 'Toggle whitespace' })
 
+-- Quickly source current file / execute Lua code
+vim.keymap.set('n', '<leader>xx', '<Cmd>source %<CR>', { desc = 'Source current file' })
+vim.keymap.set('n', '<leader>x', '<Cmd>:.lua<CR>', { desc = 'Lua: execute current line' })
+vim.keymap.set('v', '<leader>x', '<Cmd>:lua<CR>', { desc = 'Lua: execute current selection' })
+
