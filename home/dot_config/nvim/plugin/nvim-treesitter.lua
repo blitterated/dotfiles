@@ -1,10 +1,10 @@
 vim.pack.add({{
-  src = "https://github.com/nvim-treesitter/nvim-treesitter/",
-  name = "nvim-treesitter",
-  version = "main",
+  src = 'https://github.com/nvim-treesitter/nvim-treesitter/',
+  name = 'nvim-treesitter',
+  version = 'main',
 }})
 
-local ts_config = require("nvim-treesitter")
+local ts_config = require('nvim-treesitter')
 
 ts_config.setup({
   highlight = {
@@ -17,33 +17,33 @@ ts_config.setup({
 -- Install parsers and queries.
 -- It's a no-op if they're already installed.
 ts_config.install({
-  --"awk",
-  "bash",
-  --"c",
-  "c_sharp",
-  --"forth",
-  --"fsharp",
-  --"go",
-  "html",
-  --"java",
-  "javascript",
-  "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  --"powershell",
-  "python",
-  "ruby",
-  "sql",
-  --"supercollider",
-  --"swift",
-  --"tmux",
-  --"typescript",
-  "vim"
+  --'awk',
+  'bash',
+  --'c',
+  'c_sharp',
+  --'forth',
+  --'fsharp',
+  --'go',
+  'html',
+  --'java',
+  'javascript',
+  'json',
+  'lua',
+  'markdown',
+  'markdown_inline',
+  --'powershell',
+  'python',
+  'ruby',
+  'sql',
+  --'supercollider',
+  --'swift',
+  --'tmux',
+  --'typescript',
+  'vim'
 })
 
 
--- Filetype detection is enabled by default. Sinking this event use to require running ":filetype on."
+-- Filetype detection is enabled by default. Sinking this event use to require running ':filetype on.'
 --   :h nvim-defaults 
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
     -- Enable treesitter-based indentation
     --   See: https://www.qu8n.com/posts/treesitter-migration-guide-for-nvim-0-12
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    vim.bo.indentexpr = 'v:lua.require"nvim-treesitter".indentexpr()'
 
     -- Enable Treesitter-based folding
     --vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
