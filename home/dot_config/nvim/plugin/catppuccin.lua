@@ -1,7 +1,7 @@
 vim.pack.add({
   {
-    src = "https://github.com/catppuccin/nvim",
-    name = "Catppuccin"
+    src = 'https://github.com/catppuccin/nvim',
+    name = 'Catppuccin'
   }
 })
 
@@ -13,4 +13,4 @@ vim.pack.add({
 -- catppuccin-macchiato
 -- catppuccin-mocha
 
-vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme('catppuccin-macchiato')
