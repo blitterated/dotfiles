@@ -1,6 +1,6 @@
 -- Leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Show line numbers
 vim.o.number = true
@@ -25,7 +25,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.cursorline = true
 
 -- Prevent gutter from shifting buffer to right with LSP errors and warnings.
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = 'yes'
 
 -- Set borders for all floating windows, e.g. hover (Ctrl-w d by default).
 vim.o.winborder = 'rounded'
@@ -34,13 +34,13 @@ vim.o.winborder = 'rounded'
 -- Key Mappings
 -- -----------------------------------------------------------------------------
 -- Turn off search highlighting with Enter key
-vim.keymap.set("n", "<Enter>", ":nohlsearch<Enter>/<BS>")
+vim.keymap.set('n', '<Enter>', ':nohlsearch<Enter>/<BS>')
 
 -- Format code using LSP
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 -- Toggle relative and absolute line numbers
-vim.keymap.set('n', '<leader>rn', ":setlocal relativenumber!<Enter>/<BS>")
+vim.keymap.set('n', '<leader>rn', ':setlocal relativenumber!<Enter>/<BS>')
 
 -- Toggle visible whitespace characters
 --vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Toggle whitespace' })
