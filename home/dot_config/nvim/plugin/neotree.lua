@@ -10,5 +10,5 @@ vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
 })
 
-vim.keymap.set('n', '<C-n>', ':Neotree toggle left<CR>/<BS>', {})
-vim.keymap.set('n', '<leader>bf', ':Neotree buffers reveal float<CR>/<BS>', {})
+vim.keymap.set('n', '<C-n>', ':Neotree toggle left<CR>/<BS>', {}, { desc = 'Neotree: toggle on left' })
+vim.keymap.set('n', '<leader>bf', ':Neotree buffers reveal float<CR>/<BS>', {}, { desc = 'Neotree: show floating window' })

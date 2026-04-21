@@ -34,20 +34,17 @@ vim.o.winborder = 'rounded'
 -- Key Mappings
 -- -----------------------------------------------------------------------------
 -- Turn off search highlighting with Enter key
-vim.keymap.set('n', '<Enter>', ':nohlsearch<Enter>/<BS>')
-
--- Format code using LSP
-vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<Enter>', ':nohlsearch<Enter>/<BS>', { desc = 'Neovim: clear search highlights' })
 
 -- Toggle relative and absolute line numbers
-vim.keymap.set('n', '<leader>rn', ':setlocal relativenumber!<Enter>/<BS>')
+vim.keymap.set('n', '<leader>rn', ':setlocal relativenumber!<Enter>/<BS>', { desc = 'Neovim: toggle relative/absolute line numbers' })
 
 -- Toggle visible whitespace characters
---vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Toggle whitespace' })
---vim.keymap.set('n', '<leader>ws', 'lua vim.opt.list = not vim.opt.list[1]', { desc = 'Toggle whitespace' })
+--vim.keymap.set('n', '<leader>ws', ':listchars!<Enter>/<BS>', { desc = 'Neovim: toggle whitespace' })
+--vim.keymap.set('n', '<leader>ws', 'lua vim.opt.list = not vim.opt.list[1]', { desc = 'Neovim: toggle whitespace' })
 
 -- Quickly source current file / execute Lua code
-vim.keymap.set('n', '<leader>xx', '<Cmd>source %<CR>', { desc = 'Source current file' })
+vim.keymap.set('n', '<leader>xx', '<Cmd>source %<CR>', { desc = 'Neovim: source current file' })
 vim.keymap.set('n', '<leader>x', '<Cmd>:.lua<CR>', { desc = 'Lua: execute current line' })
 vim.keymap.set('v', '<leader>x', '<Cmd>:lua<CR>', { desc = 'Lua: execute current selection' })
 
