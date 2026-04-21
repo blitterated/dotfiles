@@ -1,6 +1,8 @@
 
--- 'lua_ls' is from the filename: lsp/lua_ls.lua
-vim.lsp.enable({ 'lua_ls' })
+vim.lsp.enable({ 'lua_ls' }) -- 'lua_ls' is from the filename: lsp/lua_ls.lua
+
+
+-- General LSP Configuration
 
 -- Enable autocompletion if the LSP supports it
 -- See: https://github.com/mplusp/minimal-nvim-0.11-lsp-setup/blob/main/lua/config/lsp.lua
