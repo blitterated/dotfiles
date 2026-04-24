@@ -1,5 +1,8 @@
-
-vim.lsp.enable({ 'lua_ls' }) -- 'lua_ls' is from the filename: lsp/lua_ls.lua
+-- Enable installed LSPs
+--   Arguments to `vim.lsp.enable` come from the LSP config filenames
+--   found in $XDG_CONFIG_DIR/nivm/lsp/lua_ls.lua.
+vim.lsp.enable({ 'lua_ls' })
+vim.lsp.enable({ 'bashls' })
 
 
 -- General LSP Configuration
@@ -27,7 +30,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Diagnostics, display virtual lines for lines with Warnings or Errors
+-- Diagnostics, display virtual lines for Warnings or Errors
 -- See: https://github.com/mplusp/minimal-nvim-0.11-lsp-setup/blob/main/lua/config/lsp.lua
 vim.diagnostic.config({
   --virtual_lines = true -- Show all virtual lines
