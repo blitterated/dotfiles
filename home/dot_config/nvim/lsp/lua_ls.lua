@@ -81,8 +81,19 @@ local root_markers2 = {
 
 ---@type vim.lsp.Config
 return {
-  -- lua_ls is installed and managed by mise. Use mise to start the server.
+  -- lua_ls is installed and managed by mise.
+  -- Use mise to start the server.
+  --
+  --   mise x lua_ls -c lua-language-server
+  --
+  --   Arguments:
+  --     mise                 - `mise` invocation.
+  --     x                    - `mise` shorthand for the `exec` sub-command.
+  --     lua_ls               - lua-language-server tool_alias as specified in mise's global config.toml
+  --     --                   - Expects command string to follow. a.k.a. --command [-c].
+  --     lua-language-server  - The command string to be run
   cmd = { 'mise', 'x', 'lua_ls', '--', 'lua-language-server' },
+
   filetypes = { 'lua' },
   root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
     or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { '.git' }),
