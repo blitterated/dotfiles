@@ -17,12 +17,13 @@ return {
   --   mise x node -- bash-language-server start
   --
   --   Arguments:
-  --     mise                         - `mise` invocation.
-  --     x                            - `mise` shorthand for the `exec` sub-command.
-  --     node                         - bash-language-server is a node package/executable.
-  --     --                           - Expects command string to follow. a.k.a. --command [-c].
-  --     bash-language-server start   - The command string to be run
-  cmd = { 'mise', 'x', 'node', '--', 'bash-language-server start' },
+  --     mise                   - `mise` invocation.
+  --     x                      - `mise` shorthand for the `exec` sub-command.
+  --     node                   - bash-language-server is a node package/executable.
+  --     --                     - Expects command string to follow. a.k.a. --command [-c].
+  --     bash-language-server   - bash LSP invocation.
+  --     start                  - The bash-language-server start up command.
+  cmd = { 'mise', 'x', 'node', '--', 'bash-language-server', 'start' },
 
   ---@type lspconfig.settings.bashls
   settings = {
