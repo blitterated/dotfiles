@@ -1,5 +1,8 @@
 [tools]
 "aqua:LuaLS/lua-language-server" = "latest"
+"aqua:koalaman/shellcheck" = "latest"
+"go:mvdan.cc/sh/v3/cmd/shfmt" = "latest"
+node = "24.15.0"
 
 [tool_alias]
 lua_ls = "aqua:LuaLS/lua-language-server"
