@@ -11,7 +11,7 @@
 
 ---@type vim.lsp.Config
 return {
-  -- lua_ls is installed and managed by mise.
+  -- bashls is installed by npm and managed by mise.
   -- Use mise to start the server.
   --
   --   mise x node -- bash-language-server start
