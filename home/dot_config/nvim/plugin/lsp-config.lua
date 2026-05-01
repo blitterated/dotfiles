@@ -1,6 +1,6 @@
 -- Enable installed LSPs
 --   Arguments to `vim.lsp.enable` come from the LSP config filenames
---   found in $XDG_CONFIG_DIR/nivm/lsp/lua_ls.lua.
+--   found in $XDG_CONFIG_HOME/nivm/lsp/lua_ls.lua.
 vim.lsp.enable({ 'lua_ls' })
 vim.lsp.enable({ 'bashls' })
 vim.lsp.enable({ 'awk_ls' })
