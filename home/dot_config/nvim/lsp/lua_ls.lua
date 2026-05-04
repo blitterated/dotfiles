@@ -84,7 +84,7 @@ return {
   -- lua_ls is installed and managed by mise.
   -- Use mise to start the server.
   --
-  --   mise x lua_ls -c lua-language-server
+  --   mise x lua_ls -- lua-language-server
   --
   --   Arguments:
   --     mise                 - `mise` invocation.
