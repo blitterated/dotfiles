@@ -1,3 +1,2 @@
--- Make sure to set up vim options before loading
--- lazy.nvim so that mappings are correct.
+-- Set up vim options and key mappings
 require("vim-options")
