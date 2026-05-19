@@ -9,3 +9,5 @@ Windows/**
 AppData/
 *.ps1
 {{- end }}
+
+**/*.DISABLED
