@@ -26,7 +26,7 @@ export BROWSER="brave"
 
 alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
-
+alias ppath='echo $PATH | tr ":" "\n"'
 
 # chezmoi
 alias cz='chezmoi --verbose'
