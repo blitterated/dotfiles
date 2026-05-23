@@ -1,0 +1,18 @@
+# git configuration for the delta command
+#
+# References:
+#   * https://dandavison.github.io/delta/get-started.html
+#   * https://dandavison.github.io/delta/configuration.html
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or `light = true`, or omit for auto-detection
+
+[merge]
+    conflictStyle = zdiff3
