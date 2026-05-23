@@ -25,12 +25,7 @@ return {
   --     start                  - The bash-language-server start up command.
   cmd = { 'mise', 'x', 'node', '--', 'bash-language-server', 'start' },
 
-  -- [ERROR][2026-05-19 10:14:54] ...lar/neovim/0.12.2/share/nvim/runtime/lua/vim/lsp/log.lua:151
-  -- rpc mise stderr
-  -- mise ERROR "bash-language-server" couldn't exec process:
-  --     No such file or directory
-  -- mise ERROR Run with --verbose or MISE_VERBOSE=1 for more information\n"
-  cmd_env = { MISE_VERBOSE = "1" },
+  --cmd_env = { MISE_VERBOSE = "1" },
 
   ---@type lspconfig.settings.bashls
   settings = {
