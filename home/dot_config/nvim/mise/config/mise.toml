@@ -1,3 +1,6 @@
 [tools]
 "aqua:LuaLS/lua-language-server" = "latest"
 node = "24.16.0"
+
+[tool_alias]
+lua_ls = "aqua:LuaLS/lua-language-server"
