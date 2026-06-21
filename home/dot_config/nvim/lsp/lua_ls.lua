@@ -79,6 +79,9 @@ local root_markers2 = {
   'selene.yml',
 }
 
+local neovim_mise_config_root = vim.fn.stdpath('config') .. '/mise'
+local neovim_mise_tool_install_dir = vim.fn.stdpath('data') .. '/mise'
+
 ---@type vim.lsp.Config
 return {
   -- lua_ls is installed and managed by mise.
@@ -93,6 +96,13 @@ return {
   --     --                   - Expects command string to follow. a.k.a. --command [-c].
   --     lua-language-server  - The command string to be run
   cmd = { 'mise', 'x', 'lua_ls', '--', 'lua-language-server' },
+  cmd_env = {
+    --MISE_VERBOSE = "1",
+    MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,
+    MISE_GLOBAL_CONFIG_FILE=neovim_mise_config_root .. "/config/mise.toml",
+    MISE_CEILING_PATHS=neovim_mise_config_root,
+    MISE_INSTALLS_DIR=neovim_mise_tool_install_dir
+  },
 
   filetypes = { 'lua' },
   root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
