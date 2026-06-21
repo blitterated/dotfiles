@@ -6,7 +6,7 @@
 #  API Tokens                          #
 ########################################
 
-export HOMEBREW_GITHUB_API_TOKEN="{{ gopass "apis/HOMEBREW_GITHUB_API_TOKEN" }}"
+export HOMEBREW_GITHUB_API_TOKEN="{{ gopass "API/HOMEBREW_GITHUB_API_TOKEN" }}"
 
 
 ########################################
