@@ -1,9 +1,17 @@
 [user]
-        email = pete@simpli.fi
-        name = Pete Young
+    email = pete@simpli.fi
+    name = Pete Young
 
 [init]
-        defaultBranch = main
+    defaultBranch = main
+
+[log]
+    date = short
+
+[format]
+    # Try it out:
+    #     git log --date=short --pretty=format:"%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"
+    pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
 
 [include]
     # The delta diff tool
