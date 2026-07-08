@@ -57,6 +57,7 @@ alias gdt='git difftool'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias grv='git remote -v'
 
 
 ########################################
