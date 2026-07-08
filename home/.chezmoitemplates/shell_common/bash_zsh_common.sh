@@ -28,6 +28,7 @@ alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 alias ppath='echo $PATH | tr ":" "\n"'
 
+
 # chezmoi
 alias cz='chezmoi --verbose'
 # The czcd alias avoids the subshell that `chezmoi cd` creates.
@@ -40,6 +41,10 @@ alias cz='chezmoi --verbose'
 alias czcd='cd $(chezmoi source-path)/..'
 # I also keep my chezmoi github wiki repo next to my chezmoi repo.
 alias czcdw='cd $(chezmoi source-path)/../../chezmoi_wiki'
+
+
+# mise en place
+alias ma='eval "$(mise activate)"'
 
 
 # eza: the ls and exa replacement
