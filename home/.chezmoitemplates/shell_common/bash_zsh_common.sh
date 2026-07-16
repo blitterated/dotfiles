@@ -31,6 +31,7 @@ alias ppath='echo $PATH | tr ":" "\n"'
 
 # chezmoi
 alias cz='chezmoi --verbose'
+alias cza='chezmoi apply'
 # The czcd alias avoids the subshell that `chezmoi cd` creates.
 # The `..` is because I use a `` file. This allows me to use a sub
 # folder of my chezmoi git repo as the source directory instead of the
