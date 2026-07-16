@@ -78,6 +78,13 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 function path () { echo "${PATH}" | tr ':' '\n'; }
 
 
+# Adds personal GitHub account to local config
+function ghblit () {
+  git config user.name "blitterated"
+  git config user.email "blitterated@proton.me"
+}
+
+
 # Make path additions idempotent to sourcing rc files
 pathmunge () {
   if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
