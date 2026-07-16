@@ -51,18 +51,18 @@ alias ma='eval "$(mise activate)"'
 alias ls='eza --icons -a --group-directories-first'
 alias t='eza --tree --all --ignore-glob ".git|.venv"'
 alias tree='eza --tree --all --long --ignore-glob ".git|.venv"'
-alias tb='eza --tree --all --color=always --ignore-glob ".git|.venv"'
 
 
 # git
-alias gg='git status -s'
-alias gdiff='git diff --no-ext-diff'
-alias gwdiff='git diff --no-ext-diff --word-diff=color'
-alias gdt='git difftool'
-alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gcl='git clone'
+alias gdiff='git diff --no-ext-diff'
+alias gdt='git difftool'
+alias gg='git status -s'
 alias grv='git remote -v'
+alias gs='git status'
+alias gwdiff='git diff --no-ext-diff --word-diff=color'
 
 
 ########################################
