@@ -98,6 +98,52 @@ pathmunge () {
 }
 
 
+nvmise () {
+  case $1 in
+    help)    # Display a help synopsis, then exit.
+      cat <<-'HELPDOC'
+			nvmise
+
+			Emit eval-able bash script for setting up or tearing down
+			environment variables that change mise''s global config
+			location for an isolated mise config for Neovim.
+
+			examples: nvmise help
+			          eval "$(nvmise setup)"
+			          eval "$(nvmise teardown)"
+
+			usage: nvmise [help] [su|setup] [td|teardown]
+
+			help          Displays this help text.
+			su|setup      Environmental set up script for an isolated Neovim mise config.
+			td|teardown   Environmental teardown script for an isolated Neovim mise config.
+			HELPDOC
+      ;;
+    su|setup)       # Set Neovim/mise environment variables.
+      cat <<-'SETUP'
+			nvim_config_root="$(nvim -l <( echo "print(vim.fn.stdpath('config'))" ) 2>&1)"
+			nvim_data_dir="$(nvim -l <( echo "print(vim.fn.stdpath('data'))" ) 2>&1)"
+			export MISE_GLOBAL_CONFIG_ROOT="${nvim_config_root}/mise"
+			export MISE_GLOBAL_CONFIG_FILE="${nvim_config_root}/mise/config/mise.toml"
+			export MISE_CEILING_PATHS="${nvim_config_root}/mise"
+			export MISE_INSTALLS_DIR="${nvim_data_dir}/mise"
+			SETUP
+      ;;
+    td|teardown)    # Unset Neovim/mise environment variables.
+      cat <<-'TEARDOWN'
+			unset MISE_GLOBAL_CONFIG_ROOT
+			unset MISE_GLOBAL_CONFIG_FILE
+			unset MISE_CEILING_PATHS
+			unset MISE_INSTALLS_DIR
+			TEARDOWN
+      ;;
+    *)              # Any other arguments are incorrect.
+      printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+      ;;
+  esac
+}
+
+
 # Display all color combos
 function showColors {
  for STYLE in 0 1 2 3 4 5 6 7; do
