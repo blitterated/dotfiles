@@ -99,7 +99,10 @@ pathmunge () {
 
 
 nvmise () {
-  case $1 in
+  # Default to "setup" if no sub-command given.
+  local command="${1:-setup}"
+
+  case $command in
     help)    # Display a help synopsis, then exit.
       cat <<-'HELPDOC'
 			nvmise
