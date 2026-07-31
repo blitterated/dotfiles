@@ -7,6 +7,9 @@
 --- npm install -g awk-language-server
 --- ```
 
+local neovim_mise_config_root = vim.fn.stdpath('config') .. '/mise'
+local neovim_mise_tool_install_dir = vim.fn.stdpath('data') .. '/mise'
+
 ---@type vim.lsp.Config
 return {
   -- awk_ls is installed by npm and managed by mise.
@@ -21,5 +24,12 @@ return {
   --     --                     - Expects command string to follow. a.k.a. --command [-c].
   --     awk-language-server    - awk LSP invocation.
   cmd = { 'mise', 'x', 'node', '--', 'awk-language-server' },
+  cmd_env = {
+    --MISE_VERBOSE = "1",
+    MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,
+    MISE_GLOBAL_CONFIG_FILE=neovim_mise_config_root .. "/config/mise.toml",
+    MISE_CEILING_PATHS=neovim_mise_config_root,
+    MISE_INSTALLS_DIR=neovim_mise_tool_install_dir
+  },
   filetypes = { 'awk' },
 }
