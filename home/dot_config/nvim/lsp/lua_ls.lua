@@ -92,7 +92,7 @@ return {
   --   Arguments:
   --     mise                 - `mise` invocation.
   --     x                    - `mise` shorthand for the `exec` sub-command.
-  --     lua_ls               - lua-language-server tool_alias as specified in mise's global config.toml
+  --     lua_ls               - lua-language-server tool_alias as specified in the Neovim mise.toml.
   --     --                   - Expects command string to follow. a.k.a. --command [-c].
   --     lua-language-server  - The command string to be run
   cmd = { 'mise', 'x', 'lua_ls', '--', 'lua-language-server' },
