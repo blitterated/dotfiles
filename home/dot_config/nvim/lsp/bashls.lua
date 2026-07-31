@@ -22,11 +22,11 @@ return {
   --   Arguments:
   --     mise                   - `mise` invocation.
   --     x                      - `mise` shorthand for the `exec` sub-command.
-  --     node                   - bash-language-server is a node package/executable.
+  --     bashls                 - bash-language-server tool_alias as specified in the Neovim mise.toml.
   --     --                     - Expects command string to follow. a.k.a. --command [-c].
   --     bash-language-server   - bash LSP invocation.
   --     start                  - The bash-language-server start up command.
-  cmd = { 'mise', 'x', 'node', '--', 'bash-language-server', 'start' },
+  cmd = { 'mise', 'x', 'bashls', '--', 'bash-language-server', 'start' },
   cmd_env = {
     --MISE_VERBOSE = "1",
     MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,
