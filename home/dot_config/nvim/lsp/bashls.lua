@@ -9,6 +9,9 @@
 ---
 --- Language server for bash, written using tree sitter in typescript.
 
+local neovim_mise_config_root = vim.fn.stdpath('config') .. '/mise'
+local neovim_mise_tool_install_dir = vim.fn.stdpath('data') .. '/mise'
+
 ---@type vim.lsp.Config
 return {
   -- bashls is installed by npm and managed by mise.
@@ -24,8 +27,13 @@ return {
   --     bash-language-server   - bash LSP invocation.
   --     start                  - The bash-language-server start up command.
   cmd = { 'mise', 'x', 'node', '--', 'bash-language-server', 'start' },
-
-  --cmd_env = { MISE_VERBOSE = "1" },
+  cmd_env = {
+    --MISE_VERBOSE = "1",
+    MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,
+    MISE_GLOBAL_CONFIG_FILE=neovim_mise_config_root .. "/config/mise.toml",
+    MISE_CEILING_PATHS=neovim_mise_config_root,
+    MISE_INSTALLS_DIR=neovim_mise_tool_install_dir
+  },
 
   ---@type lspconfig.settings.bashls
   settings = {
