@@ -20,10 +20,10 @@ return {
   --   Arguments:
   --     mise                   - `mise` invocation.
   --     x                      - `mise` shorthand for the `exec` sub-command.
-  --     node                   - awk-language-server is a node package/executable.
+  --     awk_ls                  - awk-language-server tool_alias as specified in the Neovim mise.toml.
   --     --                     - Expects command string to follow. a.k.a. --command [-c].
   --     awk-language-server    - awk LSP invocation.
-  cmd = { 'mise', 'x', 'node', '--', 'awk-language-server' },
+  cmd = { 'mise', 'x', 'awk_ls', '--', 'awk-language-server' },
   cmd_env = {
     --MISE_VERBOSE = "1",
     MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,

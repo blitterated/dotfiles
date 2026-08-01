@@ -4,7 +4,11 @@ node = "24.16.0"
 "aqua:koalaman/shellcheck" = "latest"
 "go:mvdan.cc/sh/v3/cmd/shfmt" = "latest"
 "npm:bash-language-server" = "latest"
+"npm:prettier" = "latest"
+"npm:prettier-plugin-awk" = "latest"
+"npm:awk-language-server" = "latest"
 
 [tool_alias]
 lua_ls = "aqua:LuaLS/lua-language-server"
 bashls = "npm:bash-language-server"
+awk_ls = "npm:awk-language-server"
