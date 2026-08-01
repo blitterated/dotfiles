@@ -3,7 +3,7 @@
 --   found in $XDG_CONFIG_HOME/nivm/lsp/lua_ls.lua.
 vim.lsp.enable({ 'lua_ls' })
 vim.lsp.enable({ 'bashls' })
---vim.lsp.enable({ 'awk_ls' })
+vim.lsp.enable({ 'awk_ls' })
 
 
 -- General LSP Configuration
