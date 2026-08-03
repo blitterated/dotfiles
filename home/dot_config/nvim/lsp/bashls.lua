@@ -1,0 +1,53 @@
+---@brief
+---
+--- https://github.com/bash-lsp/bash-language-server
+---
+--- `bash-language-server` can be installed via `npm`:
+--- ```sh
+--- npm i -g bash-language-server
+--- ```
+---
+--- Language server for bash, written using tree sitter in typescript.
+
+local neovim_mise_config_root = vim.fn.stdpath('config') .. '/mise'
+local neovim_mise_tool_install_dir = vim.fn.stdpath('data') .. '/mise'
+
+---@type vim.lsp.Config
+return {
+  -- bashls is installed by npm and managed by mise.
+  -- Use mise to start the server.
+  --
+  --   mise x node -- bash-language-server start
+  --
+  --   Arguments:
+  --     mise                   - `mise` invocation.
+  --     x                      - `mise` shorthand for the `exec` sub-command.
+  --     bashls                 - bash-language-server tool_alias as specified in the Neovim mise.toml.
+  --     --                     - Expects command string to follow. a.k.a. --command [-c].
+  --     bash-language-server   - bash LSP invocation.
+  --     start                  - The bash-language-server start up command.
+  cmd = { 'mise', 'x', 'bashls', '--', 'bash-language-server', 'start' },
+  cmd_env = {
+    --MISE_VERBOSE = "1",
+    MISE_GLOBAL_CONFIG_ROOT=neovim_mise_config_root,
+    MISE_GLOBAL_CONFIG_FILE=neovim_mise_config_root .. "/config/mise.toml",
+    MISE_CEILING_PATHS=neovim_mise_config_root,
+    MISE_INSTALLS_DIR=neovim_mise_tool_install_dir
+  },
+
+  ---@type lspconfig.settings.bashls
+  settings = {
+    bashIde = {
+      -- Glob pattern for finding and parsing shell script files in the workspace.
+      -- Used by the background analysis features across files.
+
+      -- Prevent recursive scanning which will cause issues when opening a file
+      -- directly in the home directory (e.g. ~/foo.sh).
+      --
+      -- Default upstream pattern is "**/*@(.sh|.inc|.bash|.command)".
+      globPattern = vim.env.GLOB_PATTERN or '*@(.sh|.inc|.bash|.command)',
+    },
+  },
+  filetypes = { 'bash', 'sh' },
+  root_markers = { '.git' },
+}

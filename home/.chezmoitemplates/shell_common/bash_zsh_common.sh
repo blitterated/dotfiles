@@ -26,10 +26,12 @@ export BROWSER="brave"
 
 alias src='cd $HOME/src'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
+alias ppath='echo $PATH | tr ":" "\n"'
 
 
 # chezmoi
 alias cz='chezmoi --verbose'
+alias cza='chezmoi apply'
 # The czcd alias avoids the subshell that `chezmoi cd` creates.
 # The `..` is because I use a `` file. This allows me to use a sub
 # folder of my chezmoi git repo as the source directory instead of the
@@ -42,21 +44,27 @@ alias czcd='cd $(chezmoi source-path)/..'
 alias czcdw='cd $(chezmoi source-path)/../../chezmoi_wiki'
 
 
+# mise en place
+alias ma='eval "$(mise activate)"'
+
+
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
 alias t='eza --tree --all --ignore-glob ".git|.venv"'
 alias tree='eza --tree --all --long --ignore-glob ".git|.venv"'
-alias tb='eza --tree --all --color=always --ignore-glob ".git|.venv"'
 
 
 # git
-alias gg='git status -s'
-alias gdiff='git diff --no-ext-diff'
-alias gwdiff='git diff --no-ext-diff --word-diff=color'
-alias gdt='git difftool'
-alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gcl='git clone'
+alias gclist='git config list'
+alias gdiff='git diff --no-ext-diff'
+alias gdt='git difftool'
+alias gg='git status -s'
+alias grv='git remote -v'
+alias gs='git status'
+alias gwdiff='git diff --no-ext-diff --word-diff=color'
 
 
 ########################################
@@ -71,6 +79,13 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 function path () { echo "${PATH}" | tr ':' '\n'; }
 
 
+# Adds personal GitHub account to local config
+function ghblit () {
+  git config user.name "blitterated"
+  git config user.email "blitterated@proton.me"
+}
+
+
 # Make path additions idempotent to sourcing rc files
 pathmunge () {
   if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
@@ -80,6 +95,55 @@ pathmunge () {
       PATH="$PATH:$1"
     fi
   fi
+}
+
+
+nvmise () {
+  # Default to "setup" if no sub-command given.
+  local command="${1:-setup}"
+
+  case $command in
+    help)    # Display a help synopsis, then exit.
+      cat <<-'HELPDOC'
+			nvmise
+
+			Emit eval-able bash script for setting up or tearing down
+			environment variables that change mise''s global config
+			location for an isolated mise config for Neovim.
+
+			examples: nvmise help
+			          eval "$(nvmise setup)"
+			          eval "$(nvmise teardown)"
+
+			usage: nvmise [help] [su|setup] [td|teardown]
+
+			help          Displays this help text.
+			su|setup      Environmental set up script for an isolated Neovim mise config.
+			td|teardown   Environmental teardown script for an isolated Neovim mise config.
+			HELPDOC
+      ;;
+    su|setup)       # Set Neovim/mise environment variables.
+      cat <<-'SETUP'
+			nvim_config_root="$(nvim -l <( echo "print(vim.fn.stdpath('config'))" ) 2>&1)"
+			nvim_data_dir="$(nvim -l <( echo "print(vim.fn.stdpath('data'))" ) 2>&1)"
+			export MISE_GLOBAL_CONFIG_ROOT="${nvim_config_root}/mise"
+			export MISE_GLOBAL_CONFIG_FILE="${nvim_config_root}/mise/config/mise.toml"
+			export MISE_CEILING_PATHS="${nvim_config_root}/mise"
+			export MISE_INSTALLS_DIR="${nvim_data_dir}/mise"
+			SETUP
+      ;;
+    td|teardown)    # Unset Neovim/mise environment variables.
+      cat <<-'TEARDOWN'
+			unset MISE_GLOBAL_CONFIG_ROOT
+			unset MISE_GLOBAL_CONFIG_FILE
+			unset MISE_CEILING_PATHS
+			unset MISE_INSTALLS_DIR
+			TEARDOWN
+      ;;
+    *)              # Any other arguments are incorrect.
+      printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+      ;;
+  esac
 }
 
 

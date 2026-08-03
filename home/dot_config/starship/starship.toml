@@ -6,18 +6,18 @@
 
 format = """
 [](color_bg1)\
-[󰻃  ](bg:color_bg1 fg:color_fg1)\
+[󰻃  ](fg:color_fg1 bg:color_bg1)\
 $os\
 $shell\
 $username\
-[](bg:color_bg2 fg:color_bg1)\
+[](fg:color_bg1 bg:color_bg2)\
 $directory\
 [](fg:color_bg2 bg:color_bg3)\
 $git_branch\
 $git_status\
 [](fg:color_bg3)\
 $fill\
-[](fg:color_bg4)\
+[](fg:color_bg3)\
 $c\
 $rust\
 $golang\
@@ -27,14 +27,14 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_bg5 bg:color_bg4)\
+[](fg:color_bg4 bg:color_bg3)\
 $docker_context\
 $conda\
-[](fg:color_bg6 bg:color_bg5)\
+[](fg:color_bg6 bg:color_bg4)\
 $jobs\
 $cmd_duration\
 $time\
-[ 󰻃 ](bg:color_bg6 fg:color_bg0)\
+[ 󰻃 ](fg:color_bg0 bg:color_bg6)\
 [ ](fg:color_bg6)\
 $line_break\
 $character"""
@@ -53,6 +53,8 @@ error_symbol = '[](bold fg:color_fg3)' # Font Awesome, Hand Middle Finger, EF
 
 [fill]
 symbol = '󰗣' # Material Design Icons, Chart Bubble, F05E3
+style = "fg:color_bg3"
+# style = "fg:color_bg5 bg:color_bg0"
 
 
 [os]
