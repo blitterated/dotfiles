@@ -74,7 +74,11 @@ function watchsize() {
 #  Homebrew Init                       #
 ########################################
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if type brew &> /dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  errcho "Homebrew not installed. Skipping shell configuration."
+fi
 
 
 ########################################
