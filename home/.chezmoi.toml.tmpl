@@ -1,3 +1,57 @@
+{{/* boolean feature tags */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+
+
+{{/* System hostname */}}
+{{- $hostname := .chezmoi.hostname -}}
+
+{{/* work around unreliable hostname on darwin */}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
+{{- end -}}
+
+
+{{/* Machine specific settings */}}
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "petes-MacBook-Pro" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "SIFI-ENG-GXY5JKJ5J7" -}}
+{{-     $work = true -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
+{{- end -}}
+
+
+{{/* Machine specific user info */}}
+{{- $full_name := "Pete Young" -}}
+{{- $email := "gnuoy.etep@gmail.com" -}}
+
+{{- $git_username := "blitterated" -}}
+{{- $git_email := "blitterated@protonmail.com" -}}
+
+{{- if $work -}}
+{{-   $email = "pete@simpli.fi" -}}
+{{-   $git_username = $full_name -}}
+{{-   $git_email = $email -}}
+{{- end -}}
+
+
+[data]
+    ephemeral = {{ $ephemeral }}
+    work = {{ $work }}
+    headless = {{ $headless }}
+    personal = {{ $personal }}
+    hostname = {{ $hostname | quote }}
+    full_name = {{ $full_name | quote }}
+    email = {{ $email | quote }}
+    git_username = {{ $git_username | quote }}
+    git_email = {{ $git_email | quote }}
+
 [edit]
     command = "nvim"
 
