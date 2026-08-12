@@ -95,16 +95,6 @@ export GEM_HOME="${value#$key}"
 pathmunge "$GEM_HOME/bin"
 
 
-########################################
-#  OrbStack                            #
-########################################
-
-# OrbStack's init script is not idempotent in regards to $PATH
-if ! echo "$PATH" | grep -Eq "orbstack" ; then
-  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-fi
-
-
 # ▄▖▖ ▖▄   ▄ ▄▖▄▖▖▖      ▄▖▄▖▖▖  ▄▖▄▖▖  ▖▖  ▖▄▖▖ ▖  ▄ ▄▖▄▖▖  ▖▄▖▖ ▖
 # ▙▖▛▖▌▌▌  ▙▘▌▌▚ ▙▌  ▟▖  ▗▘▚ ▙▌  ▌ ▌▌▛▖▞▌▛▖▞▌▌▌▛▖▌  ▌▌▌▌▙▘▌▞▖▌▐ ▛▖▌
 # ▙▖▌▝▌▙▘  ▙▘▛▌▄▌▌▌  ▝   ▙▖▄▌▌▌  ▙▖▙▌▌▝ ▌▌▝ ▌▙▌▌▝▌  ▙▘▛▌▌▌▛ ▝▌▟▖▌▝▌
