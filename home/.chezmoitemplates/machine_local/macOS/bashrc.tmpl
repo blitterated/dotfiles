@@ -37,21 +37,7 @@ fi
 #  Flyline                             #
 ########################################
 
-create_flyline_dylib_link () {
-  local flyline_version="$(brew list --versions flyline)"
-  flyline_version="${flyline_version/flyline /}"
-
-  local versioned_flyline_lib="/opt/homebrew/Cellar/flyline/${flyline_version}/lib/bash/flyline"
-  local linked_flyline_lib="/opt/homebrew/lib/flyline.dylib"
-
-  # Create link to flyline.dylib if it doesn't already exist.
-  if [[ -L "${linked_flyline_lib}" ]]; then
-    echo "Flyline is already linked to '$(readlink -f %R "${linked_flyline_lib}")'"
-  else
-    ln -s "${versioned_flyline_lib}" "${linked_flyline_lib}"
-  fi
-}
-
+{{ includeTemplate "machine_local/macOS/relink_flyline.sh" }}
 
 enable -f "/opt/homebrew/lib/flyline.dylib" "flyline"
 
@@ -59,7 +45,7 @@ enable -f "/opt/homebrew/lib/flyline.dylib" "flyline"
 flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
 
 # Right-side real-time clock
-RPS1='\e[01;32m\t\e[0m'
+RPS1='$(pretty-git-prompt) | \e[01;32m\t\e[0m'
 
 # Keybinds
 flyline key bind Ctrl+p always=clearBuffer+prevHistoryEntry
