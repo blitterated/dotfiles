@@ -41,11 +41,33 @@ fi
 
 enable -f "/opt/homebrew/lib/flyline.dylib" "flyline"
 
-# Cursor
-flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
+# Animation: Glowing user name
+readonly BLACK='\e[30m'
+readonly RED='\e[31m'
+readonly GREEN='\e[32m'
+readonly YELLOW='\e[33m'
+readonly BLUE='\e[34m'
+readonly MAGENTA='\e[35m'
+readonly CYAN='\e[36m'
+readonly WHITE='\e[37m'
+
+flyline create-prompt-widget animation --name USER_GLOW --ping-pong --fps 12 \
+  "${YELLOW}\u" \
+  "${RED}\u" \
+  "${MAGENTA}\u" \
+  "${BLUE}\u" \
+  "${CYAN}\u" \
+  "${GREEN}\u" \
+  "${WHITE}\u"
 
 # git status custom widget
 flyline create-prompt-widget custom --name PRETTY_GIT_PROMPT --command 'pretty-git-prompt' --placeholder prev
+
+# Cursor
+flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
+
+# Left-side prompt
+PS1='USER_GLOW: '
 
 # Right-side prompt
 #     git status        | real-time clock
