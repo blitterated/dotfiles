@@ -1,8 +1,4 @@
----
-# default configuration for pretty-git-prompt
-# configuration parameters are descrbed on first occurence only
-#
-# version of configuration file (required), type string
+# version of configuration file
 # right now it needs to be set to '1'
 version: '1'
 # configuration of various values (required), type dict
@@ -20,16 +16,16 @@ values:
       # and bash:
       # https://www.ibm.com/developerworks/linux/library/l-tip-prompt/
       #
+      # 'pretty-git-prompt list-colors' prints the codes for all the colors and
+      # text styles, 'pretty-git-prompt preview --demo' renders this config
+      #
       # this is how the value is formatted in the end:
       #   [pre_format][value][post_format]
       pre_format: ''
       post_format: ''
       # this is used to separate values between each other
+      # if there is no value displayed before or after separator, separator is not displayed either
     - type: separator
-      # condition when to display the separator (required), type string
-      # possible values:
-      #  * always -- display no matter what
-      #  * surrounded -- show only when there is a value displayed before of after separator
       display: surrounded
       pre_format: '│'
       post_format: ''
@@ -42,6 +38,9 @@ values:
       # remote_branch: ''
       # display the remote even if there is no difference with current branch (required), type bool
       display_if_uptodate: true
+      # what <REMOTE_FIRST_LETTER> renders as when there is no remote
+      # counterpart (optional, defaults to '_'), type string
+      # no_remote_placeholder: '_'
       pre_format: ''
       post_format: ''
       # values which can be displayed as part of 'remote_difference'
@@ -52,24 +51,26 @@ values:
           #  * <REMOTE> will be replaced with name of a remote
           #  * <LOCAL_BRANCH> will be replaced with current branch name
           #  * <REMOTE_BRANCH> will be replaced with name of remote branch
-          pre_format: '<LOCAL_BRANCH>'
-          post_format: ''
+          #  * <REMOTE_FIRST_LETTER> will be replaced with the first letter of
+          #    a remote name, or with 'no_remote_placeholder' if the branch has
+          #    no remote counterpart
+          pre_format: '\[\e[38;5;4m\]<LOCAL_BRANCH>'
+          post_format: '\[\e[0m\]'
           # the number of files present locally which are missing in remote repo
         - type: ahead
-          pre_format: '↑'
-          post_format: ''
-          # the number of commits present in remote repo which are missing locally
+          pre_format: '\[\e[38;5;7m\]↑'
+          post_format: '\[\e[0m\]'
         - type: behind
-          pre_format: '↓'
-          post_format: ''
+          pre_format: '\[\e[38;5;7m\]↓'
+          post_format: '\[\e[0m\]'
     - type: separator
       display: surrounded
       pre_format: '│'
       post_format: ''
       # name of a tag which points exactly at the checked out commit
     - type: tag
-      pre_format: '#'
-      post_format: ''
+      pre_format: '\[\e[38;5;3m\]#'
+      post_format: '\[\e[0m\]'
     - type: separator
       display: surrounded
       pre_format: '│'
@@ -81,34 +82,39 @@ values:
       post_format: ''
       values:
         - type: name
-          pre_format: '<REMOTE>'
-          post_format: ''
+          pre_format: '\[\e[38;5;2m\]<REMOTE>'
+          post_format: '\[\e[0m\]'
         - type: ahead
-          pre_format: '↑'
-          post_format: ''
+          pre_format: '\[\e[38;5;7m\]↑'
+          post_format: '\[\e[0m\]'
         - type: behind
-          pre_format: '↓'
-          post_format: ''
+          pre_format: '\[\e[38;5;7m\]↓'
+          post_format: '\[\e[0m\]'
     - type: separator
       display: surrounded
       pre_format: '│'
       post_format: ''
       # the number of untracked files
     - type: new
-      pre_format: '✚'
-      post_format: ''
+      pre_format: '\[\e[38;5;248m\]✚'
+      post_format: '\[\e[0m\]'
       # the number of tracked files which were changed in working tree
     - type: changed
-      pre_format: 'Δ'
-      post_format: ''
+      pre_format: '\[\e[38;5;166m\]Δ'
+      post_format: '\[\e[0m\]'
       # the number of files added to index
     - type: staged
-      pre_format: '▶'
-      post_format: ''
+      pre_format: '\[\e[38;5;2m\]▶'
+      post_format: '\[\e[0m\]'
       # during merge, rebase, or others, the numbers files which conflict
     - type: conflicts
-      pre_format: '✖'
+      pre_format: '\[\e[38;5;226m\]✖'
+      post_format: '\[\e[0m\]'
+    - type: separator
+      display: surrounded
+      pre_format: '│'
       post_format: ''
+      # show number of items in stash
     - type: stash
-      pre_format: '☐'
-      post_format: ''
+      pre_format: '\[\e[38;5;226m\]☐'
+      post_format: '\[\e[0m\]'
