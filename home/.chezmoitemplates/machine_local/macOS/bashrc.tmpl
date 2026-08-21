@@ -44,8 +44,12 @@ enable -f "/opt/homebrew/lib/flyline.dylib" "flyline"
 # Cursor
 flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
 
-# Right-side real-time clock
-RPS1='$(pretty-git-prompt) | \e[01;32m\t\e[0m'
+# git status custom widget
+flyline create-prompt-widget custom --name PRETTY_GIT_PROMPT --command 'pretty-git-prompt' --placeholder prev
+
+# Right-side prompt
+#     git status        | real-time clock
+RPS1='PRETTY_GIT_PROMPT | \e[01;32m\t\e[0m'
 
 # Keybinds
 flyline key bind Ctrl+p always=clearBuffer+prevHistoryEntry
