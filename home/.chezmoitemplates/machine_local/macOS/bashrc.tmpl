@@ -182,45 +182,6 @@ flyline create-prompt-widget animation --name ANIM2_MOON --fps 24 \
   "${LT_GREY_3} ${RESET}"
 
 
-# Animation: Swim
-flyline create-prompt-widget animation --name ANIM_SWIM --fps 24 \
-  "                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o" \
-  "${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~${FILAMENT}~" \
-  "${FILAMENT}~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~" \
-  "${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  " \
-  " ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o " \
-  "  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o" \
-  "${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~${FILAMENT}~" \
-  "${FILAMENT}~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~" \
-  "${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o  " \
-  " ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o " \
-  "  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~~${ACROSOME}o" \
-  "${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~${FILAMENT}~" \
-  "${FILAMENT}~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       ${FILAMENT}~" \
-  "${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                       " \
-  " ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                      " \
-  "  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                     " \
-  "   ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                    " \
-  "    ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                   " \
-  "     ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                  " \
-  "      ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                 " \
-  "       ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o                " \
-  "        ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o               " \
-  "         ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o              " \
-  "          ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o             " \
-  "           ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o            " \
-  "            ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o           " \
-  "             ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o          " \
-  "              ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o         " \
-  "               ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o        " \
-  "                ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o       " \
-  "                 ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o      " \
-  "                  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o     " \
-  "                   ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o    " \
-  "                    ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o   " \
-  "                     ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  " \
-  "                      ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o  ${FILAMENT}~~${ACROSOME}o "
-
 # Animation: prompt section divider
 readonly PDIV_FPS=10
 readonly STARLIGHT='\e[38;5;184m'
@@ -274,7 +235,7 @@ PROMPT_RULER='─'
 PS2="${LT_GREY_1}FLYLINE_PROMPT_LINE_NUMBER:${RESET} "
 
 # Fill between Right-side and Left-side prompt
-PS1_FILL="ANIM_SWIM"
+PS1_FILL="~"
 
 # Right-side prompt
 #     git status         | command duration              | real-time clock
