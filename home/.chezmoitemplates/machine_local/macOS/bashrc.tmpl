@@ -99,9 +99,6 @@ readonly LT_GREEN_5='\e[38;5;119m'
 readonly LT_GREEN_6='\e[38;5;120m'
 
 
-# Animation: Caret
-flyline create-prompt-widget animation --name ANIM_CARET --ping-pong --fps 4 '>' '>' '>' '>' '>' '=' '<' '=' '>' '>' '>' '>'
-
 # Animation: Glowing user name
 flyline create-prompt-widget animation --name USER_GLOW --ping-pong --fps 60 \
   "${DK_BLUE_1}\u${RESET}" \
