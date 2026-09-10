@@ -181,12 +181,6 @@ flyline create-prompt-widget animation --name ANIM2_MOON --fps 24 \
   "${LT_GREY_3} ${RESET}" \
   "${LT_GREY_3} ${RESET}"
 
-# Animation: Pintle
-flyline create-prompt-widget animation --name ANIM_PINTLE --fps 9 \
-  "${KNOBWHEELS}8${GLIDE}ooò${SLICK}==${KNOBWHEELS}D${RESET}" \
-  "${KNOBWHEELS}8${SLICK}=${GLIDE}ooò${SLICK}=${KNOBWHEELS}D${RESET}" \
-  "${KNOBWHEELS}8${SLICK}==${GLIDE}ooò${KNOBWHEELS}D${RESET}" \
-  "${KNOBWHEELS}8${SLICK}=${GLIDE}ooò${SLICK}=${KNOBWHEELS}D${RESET}"
 
 # Animation: Swim
 flyline create-prompt-widget animation --name ANIM_SWIM --fps 24 \
@@ -269,7 +263,7 @@ flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-ea
 readonly PDIV="${LT_BLUE_2}${RESET}"
 
 # Left-side prompt
-PS1="USER_GLOW ANIM1_PDIV ${GREEN_TERMINAL}\w${RESET} ANIM3_PDIV ANIM_PINTLE\nANIM2_MOON"
+PS1="USER_GLOW ANIM1_PDIV ${GREEN_TERMINAL}\w${RESET} ANIM3_PDIV\nANIM2_MOON"
 
 # Display for previous commands run
 PS1_FINAL="${LT_GREY_1}[\D{%Y-%m-%d %H:%M:%S}]>${RESET}"
