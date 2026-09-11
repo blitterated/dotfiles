@@ -200,7 +200,9 @@ PS1_FINAL="${LT_GREY_1}[\D{%Y-%m-%d %H:%M:%S}]>${RESET}"
 
 ## Remove Right side prompt
 RPS1_FINAL=''
-PROMPT_RULER='─'
+
+## Draw a separator between commands
+PROMPT_RULER="${LT_GREY_1}${RESET}"
 
 # Left-side multi-line continuation prompt with line numbers
 PS2="${LT_GREY_1}FLYLINE_PROMPT_LINE_NUMBER:${RESET} "
