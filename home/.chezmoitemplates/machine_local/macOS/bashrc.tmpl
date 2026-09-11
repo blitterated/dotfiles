@@ -137,13 +137,7 @@ flyline create-prompt-widget animation --name ANIM_CLOCK --fps 12 \
 "${CLOCK_COLOR}󱑔${RESET}" \
 "${CLOCK_COLOR}󱑕${RESET}"
 
-# Animation: Circles
-flyline create-prompt-widget animation --name ANIM_PIE --fps 12  󰝦 󰪞 󰪟 󰪟 󰪠 󰪡 󰪢 󰪣 󰪤 󰪥
-
-# Animation: Moon
-flyline create-prompt-widget animation --name ANIM_MOON --fps 24                             
-
-flyline create-prompt-widget animation --name ANIM2_MOON --fps 24 \
+flyline create-prompt-widget animation --name ANIM_MOON --fps 24 \
   "${LT_GREY_3}  ${RESET}" \
   "${LT_GREY_3} ${RESET}" \
   "${LT_GREY_3} ${RESET}" \
@@ -187,7 +181,7 @@ flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-ea
 readonly PDIV="${LT_BLUE_2}|${RESET}"
 
 # Left-side prompt
-PS1="USER_GLOW ${PDIV} ${GREEN_TERMINAL}\w${RESET} ${PDIV} \nANIM2_MOON"
+PS1="USER_GLOW ${PDIV} ${GREEN_TERMINAL}\w${RESET} ${PDIV} \nANIM_MOON"
 
 # Right-side prompt
 #           git status         |    command duration              |     real-time clock
