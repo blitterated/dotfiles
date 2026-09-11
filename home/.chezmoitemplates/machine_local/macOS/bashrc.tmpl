@@ -174,35 +174,6 @@ flyline create-prompt-widget animation --name ANIM2_MOON --fps 24 \
   "${LT_GREY_3} ${RESET}"
 
 
-# Animation: prompt section divider
-readonly PDIV_FPS=10
-readonly STARLIGHT='\e[38;5;184m'
-
-
-flyline create-prompt-widget animation --name ANIM1_PDIV --fps $PDIV_FPS \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}󰫢${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}+${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}󰫢${RESET}"
-
-flyline create-prompt-widget animation --name ANIM2_PDIV --fps $PDIV_FPS \
-  "${STARLIGHT}󰫢${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}+${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}󰫢${RESET}" \
-  "${STARLIGHT}${RESET}"
-
-flyline create-prompt-widget animation --name ANIM3_PDIV --fps $PDIV_FPS \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}+${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}󰫢${RESET}" \
-  "${STARLIGHT}${RESET}" \
-  "${STARLIGHT}󰫢${RESET}"
-
 # Widget: last command duration
 flyline create-prompt-widget last-command-duration
 
@@ -213,10 +184,14 @@ flyline create-prompt-widget custom --name PRETTY_GIT_PROMPT --command 'pretty-g
 flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
 
 # Prompt section divider
-readonly PDIV="${LT_BLUE_2}${RESET}"
+readonly PDIV="${LT_BLUE_2}|${RESET}"
 
 # Left-side prompt
-PS1="USER_GLOW ANIM1_PDIV ${GREEN_TERMINAL}\w${RESET} ANIM3_PDIV\nANIM2_MOON"
+PS1="USER_GLOW ${PDIV} ${GREEN_TERMINAL}\w${RESET} ${PDIV} \nANIM2_MOON"
+
+# Right-side prompt
+#           git status         |    command duration              |     real-time clock
+RPS1=" ${PDIV} PRETTY_GIT_PROMPT ${PDIV} FLYLINE_LAST_COMMAND_DURATION ${PDIV} ANIM_CLOCK ${LT_GREEN}\t${RESET}"
 
 # Display for previous commands run
 PS1_FINAL="${LT_GREY_1}[\D{%Y-%m-%d %H:%M:%S}]>${RESET}"
@@ -228,10 +203,6 @@ PS2="${LT_GREY_1}FLYLINE_PROMPT_LINE_NUMBER:${RESET} "
 
 # Fill between Right-side and Left-side prompt
 PS1_FILL="~"
-
-# Right-side prompt
-#     git status         | command duration              | real-time clock
-RPS1=" ANIM2_PDIV PRETTY_GIT_PROMPT ANIM3_PDIV FLYLINE_LAST_COMMAND_DURATION ANIM1_PDIV ANIM_CLOCK ${LT_GREEN}\t${RESET}"
 
 # Keybinds
 flyline key bind Ctrl+p always=clearBuffer+prevHistoryEntry
