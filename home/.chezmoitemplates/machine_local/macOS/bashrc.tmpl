@@ -194,7 +194,11 @@ PS1="USER_GLOW ${PDIV} ${GREEN_TERMINAL}\w${RESET} ${PDIV} \nANIM2_MOON"
 RPS1=" ${PDIV} PRETTY_GIT_PROMPT ${PDIV} FLYLINE_LAST_COMMAND_DURATION ${PDIV} ANIM_CLOCK ${LT_GREEN}\t${RESET}"
 
 # Display for previous commands run
+
+## Show dimmed timestamp
 PS1_FINAL="${LT_GREY_1}[\D{%Y-%m-%d %H:%M:%S}]>${RESET}"
+
+## Remove Right side prompt
 RPS1_FINAL=''
 PROMPT_RULER='─'
 
