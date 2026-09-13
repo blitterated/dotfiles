@@ -37,13 +37,12 @@ fi
 #  Flyline                             #
 ########################################
 
-{{ includeTemplate "machine_local/macOS/relink_flyline.sh" }}
+{{- $fc := .flyline.color -}}
+{{- includeTemplate "machine_local/macOS/relink_flyline.sh" -}}
 
 enable -f "/opt/homebrew/lib/flyline.dylib" "flyline"
 
 # ANSI colors
-readonly RESET='\e[0m'
-
 readonly WHITE_1='\e[38;5;255m'
 readonly WHITE_2='\e[38;5;253m'
 readonly WHITE_3='\e[38;5;251m'
@@ -51,84 +50,37 @@ readonly WHITE_4='\e[38;5;249m'
 readonly LT_GREY_1='\e[38;5;247m'
 readonly LT_GREY_2='\e[38;5;245m'
 readonly LT_GREY_3='\e[38;5;243m'
-readonly LT_GREY_4='\e[38;5;241m'
-readonly GREY_1='\e[38;5;239m'
-readonly GREY_2='\e[38;5;237m'
-readonly GREY_3='\e[38;5;235m'
-readonly GREY_4='\e[38;5;233m'
-
-readonly GREEN_TERMINAL='\e[38;5;41m'
-readonly LT_GREEN='\e[01;32m'
-
-readonly DK_BLUE_1='\e[38;5;18m'
-readonly DK_BLUE_2='\e[38;5;19m'
-readonly DK_BLUE_3='\e[38;5;20m'
-readonly DK_BLUE_4='\e[38;5;21m'
-readonly DK_BLUE_5='\e[38;5;25m'
-readonly DK_BLUE_6='\e[38;5;26m'
-readonly BLUE_1='\e[38;5;27m'
-readonly BLUE_2='\e[38;5;31m'
-readonly BLUE_3='\e[38;5;32m'
-readonly BLUE_4='\e[38;5;33m'
-readonly BLUE_5='\e[38;5;37m'
-readonly BLUE_6='\e[38;5;38m'
-readonly LT_BLUE_1='\e[38;5;39m'
-readonly LT_BLUE_2='\e[38;5;44m'
-readonly LT_BLUE_3='\e[38;5;45m'
-readonly LT_BLUE_4='\e[38;5;51m'
-readonly LT_BLUE_5='\e[38;5;87m'
-readonly LT_BLUE_6='\e[38;5;123m'
-
-readonly DK_GREEN_1='\e[38;5;22m'
-readonly DK_GREEN_2='\e[38;5;28m'
-readonly DK_GREEN_3='\e[38;5;34m'
-readonly DK_GREEN_4='\e[38;5;35m'
-readonly DK_GREEN_5='\e[38;5;40m'
-readonly DK_GREEN_6='\e[38;5;41m'
-readonly GREEN_1='\e[38;5;42m'
-readonly GREEN_2='\e[38;5;76m'
-readonly GREEN_3='\e[38;5;77m'
-readonly GREEN_4='\e[38;5;78m'
-readonly GREEN_5='\e[38;5;46m'
-readonly GREEN_6='\e[38;5;47m'
-readonly LT_GREEN_1='\e[38;5;82m'
-readonly LT_GREEN_2='\e[38;5;83m'
-readonly LT_GREEN_3='\e[38;5;84m'
-readonly LT_GREEN_4='\e[38;5;118m'
-readonly LT_GREEN_5='\e[38;5;119m'
-readonly LT_GREEN_6='\e[38;5;120m'
-
 
 # Animation: Moon
 flyline create-prompt-widget animation --name ANIM_MOON --fps 24 \
-  "${LT_GREY_3}  ${RESET}" \
-  "${LT_GREY_3} ${RESET}" \
-  "${LT_GREY_3} ${RESET}" \
-  "${LT_GREY_2} ${RESET}" \
-  "${LT_GREY_2} ${RESET}" \
-  "${LT_GREY_1} ${RESET}" \
-  "${LT_GREY_1} ${RESET}" \
-  "${WHITE_4} ${RESET}" \
-  "${WHITE_4} ${RESET}" \
-  "${WHITE_3} ${RESET}" \
-  "${WHITE_3} ${RESET}" \
-  "${WHITE_2} ${RESET}" \
-  "${WHITE_2} ${RESET}" \
-  "${WHITE_1} ${RESET}" \
-  "${WHITE_1} ${RESET}" \
-  "${WHITE_1} ${RESET}" \
-  "${WHITE_2} ${RESET}" \
-  "${WHITE_2} ${RESET}" \
-  "${WHITE_3} ${RESET}" \
-  "${WHITE_3} ${RESET}" \
-  "${WHITE_4} ${RESET}" \
-  "${WHITE_4} ${RESET}" \
-  "${LT_GREY_1} ${RESET}" \
-  "${LT_GREY_1} ${RESET}" \
-  "${LT_GREY_2} ${RESET}" \
-  "${LT_GREY_2} ${RESET}" \
-  "${LT_GREY_3} ${RESET}" \
-  "${LT_GREY_3} ${RESET}"
+  "${LT_GREY_3}  {{ $fc.reset }}" \
+  "${LT_GREY_3} {{ $fc.reset }}" \
+  "${LT_GREY_3} {{ $fc.reset }}" \
+  "${LT_GREY_2} {{ $fc.reset }}" \
+  "${LT_GREY_2} {{ $fc.reset }}" \
+  "${LT_GREY_1} {{ $fc.reset }}" \
+  "${LT_GREY_1} {{ $fc.reset }}" \
+  "${WHITE_4} {{ $fc.reset }}" \
+  "${WHITE_4} {{ $fc.reset }}" \
+  "${WHITE_3} {{ $fc.reset }}" \
+  "${WHITE_3} {{ $fc.reset }}" \
+  "${WHITE_2} {{ $fc.reset }}" \
+  "${WHITE_2} {{ $fc.reset }}" \
+  "${WHITE_1} {{ $fc.reset }}" \
+  "${WHITE_1} {{ $fc.reset }}" \
+  "${WHITE_1} {{ $fc.reset }}" \
+  "${WHITE_2} {{ $fc.reset }}" \
+  "${WHITE_2} {{ $fc.reset }}" \
+  "${WHITE_3} {{ $fc.reset }}" \
+  "${WHITE_3} {{ $fc.reset }}" \
+  "${WHITE_4} {{ $fc.reset }}" \
+  "${WHITE_4} {{ $fc.reset }}" \
+  "${LT_GREY_1} {{ $fc.reset }}" \
+  "${LT_GREY_1} {{ $fc.reset }}" \
+  "${LT_GREY_2} {{ $fc.reset }}" \
+  "${LT_GREY_2} {{ $fc.reset }}" \
+  "${LT_GREY_3} {{ $fc.reset }}" \
+  "${LT_GREY_3} {{ $fc.reset }}"
 
 
 # Widget: last command duration
@@ -141,34 +93,34 @@ flyline create-prompt-widget custom --name PRETTY_GIT_PROMPT --command 'pretty-g
 flyline set-cursor --backend flyline --style "#ff007f" --effect fade --effect-easing in-out-sine --interpolate-easing out-elastic --interpolate 1.33
 
 # Prompt section divider
-readonly PDIV="${LT_BLUE_2}|${RESET}"
+readonly PDIV="{{ $fc.orange }}|{{ $fc.reset }}"
 
 # Blue user name
-readonly FLYLINE_BLUE_USER="${BLUE_6}\u${RESET}"
+readonly FLYLINE_USER="{{ $fc.blue }}\u{{ $fc.reset }}"
 
 # Left-side prompt
-PS1="${FLYLINE_BLUE_USER} ${PDIV} ${GREEN_TERMINAL}\w${RESET} ${PDIV} \n󰶻 "
+PS1="${FLYLINE_USER} ${PDIV} {{ $fc.green }}\w{{ $fc.reset }} ${PDIV} \n󰶻 "
 
 # Right-side prompt
 #           git status         |    command duration              |     real-time clock
-RPS1=" ${PDIV} PRETTY_GIT_PROMPT ${PDIV} FLYLINE_LAST_COMMAND_DURATION ${PDIV} ANIM_MOON ${LT_GREEN}\t${RESET}"
+RPS1=" ${PDIV} PRETTY_GIT_PROMPT ${PDIV} FLYLINE_LAST_COMMAND_DURATION ${PDIV} ANIM_MOON {{ $fc.green }}\t{{ $fc.reset }}"
 
 # Display for previous commands run
 
 ## Show dimmed timestamp
-PS1_FINAL="${LT_GREY_1}[\D{%Y-%m-%d %H:%M:%S}]>${RESET}"
+PS1_FINAL="{{ $fc.lt_grey }}[\D{%Y-%m-%d %H:%M:%S}]>{{ $fc.reset }}"
 
 ## Remove Right side prompt
 RPS1_FINAL=''
 
 ## Draw a separator between commands
-PROMPT_RULER="${LT_GREY_1}${RESET}"
+PROMPT_RULER="{{ $fc.lt_grey }}{{ $fc.reset }}"
 
 # Left-side multi-line continuation prompt with line numbers
-PS2="${LT_GREY_1}FLYLINE_PROMPT_LINE_NUMBER:${RESET} "
+PS2="{{ $fc.lt_grey }}FLYLINE_PROMPT_LINE_NUMBER:{{ $fc.reset }} "
 
 # Fill between Right-side and Left-side prompt
-PS1_FILL="${GREEN_TERMINAL}~${RESET}"
+PS1_FILL="{{ $fc.green }}~{{ $fc.reset }}"
 
 # Keybinds
 flyline key bind Ctrl+p always=clearBuffer+prevHistoryEntry
