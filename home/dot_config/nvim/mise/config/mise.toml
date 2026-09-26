@@ -9,6 +9,7 @@ node = "24.16.0"
 "npm:awk-language-server" = "latest"
 
 [tool_alias]
-lua_ls = "aqua:LuaLS/lua-language-server"
-bashls = "npm:bash-language-server"
-awk_ls = "npm:awk-language-server"
+lua_ls  = "aqua:LuaLS/lua-language-server"
+bashls  = "npm:bash-language-server"
+awk_ls  = "npm:awk-language-server"
+pyright = "npm:pyright"
