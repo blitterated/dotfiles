@@ -50,8 +50,8 @@ alias ma='eval "$(mise activate)"'
 
 # eza: the ls and exa replacement
 alias ls='eza --icons -a --group-directories-first'
-alias t='eza --tree --all --ignore-glob ".git|.venv"'
-alias tree='eza --tree --all --long --ignore-glob ".git|.venv"'
+alias t='eza --tree --all --ignore-glob ".git|.venv|__pycache__"'
+alias tree='eza --tree --all --long --ignore-glob ".git|.venv|__pycache__"'
 
 
 # git
